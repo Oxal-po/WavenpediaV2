@@ -8,11 +8,13 @@ import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Comparator;
 
 public abstract class NamedWavenEntity extends WavenEntity implements NamedEntity {
 
     protected static JsonObject dictionary;
     private long m_i18nNameId, m_i18nDescriptionId;
+    public final static String BASE_STRING = "none";
 
     public NamedWavenEntity(int id) {
         super(id);
@@ -55,5 +57,13 @@ public abstract class NamedWavenEntity extends WavenEntity implements NamedEntit
     @Override
     public JsonObject getDictionary() {
         return DictionaryFabric.getDictionary(this);
+    }
+
+    @Override
+    public int compareTo(WavenEntity wavenEntity) {
+        if ((wavenEntity instanceof NamedWavenEntity)){
+            return Comparator.<Integer>naturalOrder().compare(getId(), wavenEntity.getId());
+        }
+        return getName().compareTo(((NamedWavenEntity)wavenEntity).getName());
     }
 }

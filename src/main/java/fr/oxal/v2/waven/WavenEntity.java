@@ -33,6 +33,11 @@ public abstract class WavenEntity  implements Comparable<WavenEntity>{
         }
     }
 
+    public static boolean fileExist(int id, String path){
+        File f = new File(path + id + ".json");
+        return f.exists();
+    }
+
     public abstract String getPathFolder();
 
     public void clone(WavenEntity entity){
