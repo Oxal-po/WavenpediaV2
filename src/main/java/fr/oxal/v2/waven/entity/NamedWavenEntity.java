@@ -3,6 +3,7 @@ package fr.oxal.v2.waven.entity;
 import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
+import fr.oxal.v2.waven.utils.dictionary.DictionaryFabric;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 
 import java.io.*;
@@ -10,26 +11,49 @@ import java.nio.charset.StandardCharsets;
 
 public abstract class NamedWavenEntity extends WavenEntity implements NamedEntity {
 
-    private static JsonObject dictionary;
+    protected static JsonObject dictionary;
+    private long m_i18nNameId, m_i18nDescriptionId;
 
     public NamedWavenEntity(int id) {
         super(id);
-
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(Wavenpedia.dictionaryPath + getPathFolder())), StandardCharsets.UTF_8));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        try (Reader reader = br) {
-            dictionary = (JsonObject) WavenEntity.parser.parse(reader);
-        }catch (Exception e){
-            dictionary = new JsonObject();
-        }
     }
 
     @Override
     public String getText(long id) {
-        return dictionary.get(id + "").getAsString();
+        return getDictionary().get(id + "").getAsString();
+    }
+
+    @Override
+    public long getNameId() {
+        return m_i18nNameId;
+    }
+
+    @Override
+    public long getDescriptionId() {
+        return m_i18nDescriptionId;
+    }
+
+    @Override
+    public String getName() {
+        return getDictionary().get(getNameId() + "").getAsString();
+    }
+
+    @Override
+    public String getDescription() {
+        return getDictionary().get(getDescriptionId() + "").getAsString();
+    }
+
+    @Override
+    public void clone(WavenEntity entity) {
+        super.clone(entity);
+        if (entity instanceof NamedWavenEntity){
+            m_i18nNameId = ((NamedWavenEntity) entity).m_i18nNameId;
+            m_i18nDescriptionId = ((NamedWavenEntity) entity).m_i18nDescriptionId;
+        }
+    }
+
+    @Override
+    public JsonObject getDictionary() {
+        return DictionaryFabric.getDictionary(this);
     }
 }

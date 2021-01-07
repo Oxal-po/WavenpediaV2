@@ -2,6 +2,9 @@ package fr.oxal.v2;
 
 import fr.oxal.v2.utils.text.WavenParser;
 import fr.oxal.v2.waven.WavenEntity;
+import fr.oxal.v2.waven.entity.NamedWavenEntity;
+import fr.oxal.v2.waven.entity.spell.Spell;
+import fr.oxal.v2.waven.utils.WavenEntities;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
@@ -61,11 +64,11 @@ public class Wavenpedia {
 
     public static void start(){
         classedMappedEntity = new HashMap<>();
-        Class[] array = new Class[]{};
+        Class<? extends NamedWavenEntity>[] array = new Class[]{Spell.class};
 
-        for (Class c : array){
+        for (Class<? extends NamedWavenEntity> c : array){
             HashMap<String, Integer> mappedEntity = new HashMap<>();
-            for (WavenEntity a : Entities.getAll(c)){
+            for (NamedWavenEntity a : WavenEntities.getAll(c)){
                 mappedEntity.put(a.getName(), a.getId());
             }
             classedMappedEntity.put(c, mappedEntity);

@@ -11,7 +11,7 @@ public abstract class WavenEntity  implements Comparable<WavenEntity>{
 
     private int id;
     private String m_displayName;
-    private boolean m_availability;
+    private int m_availability;
     private JsonObject m_jsonRepresentation;
 
 
@@ -20,8 +20,8 @@ public abstract class WavenEntity  implements Comparable<WavenEntity>{
     public static final Gson gson = new Gson();
 
     public WavenEntity(int id) {
-        this.id = id;
         if (id != NOT_ENTITY){
+            this.id = id;
             try {
                 BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(getPathFolder() + id + ".json")), StandardCharsets.UTF_8));
                 JsonObject jsonObject = (JsonObject) parser.parse(br);
@@ -36,7 +36,6 @@ public abstract class WavenEntity  implements Comparable<WavenEntity>{
     public abstract String getPathFolder();
 
     public void clone(WavenEntity entity){
-        id = entity.id;
         m_displayName = entity.m_displayName;
         m_availability = entity.m_availability;
         m_jsonRepresentation = entity.m_jsonRepresentation;
@@ -44,5 +43,37 @@ public abstract class WavenEntity  implements Comparable<WavenEntity>{
 
     public boolean isEntity(){
         return id != NOT_ENTITY;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDisplayName() {
+        return m_displayName;
+    }
+
+    public void setDisplayName(String m_displayName) {
+        this.m_displayName = m_displayName;
+    }
+
+    public boolean isAvailable() {
+        return m_availability == 3;
+    }
+
+    public void setAvailable(int m_availability) {
+        this.m_availability = m_availability;
+    }
+
+    public JsonObject getJsonRepresentation() {
+        return m_jsonRepresentation;
+    }
+
+    public void setJsonRepresentation(JsonObject m_jsonRepresentation) {
+        this.m_jsonRepresentation = m_jsonRepresentation;
     }
 }
