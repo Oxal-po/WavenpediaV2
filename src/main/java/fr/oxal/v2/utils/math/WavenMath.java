@@ -30,6 +30,8 @@ public class WavenMath {
     private static final String INVOC_SCALE = "summoningStatScalingFactor";
     private static final String MONSTER_SCALE = "monsterStatScalingFactor";
 
+    //todo surement a refaire
+
     public static int getNumber(JsonObject j, int level, WithStat a){
         if (j == null) return -1000;
         if(j.get(TYPE).getAsString().equals(FUNCTION_LINEAR)){

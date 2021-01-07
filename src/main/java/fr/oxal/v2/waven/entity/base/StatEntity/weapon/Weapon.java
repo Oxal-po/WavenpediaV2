@@ -7,6 +7,7 @@ import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.StatEntity.StatEntity;
 import fr.oxal.v2.waven.entity.base.god.WithGods;
 import fr.oxal.v2.waven.entity.base.spell.WithSpells;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.EquipeableEntity;
 import fr.oxal.v2.waven.utils.stat.WithAtk;
 import fr.oxal.v2.waven.utils.stat.WithLife;
 import fr.oxal.v2.waven.utils.stat.WithPm;
@@ -14,7 +15,8 @@ import fr.oxal.v2.waven.utils.stat.WithPm;
 import java.util.List;
 import java.util.Optional;
 
-public class Weapon extends StatEntity implements WithAtk, WithPm, WithLife, WithGods, WithSpells {
+public class Weapon extends StatEntity implements WithAtk, WithPm, WithLife,
+        WithGods, WithSpells {
 
     public final static String PATH_WEAPON = Wavenpedia.jsonPath + "WeaponDefinition/";
 

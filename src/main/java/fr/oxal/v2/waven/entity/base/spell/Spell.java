@@ -7,10 +7,11 @@ import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.god.God;
 import fr.oxal.v2.waven.entity.base.god.WithGods;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.EquipeableEntity;
 
 import java.util.List;
 
-public class Spell extends NamedWavenEntity implements WithGods {
+public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntity {
 
     public static final String PATH_SPELL = Wavenpedia.jsonPath + "SpellDefinition/";
 
@@ -41,5 +42,10 @@ public class Spell extends NamedWavenEntity implements WithGods {
     @Override
     public JsonObject getDetails() {
         return getDetails(getJsonRepresentation());
+    }
+
+    @Override
+    public boolean isEquipeable() {
+        return isEquipeable(getJsonRepresentation());
     }
 }
