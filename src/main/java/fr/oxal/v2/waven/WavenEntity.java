@@ -1,11 +1,15 @@
 package fr.oxal.v2.waven;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import fr.oxal.v2.waven.effect.WavenEffect;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Optional;
 
 public abstract class WavenEntity  implements Comparable<WavenEntity>{
 

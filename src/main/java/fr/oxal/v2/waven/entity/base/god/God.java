@@ -1,14 +1,14 @@
 package fr.oxal.v2.waven.entity.base.god;
 
+import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.StatEntity.weapon.Weapon;
 import fr.oxal.v2.waven.entity.base.StatEntity.weapon.WithWeapon;
 import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.base.spell.WithSpells;
-import fr.oxal.v2.waven.utils.WavenEntities;
+import fr.oxal.v2.waven.utils.collections.WavenEntities;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,10 +38,19 @@ public class God extends NamedWavenEntity implements WithSpells, WithWeapon {
 
     //todo faire equipeable pour finir ce getSpells -> getAll(Spell) -> getGods -> add
     @Override
-    public List<Double> getSpells() {
+    public List<Spell> getSpells() {
         return WavenEntities
                 .getAll(Spell.class, a -> a.isAvailable() && a.isEquipeable() && a.getGodIds().contains((double) getId()))
-                .stream().map(a -> (double) a.getId())
+                .stream()
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Double> getIdSpells() {
+        return WavenEntities
+                .getAll(Spell.class, a -> a.isAvailable() && a.isEquipeable() && a.getGodIds().contains((double) getId()))
+                .stream()
+                .map(a -> (double) a.getId())
                 .collect(Collectors.toList());
     }
 
@@ -52,5 +61,10 @@ public class God extends NamedWavenEntity implements WithSpells, WithWeapon {
                 .stream()
                 .map(w -> (double) w.getId())
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public JsonObject getPrecomputeData() {
+        return getPrecomputeData(getJsonRepresentation());
     }
 }

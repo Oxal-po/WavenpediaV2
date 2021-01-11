@@ -1,20 +1,51 @@
 package fr.oxal.v2.waven.entity.base.spell;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import fr.oxal.v2.waven.WavenEntity;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.WithRefEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public interface WithSpells {
+public interface WithSpells extends WithRefEntity {
 
     String SPELLS = "spells";
+    String ID = "id";
+    String TYPE = "type";
+    int SPELL_ID_TYPE = 25;
 
-    List<Double> getSpells();
+    List<Double> getIdSpells();
+    List<Spell> getSpells();
 
-    default List<Double> getSpells(JsonObject j){
-        return new Gson().fromJson(j.get(SPELLS), ArrayList.class);
+    default List<Double> getIdSpells(JsonObject j){
+
+        ArrayList<Double> l = new ArrayList<>();
+        ArrayList<Double> g = new Gson().fromJson(j.get(SPELLS), ArrayList.class);
+        if (g != null){
+            l.addAll(g);
+        }
+        getWavenRef().ifPresent(a -> {
+            for (JsonElement e : a){
+                if (e.isJsonObject() && e.getAsJsonObject().get(TYPE).getAsInt() == SPELL_ID_TYPE
+                        && !l.contains(e.getAsJsonObject().get(ID).getAsDouble())){
+                    l.add(e.getAsJsonObject().get(ID).getAsDouble());
+                }
+            }
+        });
+
+        return l;
+    }
+
+    default List<Spell> getSpells(JsonObject j){
+        ArrayList<Spell> l = new ArrayList<>();
+        for (double d : getIdSpells(j)){
+            l.add(new Spell((int) d));
+        }
+
+        return l;
     }
 
     default boolean haveSpell(){
@@ -34,14 +65,14 @@ public interface WithSpells {
     }
 
     default void addSpell(double spell){
-        getSpells().add(spell);
+        getIdSpells().add(spell);
     }
 
     default void addSpell(Spell spell){
-        getSpells().add((double) spell.getId());
+        getIdSpells().add((double) spell.getId());
     }
 
     default Spell getSpell(int i){
-        return new Spell(getSpells().get(i).intValue());
+        return getSpells().get(i);
     }
 }

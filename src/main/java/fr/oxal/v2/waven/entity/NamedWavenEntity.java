@@ -14,7 +14,6 @@ public abstract class NamedWavenEntity extends WavenEntity implements NamedEntit
 
     protected static JsonObject dictionary;
     private long m_i18nNameId, m_i18nDescriptionId;
-    public final static String BASE_STRING = "none";
 
     public NamedWavenEntity(int id) {
         super(id);

@@ -14,11 +14,15 @@ public class DictionaryFabric {
     public static HashMap<Class, JsonObject> dictionaries = new HashMap<>();
 
     public static JsonObject getDictionary(NamedWavenEntity entity){
-        if (!dictionaries.containsKey(entity.getClass())){
+        return getDictionary(entity.getClass(), Wavenpedia.dictionaryPath + entity.getNameDictionnaire());
+    }
+
+    public static JsonObject getDictionary(Class c, String file){
+        if (!dictionaries.containsKey(c)){
             BufferedReader br = null;
             JsonObject j = null;
             try {
-                br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(Wavenpedia.dictionaryPath + entity.getNameDictionnaire())), StandardCharsets.UTF_8));
+                br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(file)), StandardCharsets.UTF_8));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -27,9 +31,9 @@ public class DictionaryFabric {
             }catch (Exception e){
                 j = new JsonObject();
             }
-            dictionaries.put(entity.getClass(), j);
+            dictionaries.put(c, j);
         }
 
-        return dictionaries.get(entity.getClass());
+        return dictionaries.get(c);
     }
 }

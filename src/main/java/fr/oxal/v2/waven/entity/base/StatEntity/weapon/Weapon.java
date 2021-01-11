@@ -6,6 +6,7 @@ import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.StatEntity.StatEntity;
 import fr.oxal.v2.waven.entity.base.god.WithGods;
+import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.base.spell.WithSpells;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.EquipeableEntity;
 import fr.oxal.v2.waven.utils.stat.WithAtk;
@@ -70,7 +71,16 @@ public class Weapon extends StatEntity implements WithAtk, WithPm, WithLife,
     }
 
     @Override
-    public List<Double> getSpells() {
+    public List<Spell> getSpells() {
         return getSpells(getJsonRepresentation());
+    }
+    @Override
+    public List<Double> getIdSpells() {
+        return getIdSpells(getJsonRepresentation());
+    }
+
+    @Override
+    public JsonObject getPrecomputeData() {
+        return getPrecomputeData(getJsonRepresentation());
     }
 }

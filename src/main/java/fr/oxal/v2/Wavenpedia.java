@@ -2,9 +2,11 @@ package fr.oxal.v2;
 
 import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
+import fr.oxal.v2.waven.entity.base.Companion;
+import fr.oxal.v2.waven.entity.base.StatEntity.weapon.Weapon;
 import fr.oxal.v2.waven.entity.base.god.God;
 import fr.oxal.v2.waven.entity.base.spell.Spell;
-import fr.oxal.v2.waven.utils.WavenEntities;
+import fr.oxal.v2.waven.utils.collections.WavenEntities;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
@@ -21,6 +23,9 @@ public class Wavenpedia {
     public static String placeholderPath;
     public static String fontPath;
     public static Font wavenFont;
+    public static final Class<? extends NamedWavenEntity>[] ALL_CLASS = new Class[]{
+            Spell.class, God.class, Weapon.class, Companion.class
+    };
 
     public static HashMap<Class<? extends WavenEntity>, HashMap<String, Integer>> classedMappedEntity;
 
@@ -64,11 +69,7 @@ public class Wavenpedia {
 
     public static void start(){
         classedMappedEntity = new HashMap<>();
-        Class<? extends NamedWavenEntity>[] array = new Class[]{
-                Spell.class, God.class
-        };
-
-        for (Class<? extends NamedWavenEntity> c : array){
+        for (Class<? extends NamedWavenEntity> c : ALL_CLASS){
             HashMap<String, Integer> mappedEntity = new HashMap<>();
             for (NamedWavenEntity a : WavenEntities.getAll(c)){
                 mappedEntity.put(a.getName(), a.getId());

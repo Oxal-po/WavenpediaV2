@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
+import fr.oxal.v2.waven.effect.WithEffect;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.god.God;
 import fr.oxal.v2.waven.entity.base.god.WithGods;
@@ -11,7 +12,7 @@ import fr.oxal.v2.waven.utils.jsonArgumentEntity.EquipeableEntity;
 
 import java.util.List;
 
-public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntity {
+public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntity, WithSpells, WithEffect {
 
     public static final String PATH_SPELL = Wavenpedia.jsonPath + "SpellDefinition/";
 
@@ -47,5 +48,20 @@ public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntit
     @Override
     public boolean isEquipeable() {
         return isEquipeable(getJsonRepresentation());
+    }
+
+    @Override
+    public List<Double> getIdSpells() {
+        return getIdSpells(getJsonRepresentation());
+    }
+
+    @Override
+    public List<Spell> getSpells() {
+        return getSpells(getJsonRepresentation());
+    }
+
+    @Override
+    public JsonObject getPrecomputeData() {
+        return getPrecomputeData(getJsonRepresentation());
     }
 }

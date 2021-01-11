@@ -32,7 +32,7 @@ public class WavenMath {
 
     //todo surement a refaire
 
-    public static int getNumber(JsonObject j, int level, WithStat a){
+    public static int getNumber(JsonObject j, int level, WavenEntity a){
         if (j == null) return -1000;
         if(j.get(TYPE).getAsString().equals(FUNCTION_LINEAR)){
             return linear(j, level);
@@ -83,7 +83,7 @@ public class WavenMath {
         return (int) Math.round((base + level*factor));
     }
 
-    public static int scaling(JsonObject j, int level, WithStat a){
+    public static int scaling(JsonObject j, int level, WavenEntity a){
         double base = j.get(BASE_VALUE).getAsDouble();
         return (int) Math.round((base + (base * parserConst(a) * (level - 1))));
     }
@@ -97,12 +97,12 @@ public class WavenMath {
         return Math.round(xp);
     }
 
-    public static int scalingMult(JsonObject j, int level, WithStat a){
+    public static int scalingMult(JsonObject j, int level, WavenEntity a){
         double base = j.get(BASE_VALUE).getAsDouble();
         return (int) Math.round(base * Math.pow(parserConst(a) + 1, level - 1));
     }
 
-    public static double parserConst(WithStat a){
+    public static double parserConst(WavenEntity a){
         BufferedReader br = null;
         try {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(Wavenpedia.constPath))));
