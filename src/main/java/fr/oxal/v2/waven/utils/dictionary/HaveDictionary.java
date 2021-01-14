@@ -1,8 +1,9 @@
 package fr.oxal.v2.waven.utils.dictionary;
 
 import com.google.gson.JsonObject;
+import fr.oxal.v2.waven.entity.WavenInterface;
 
-public interface HaveDictionary {
+public interface HaveDictionary extends WavenInterface {
 
     String EFFECTS = "Effects.json";
     String ADVENTURE = "Adventures.json";

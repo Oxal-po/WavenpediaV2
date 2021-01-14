@@ -1,8 +1,7 @@
 package fr.oxal.v2.waven.entity.base.god;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import fr.oxal.v2.waven.utils.jsonArgumentEntity.FamiliesEntity;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.FamiliesEntity;
 
 import java.util.ArrayList;
 import java.util.List;

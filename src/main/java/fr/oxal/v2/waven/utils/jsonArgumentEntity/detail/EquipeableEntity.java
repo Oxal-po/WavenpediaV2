@@ -1,8 +1,9 @@
-package fr.oxal.v2.waven.utils.jsonArgumentEntity;
+package fr.oxal.v2.waven.utils.jsonArgumentEntity.detail;
 
 import com.google.gson.JsonObject;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.DetailsEntity;
 
-public interface EquipeableEntity extends DetailsEntity{
+public interface EquipeableEntity extends DetailsEntity {
 
 
     String EQUIPABLE = "equipableByPlayers";

@@ -1,16 +1,14 @@
 package fr.oxal.v2.waven.entity;
 
 import com.google.gson.JsonObject;
-import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.utils.dictionary.DictionaryFabric;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.Comparator;
 
-public abstract class NamedWavenEntity extends WavenEntity implements NamedEntity {
+public abstract class NamedWavenEntity extends WavenEntity implements NamedEntity, DynamicedEntity {
 
     protected static JsonObject dictionary;
     private long m_i18nNameId, m_i18nDescriptionId;
@@ -64,5 +62,10 @@ public abstract class NamedWavenEntity extends WavenEntity implements NamedEntit
             return Comparator.<Integer>naturalOrder().compare(getId(), wavenEntity.getId());
         }
         return getName().compareTo(((NamedWavenEntity)wavenEntity).getName());
+    }
+
+    @Override
+    public JsonObject getPrecomputeData() {
+        return getPrecomputeData(getJsonRepresentation());
     }
 }

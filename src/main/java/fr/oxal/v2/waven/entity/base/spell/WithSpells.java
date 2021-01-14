@@ -3,8 +3,7 @@ package fr.oxal.v2.waven.entity.base.spell;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import fr.oxal.v2.waven.WavenEntity;
-import fr.oxal.v2.waven.utils.jsonArgumentEntity.WithRefEntity;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.WithRefEntity;
 
 import java.util.ArrayList;
 import java.util.List;

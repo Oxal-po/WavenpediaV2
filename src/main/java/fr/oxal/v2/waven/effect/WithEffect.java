@@ -1,9 +1,7 @@
 package fr.oxal.v2.waven.effect;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import fr.oxal.v2.waven.utils.jsonArgumentEntity.PrecomputedEntity;
-import fr.oxal.v2.waven.utils.jsonArgumentEntity.WithRefEntity;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.WithRefEntity;
 
 import java.util.ArrayList;
 import java.util.List;

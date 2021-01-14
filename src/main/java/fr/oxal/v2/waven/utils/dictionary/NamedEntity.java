@@ -1,8 +1,6 @@
 package fr.oxal.v2.waven.utils.dictionary;
 
-import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.utils.text.WavenParser;
-import fr.oxal.v2.waven.WavenEntity;
 
 public interface NamedEntity extends HaveDictionary {
 
@@ -29,4 +27,13 @@ public interface NamedEntity extends HaveDictionary {
     default String getParsedDescription(int level){
         return WavenParser.parse(getDescription(), this, level);
     }
+
+    default boolean haveName(){
+        return getName() != null && !getName().equals(BASE_STRING) && getName().length() > 0;
+    }
+
+    default boolean haveDescription(){
+        return getDescription() != null && !getDescription().equals(BASE_STRING);
+    }
+
 }

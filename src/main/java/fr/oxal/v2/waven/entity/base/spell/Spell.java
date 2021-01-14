@@ -4,15 +4,18 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
+import fr.oxal.v2.waven.effect.WavenEffect;
 import fr.oxal.v2.waven.effect.WithEffect;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
-import fr.oxal.v2.waven.entity.base.god.God;
 import fr.oxal.v2.waven.entity.base.god.WithGods;
-import fr.oxal.v2.waven.utils.jsonArgumentEntity.EquipeableEntity;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithFilters;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.EquipeableEntity;
 
 import java.util.List;
+import java.util.Optional;
 
-public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntity, WithSpells, WithEffect {
+public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntity, WithSpells, WithEffect, DynamicedEntity, WithFilters {
 
     public static final String PATH_SPELL = Wavenpedia.jsonPath + "SpellDefinition/";
 
@@ -63,5 +66,10 @@ public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntit
     @Override
     public JsonObject getPrecomputeData() {
         return getPrecomputeData(getJsonRepresentation());
+    }
+
+    @Override
+    public Optional<JsonObject> getCastTarget() {
+        return getCastTarget(getJsonRepresentation());
     }
 }

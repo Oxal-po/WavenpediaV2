@@ -1,7 +1,7 @@
-package fr.oxal.v2.waven.utils.jsonArgumentEntity;
+package fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.PrecomputedEntity;
 
 import java.util.Optional;
 

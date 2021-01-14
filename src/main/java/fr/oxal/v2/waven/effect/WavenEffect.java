@@ -42,7 +42,6 @@ public class WavenEffect implements NamedEntity {
         }else if (getKeyWordFile().has(getKeyWord())){
             return Optional.of(getKeyWordFile().get(getKeyWord()).getAsJsonObject());
         }
-        System.err.println(getKeyWord());
         return Optional.empty();
     }
 
@@ -58,17 +57,11 @@ public class WavenEffect implements NamedEntity {
 
     @Override
     public String getName() {
-        if (!haveName()){
-            return BASE_STRING;
-        }
         return getDictionary().get(getNameId()+"").getAsString();
     }
 
     @Override
     public String getDescription() {
-        if (!haveDescription()){
-            return BASE_STRING;
-        }
         return getDictionary().get(getDescriptionId()+"").getAsString();
     }
 
@@ -89,10 +82,6 @@ public class WavenEffect implements NamedEntity {
 
     public boolean haveKeyWord(){
         return getKeyWord() != null;
-    }
-
-    public boolean haveName(){
-        return getNameId() != NAME_EFFECT_BASE;
     }
 
     public boolean haveDescription(){

@@ -74,11 +74,13 @@ public class WavenEntities {
         return Optional.empty();
     }
 
-    public static <T extends WavenEntity> Optional<T> construct(Class<T> c, int id){
+    public static <T> Optional<T> construct(Class<T> c, int id){
         try {
             Constructor constructor = c.getConstructor(int.class);
-            T t = (T) constructor.newInstance(id);
-            return Optional.of(t);
+            if (WavenEntity.fileExist(id, c) || id == WavenEntity.NOT_ENTITY){
+                T t = (T) constructor.newInstance(id);
+                return Optional.of(t);
+            }
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }

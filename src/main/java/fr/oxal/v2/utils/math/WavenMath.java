@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
+import fr.oxal.v2.waven.entity.WavenInterface;
 import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.utils.stat.WithStat;
 
@@ -32,7 +33,7 @@ public class WavenMath {
 
     //todo surement a refaire
 
-    public static int getNumber(JsonObject j, int level, WavenEntity a){
+    public static int getNumber(JsonObject j, int level, WavenInterface a){
         if (j == null) return -1000;
         if(j.get(TYPE).getAsString().equals(FUNCTION_LINEAR)){
             return linear(j, level);
@@ -43,6 +44,8 @@ public class WavenMath {
         }else if(j.get(TYPE).getAsString().equals(FUNCTION_RANGE_VALUE_RING)){
             //return ringRange(level);
         }else if(j.get(TYPE).getAsString().equals(FUNCTION_SUM)){
+            System.out.println("test");
+            System.out.println(j.get(TYPE));
             return sum(j);
         }else if(j.get(TYPE).getAsString().equals("ConstIntegerValue")){
             return j.get(VALUE).getAsInt();
@@ -58,12 +61,17 @@ public class WavenMath {
 
     private static int sum(JsonObject j) {
         int base = 0;
+        System.out.println(j);
         JsonArray jsonArray = (JsonArray) j.get("valuesToSum");
 
         for (Object object : jsonArray){
+            System.out.println(object);
             JsonObject json = (JsonObject) object;
             if (json.has(TYPE)){
-                base = json.get(VALUE).getAsInt();
+                System.out.println(json.get(VALUE));
+                if (json.has(VALUE)){
+                    base = json.get(VALUE).getAsInt();
+                }
             }
         }
 
@@ -83,7 +91,7 @@ public class WavenMath {
         return (int) Math.round((base + level*factor));
     }
 
-    public static int scaling(JsonObject j, int level, WavenEntity a){
+    public static int scaling(JsonObject j, int level, WavenInterface a){
         double base = j.get(BASE_VALUE).getAsDouble();
         return (int) Math.round((base + (base * parserConst(a) * (level - 1))));
     }
@@ -97,12 +105,12 @@ public class WavenMath {
         return Math.round(xp);
     }
 
-    public static int scalingMult(JsonObject j, int level, WavenEntity a){
+    public static int scalingMult(JsonObject j, int level, WavenInterface a){
         double base = j.get(BASE_VALUE).getAsDouble();
         return (int) Math.round(base * Math.pow(parserConst(a) + 1, level - 1));
     }
 
-    public static double parserConst(WavenEntity a){
+    public static double parserConst(WavenInterface a){
         BufferedReader br = null;
         try {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(Wavenpedia.constPath))));

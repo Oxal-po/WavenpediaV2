@@ -1,12 +1,19 @@
 package fr.oxal.v2;
 
 import fr.oxal.v2.waven.WavenEntity;
+import fr.oxal.v2.waven.effect.FloatingCounterEffect;
+import fr.oxal.v2.waven.effect.PropertyEffect;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.Companion;
+import fr.oxal.v2.waven.entity.base.StatEntity.floorMechanism.FloorMechanism;
+import fr.oxal.v2.waven.entity.base.StatEntity.mechanism.ObjectMechanism;
+import fr.oxal.v2.waven.entity.base.StatEntity.summoning.Summoning;
 import fr.oxal.v2.waven.entity.base.StatEntity.weapon.Weapon;
 import fr.oxal.v2.waven.entity.base.god.God;
 import fr.oxal.v2.waven.entity.base.spell.Spell;
+import fr.oxal.v2.waven.entity.pvm.skill.Skill;
 import fr.oxal.v2.waven.utils.collections.WavenEntities;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
@@ -23,8 +30,13 @@ public class Wavenpedia {
     public static String placeholderPath;
     public static String fontPath;
     public static Font wavenFont;
-    public static final Class<? extends NamedWavenEntity>[] ALL_CLASS = new Class[]{
-            Spell.class, God.class, Weapon.class, Companion.class
+    public static final Class<? extends NamedWavenEntity>[] ALL_NAMED_CLASS = new Class[]{
+            Spell.class, God.class, Weapon.class, Companion.class, ObjectMechanism.class, Summoning.class,
+            FloorMechanism.class, Skill.class
+    };
+    public static final Class<? extends DynamicedEntity>[] ALL_DYNAMICED_CLASS = new Class[]{
+            PropertyEffect.class, Spell.class, God.class, Weapon.class, Companion.class, ObjectMechanism.class,
+            Summoning.class, FloatingCounterEffect.class , FloorMechanism.class, Skill.class
     };
 
     public static HashMap<Class<? extends WavenEntity>, HashMap<String, Integer>> classedMappedEntity;
@@ -69,7 +81,7 @@ public class Wavenpedia {
 
     public static void start(){
         classedMappedEntity = new HashMap<>();
-        for (Class<? extends NamedWavenEntity> c : ALL_CLASS){
+        for (Class<? extends NamedWavenEntity> c : ALL_NAMED_CLASS){
             HashMap<String, Integer> mappedEntity = new HashMap<>();
             for (NamedWavenEntity a : WavenEntities.getAll(c)){
                 mappedEntity.put(a.getName(), a.getId());

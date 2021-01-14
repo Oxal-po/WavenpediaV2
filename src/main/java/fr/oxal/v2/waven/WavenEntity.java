@@ -5,8 +5,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import fr.oxal.v2.waven.effect.WavenEffect;
+import fr.oxal.v2.waven.entity.NamedWavenEntity;
+import fr.oxal.v2.waven.entity.base.StatEntity.StatEntity;
 
 import java.io.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
@@ -40,6 +44,22 @@ public abstract class WavenEntity  implements Comparable<WavenEntity>{
     public static boolean fileExist(int id, String path){
         File f = new File(path + id + ".json");
         return f.exists();
+    }
+
+    public static boolean fileExist(int id, Class c){
+        try {
+            Constructor constructor = c.getConstructor(int.class);
+            return WavenEntity.fileExist(id, (String) c.getMethod("getPathFolder").invoke(constructor.newInstance(WavenEntity.NOT_ENTITY)));
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public abstract String getPathFolder();

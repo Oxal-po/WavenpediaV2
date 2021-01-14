@@ -1,9 +1,10 @@
-package fr.oxal.v2.waven.utils.jsonArgumentEntity;
+package fr.oxal.v2.waven.utils.jsonArgumentEntity.detail;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.DetailsEntity;
 
-public interface FamiliesEntity extends DetailsEntity{
+public interface FamiliesEntity extends DetailsEntity {
 
     String FAMILIES = "families";
 
