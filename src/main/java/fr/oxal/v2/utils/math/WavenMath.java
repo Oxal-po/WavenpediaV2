@@ -8,9 +8,11 @@ import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.entity.WavenInterface;
 import fr.oxal.v2.waven.entity.base.spell.Spell;
+import fr.oxal.v2.waven.entity.pvm.equipment.Ring;
 import fr.oxal.v2.waven.utils.stat.WithStat;
 
 import java.io.*;
+import java.util.Optional;
 
 public class WavenMath {
 
@@ -18,6 +20,7 @@ public class WavenMath {
     private static final String VALUE = "value";
 
     private static final String REF_ID = "referenceId";
+    private static final String REF_NAME = "valueRefName";
     private static final String FUNCTION_LINEAR = "LinearLevelOnlyBasedDynamicValue";
     private static final String FUNCTION_MULT_SCALING = "MultiplyScaleLevelOnlyBasedDynamicValue";
     private static final String FUNCTION_LIN_SCALING = "LinearScaleLevelOnlyBasedDynamicValue";
@@ -34,7 +37,7 @@ public class WavenMath {
 
     //todo surement a refaire
 
-    public static int getNumber(JsonObject j, int level){
+    public static int getNumber(JsonObject j, int level, WavenInterface w){
         if (j == null) return -1000;
         if(j.get(TYPE).getAsString().equals(FUNCTION_LINEAR)){
             return linear(j, level);
@@ -43,7 +46,8 @@ public class WavenMath {
         }else if(j.get(TYPE).getAsString().equals(FUNCTION_LIN_SCALING)){
             return scaling(j, level);
         }else if(j.get(TYPE).getAsString().equals(FUNCTION_RANGE_VALUE_RING)){
-            //return ringRange(level);
+            System.out.println(j);
+            return ringRange(level, w, j.get(REF_NAME).getAsString());
         }else if(j.get(TYPE).getAsString().equals(FUNCTION_SUM)){
             System.out.println("test");
             System.out.println(j.get(TYPE));
@@ -53,7 +57,7 @@ public class WavenMath {
         }else if(j.get(TYPE).getAsString().equals("SpellsCountValue")){
             return -1000;
         }else if(j.get(TYPE).equals("NegativeValue")){
-            return getNumber((JsonObject) j.get("valueToNeg"), level);
+            return getNumber((JsonObject) j.get("valueToNeg"), level, w);
         }else{
             System.err.println("erreur wavenMath getNumber");
             //j.forEach((k, v) -> System.out.println(k + " : " + v));
@@ -81,11 +85,14 @@ public class WavenMath {
         return base;
     }
 
-    private static int ringRange(int level, WavenEntity a, String key) {
-        //Ring r = (Ring) a;
-        //return r.getValue(key, level);
-
-        return 0;
+    private static int ringRange(int level, WavenInterface a, String key) {
+        Ring r =  a.asRing();
+        Optional<Integer> i = r.getArrayValue(key, level);
+        if (i.isPresent()){
+            return i.get();
+        }
+        System.err.println("-ERROR- WavenMath : ringRange : " + r.getId() + " : " + i + " : " + key);
+        return -1000;
     }
 
     public static int linear(JsonObject j, int level){

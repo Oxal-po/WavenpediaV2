@@ -76,6 +76,10 @@ public class ReferenceEffectParser extends WavenEntityParsing implements Referen
             }
 
         } else{
+            if (getKeyRef(text).equals("limit")){
+                System.err.println("-WARNING- changer ce système c'est foireux");
+                return 1 + "";
+            }
             System.err.println(getObject(text));
             System.err.println("erreur ReferenceEffectParser : La refference n'est pas présente dans l'objet : " + getKeyRef(text));
         }

@@ -36,7 +36,7 @@ public interface DynamicedEntity extends PrecomputedEntity {
         Optional<JsonObject> o = getDynamicJson(key);
 
         if (o.isPresent()){
-            return Optional.of(WavenMath.getNumber(o.get(), level));
+            return Optional.of(WavenMath.getNumber(o.get(), level, this));
         }
 
         return Optional.empty();

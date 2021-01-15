@@ -39,8 +39,6 @@ public abstract class NamedWavenEntity extends WavenEntity implements NamedEntit
 
     @Override
     public String getDescription() {
-        System.out.println(getDescriptionId());
-        System.out.println(getId());
         return getDictionary().get(getDescriptionId() + "").getAsString();
     }
 

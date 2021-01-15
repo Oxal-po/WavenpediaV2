@@ -38,7 +38,7 @@ public interface WithFilters extends WithSelector{
         Optional<JsonObject> o = getFilterJson(key);
 
         if (o.isPresent()){
-            return Optional.of(WavenMath.getNumber(o.get(), level));
+            return Optional.of(WavenMath.getNumber(o.get(), level, this));
         }
 
         return Optional.empty();
@@ -53,7 +53,7 @@ public interface WithFilters extends WithSelector{
         if (o.isPresent()){
             o = getDynamicFilterJson(o.get());
             if (o.isPresent()){
-                return Optional.of(WavenMath.getNumber(o.get(), level));
+                return Optional.of(WavenMath.getNumber(o.get(), level, this));
             }
         }
 
