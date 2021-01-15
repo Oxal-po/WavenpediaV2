@@ -6,6 +6,6 @@ import fr.oxal.v2.utils.math.WavenMath;
 public interface WithStat {
 
     default double getStat(int level, JsonObject jsonObject, String nameStat){
-        return WavenMath.getNumber((JsonObject) jsonObject.get(nameStat), level, null);
+        return WavenMath.getNumber((JsonObject) jsonObject.get(nameStat), level);
     }
 }

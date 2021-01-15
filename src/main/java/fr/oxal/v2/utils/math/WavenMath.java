@@ -3,6 +3,7 @@ package fr.oxal.v2.utils.math;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.entity.WavenInterface;
@@ -33,14 +34,14 @@ public class WavenMath {
 
     //todo surement a refaire
 
-    public static int getNumber(JsonObject j, int level, WavenInterface a){
+    public static int getNumber(JsonObject j, int level){
         if (j == null) return -1000;
         if(j.get(TYPE).getAsString().equals(FUNCTION_LINEAR)){
             return linear(j, level);
         }else if(j.get(TYPE).getAsString().equals(FUNCTION_MULT_SCALING)){
-            return scalingMult(j, level, a);
+            return scalingMult(j, level);
         }else if(j.get(TYPE).getAsString().equals(FUNCTION_LIN_SCALING)){
-            return scaling(j, level, a);
+            return scaling(j, level);
         }else if(j.get(TYPE).getAsString().equals(FUNCTION_RANGE_VALUE_RING)){
             //return ringRange(level);
         }else if(j.get(TYPE).getAsString().equals(FUNCTION_SUM)){
@@ -51,6 +52,8 @@ public class WavenMath {
             return j.get(VALUE).getAsInt();
         }else if(j.get(TYPE).getAsString().equals("SpellsCountValue")){
             return -1000;
+        }else if(j.get(TYPE).equals("NegativeValue")){
+            return getNumber((JsonObject) j.get("valueToNeg"), level);
         }else{
             System.err.println("erreur wavenMath getNumber");
             //j.forEach((k, v) -> System.out.println(k + " : " + v));
@@ -91,9 +94,9 @@ public class WavenMath {
         return (int) Math.round((base + level*factor));
     }
 
-    public static int scaling(JsonObject j, int level, WavenInterface a){
+    public static int scaling(JsonObject j, int level){
         double base = j.get(BASE_VALUE).getAsDouble();
-        return (int) Math.round((base + (base * parserConst(a) * (level - 1))));
+        return (int) Math.round((base + (base * parserConst(j) * (level - 1))));
     }
 
     public static long getExp(int level){
@@ -105,37 +108,56 @@ public class WavenMath {
         return Math.round(xp);
     }
 
-    public static int scalingMult(JsonObject j, int level, WavenInterface a){
+    public static int scalingMult(JsonObject j, int level){
         double base = j.get(BASE_VALUE).getAsDouble();
-        return (int) Math.round(base * Math.pow(parserConst(a) + 1, level - 1));
+        return (int) Math.round(base * Math.pow(parserConst(j) + 1, level - 1));
     }
 
-    public static double parserConst(WavenInterface a){
+    public static double parserConst(JsonObject j){
         BufferedReader br = null;
         try {
             br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(Wavenpedia.constPath))));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        try (Reader reader = br) {
-            JsonObject jsonObject = new JsonParser().parse(reader).getAsJsonObject();
-            jsonObject = jsonObject.get(JSON).getAsJsonObject();
-            jsonObject = jsonObject.get(FIGHT).getAsJsonObject();
 
-            if (a instanceof Spell) {
-                return jsonObject.get(SPELL_MONSTER_SCALING).getAsDouble();
+        JsonObject factorJson = (JsonObject) j.get("factor");
+        String name = "";
+
+        if (factorJson.get("reference") instanceof JsonPrimitive){
+            JsonPrimitive p = factorJson.get("reference").getAsJsonPrimitive();
+            switch (p.getAsInt()){
+                case 0:
+                    name = "monsterStatScalingFactor";
+                    break;
+                case 1:
+                    name = "monsterSpellScalingFactor";
+                    break;
+                case 2:
+                    name = "companionStatScalingFactor";
+                    break;
+                case 3:
+                    name = "summoningStatScalingFactor";
+                    break;
+                case 4:
+                    name = "mechanismStatScalingFactor";
+                    break;
             }
-//            if (a instanceof Companion){
-//                return (Double) jsonObject.get(COMPA_SCALE);
-//            }else if (a instanceof Spell){
-//                return (Double) jsonObject.get(SPELL_MONSTER_SCALING);
-//            }else if (a instanceof Summoning && a.getDisplayName().contains("MONSTRE")){
-//                return (Double) jsonObject.get(MONSTER_SCALE);
-//            }else if (a instanceof Summoning){
-//                return (Double) jsonObject.get(INVOC_SCALE);
-//            }
+        }
 
-            return jsonObject.get(VALUE).getAsInt();
+
+
+        try (Reader reader = br) {
+            JsonObject jsonObject = (JsonObject) new JsonParser().parse(reader);
+            jsonObject = (JsonObject) jsonObject.get(JSON);
+            jsonObject = (JsonObject) jsonObject.get("fightConstants");
+
+
+            if (jsonObject.has(VALUE)){
+                return jsonObject.get(VALUE).getAsJsonPrimitive().getAsInt();
+            }else{
+                return jsonObject.get(name).getAsJsonPrimitive().getAsDouble();
+            }
         }catch (Exception e){
             e.fillInStackTrace();
         }

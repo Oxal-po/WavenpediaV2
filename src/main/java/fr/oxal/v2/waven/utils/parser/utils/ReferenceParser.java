@@ -14,6 +14,6 @@ public interface ReferenceParser<Z> extends WavenObjectParser<Z>{
     }
 
     default Optional<Integer> getValue(String text, int level, WavenInterface entity){
-        return entity.asDynamicedEntity().getDynamicValue(getKeyRef(text), level, entity);
+        return entity.asDynamicedEntity().getDynamicValue(getKeyRef(text), level);
     }
 }

@@ -1,9 +1,7 @@
 package fr.oxal.v2.utils.text;
 
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
-import fr.oxal.v2.waven.utils.parser.effect.EffectParser;
-import fr.oxal.v2.waven.utils.parser.effect.ReferenceEffectParser;
-import fr.oxal.v2.waven.utils.parser.effect.ReferenceValueEntityEffectParser;
+import fr.oxal.v2.waven.utils.parser.effect.*;
 import fr.oxal.v2.waven.utils.parser.entity.EntityParser;
 
 import java.util.regex.Matcher;
@@ -13,6 +11,8 @@ public class WavenParser {
 
     public static final EntityParser entityParser = new EntityParser();
     public static final EffectParser simpleEffectParser = new EffectParser();
+    public static final MathematicEffectParser mathematicEffectParser = new MathematicEffectParser();
+    public static final SymboleEffectParser symboleEffectParser = new SymboleEffectParser();
     public static final ReferenceEffectParser effectParser = new ReferenceEffectParser();
     public final static ReferenceValueEntityEffectParser refValEntity = new ReferenceValueEntityEffectParser();
 
@@ -53,8 +53,16 @@ public class WavenParser {
             }  else if (refValEntity.canParse(find)){
                 //je check si c'est un effet a valeur (et donc a reférence)
                 text = text.replace(find, refValEntity.parse(find));
+            }  else if (mathematicEffectParser.canParse(find)){
+                //je check si c'est un effet avec calcul
+                mathematicEffectParser.setup(waven, level);
+                text = text.replace(find, mathematicEffectParser.parse(find));
+            }  else if (symboleEffectParser.canParse(find)){
+                //je check si c'est un effet avec un symbole
+                symboleEffectParser.setup(waven, level);
+                text = text.replace(find, symboleEffectParser.parse(find));
             } else {
-                System.err.println("erreur WavenParser : ce text n'est pas parser : " + text + " : " + find);
+                System.err.println("-ERROR- erreur WavenParser : ce text n'est pas parser : " + text + " : " + find);
                 System.err.println(waven.asDynamicedEntity().getDynamicValues());
             }
         }

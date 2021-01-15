@@ -34,11 +34,11 @@ public interface WithFilters extends WithSelector{
         return Optional.empty();
     }
 
-    default Optional<Integer> getFilterValue(String key, int level, WavenInterface w){
+    default Optional<Integer> getFilterValue(String key, int level){
         Optional<JsonObject> o = getFilterJson(key);
 
         if (o.isPresent()){
-            return Optional.of(WavenMath.getNumber(o.get(), level, w));
+            return Optional.of(WavenMath.getNumber(o.get(), level));
         }
 
         return Optional.empty();
@@ -48,12 +48,12 @@ public interface WithFilters extends WithSelector{
         return Optional.of((JsonObject) o.get(DYNAMIC));
     }
 
-    default Optional<Integer> getDynamicFilterValue(String key, int level, WavenInterface w){
+    default Optional<Integer> getDynamicFilterValue(String key, int level){
         Optional<JsonObject> o = getFilterJson(key);
         if (o.isPresent()){
             o = getDynamicFilterJson(o.get());
             if (o.isPresent()){
-                return Optional.of(WavenMath.getNumber(o.get(), level, w));
+                return Optional.of(WavenMath.getNumber(o.get(), level));
             }
         }
 

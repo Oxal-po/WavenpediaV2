@@ -16,6 +16,7 @@ import java.util.Optional;
 public class Summoning extends StatEntity implements WithEffect, WithPm, WithAtk, WithLife, WithSpells {
 
     public final static String PATH_SUMMONING = Wavenpedia.jsonPath + "SummoningDefinition/";
+    public final static String MONSTRE = "MONSTRE";
 
     public Summoning(int id) {
         super(id);
@@ -54,5 +55,9 @@ public class Summoning extends StatEntity implements WithEffect, WithPm, WithAtk
     @Override
     public Optional<Double> getPm(int level) {
         return getPm(level, getJsonRepresentation());
+    }
+
+    public boolean isMonster(){
+        return getDisplayName().contains(MONSTRE);
     }
 }

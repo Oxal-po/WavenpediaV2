@@ -32,11 +32,11 @@ public interface DynamicedEntity extends PrecomputedEntity {
         return Optional.empty();
     }
 
-    default Optional<Integer> getDynamicValue(String key, int level, WavenInterface w){
+    default Optional<Integer> getDynamicValue(String key, int level){
         Optional<JsonObject> o = getDynamicJson(key);
 
         if (o.isPresent()){
-            return Optional.of(WavenMath.getNumber(o.get(), level, w));
+            return Optional.of(WavenMath.getNumber(o.get(), level));
         }
 
         return Optional.empty();

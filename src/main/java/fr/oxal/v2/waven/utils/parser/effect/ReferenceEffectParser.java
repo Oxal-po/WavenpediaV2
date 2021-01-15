@@ -50,14 +50,14 @@ public class ReferenceEffectParser extends WavenEntityParsing implements Referen
                 } else if (getNamedEntity().isWithFilters() && !effect.get().haveName()){
                     //parser si "l'effet" n'est pas trouver (utile que pour la rangeMeca actuellement)
                     if (effect.get().getKeyWord().equals(MECHANISM_SPAWN_RANGE)){
-                        Optional<Integer> option = getNamedEntity().asWithFilters().getDynamicFilterValue(DISTANCE, getLevel(), getNamedEntity());
+                        Optional<Integer> option = getNamedEntity().asWithFilters().getDynamicFilterValue(DISTANCE, getLevel());
                         if (option.isPresent()){
                             return option.get() + "";
                         }
                     }
                 } else if (effect.get().haveName()){
                     //parser pou les effet dit sans valeur mais qui en on quand même une au final parceque pourquoi pas
-                    Optional<Integer> optional = getNamedEntity().asDynamicedEntity().getDynamicValue(getKeyRef(text), getLevel(), getNamedEntity());
+                    Optional<Integer> optional = getNamedEntity().asDynamicedEntity().getDynamicValue(getKeyRef(text), getLevel());
                     if (optional.isPresent()){
                         return String.format(VALUE_FORMAT, effect.get().getName(), optional.get());
                     }
