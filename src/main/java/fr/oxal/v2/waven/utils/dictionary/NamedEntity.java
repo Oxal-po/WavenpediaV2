@@ -17,7 +17,7 @@ public interface NamedEntity extends HaveDictionary {
     }
 
     default String getParsedName(int level){
-        return WavenParser.parse(getDescription(), this, level);
+        return WavenParser.parse(getName(), this, level);
     }
 
     default String getParsedDescription(){

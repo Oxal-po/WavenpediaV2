@@ -11,6 +11,8 @@ import fr.oxal.v2.waven.entity.base.StatEntity.summoning.Summoning;
 import fr.oxal.v2.waven.entity.base.StatEntity.weapon.Weapon;
 import fr.oxal.v2.waven.entity.base.god.God;
 import fr.oxal.v2.waven.entity.base.spell.Spell;
+import fr.oxal.v2.waven.entity.pvm.equipment.gem.Gem;
+import fr.oxal.v2.waven.entity.pvm.fragment.Fragment;
 import fr.oxal.v2.waven.entity.pvm.skill.Skill;
 import fr.oxal.v2.waven.utils.collections.WavenEntities;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
@@ -30,9 +32,10 @@ public class Wavenpedia {
     public static String placeholderPath;
     public static String fontPath;
     public static Font wavenFont;
+
     public static final Class<? extends NamedWavenEntity>[] ALL_NAMED_CLASS = new Class[]{
             Spell.class, God.class, Weapon.class, Companion.class, ObjectMechanism.class, Summoning.class,
-            FloorMechanism.class, Skill.class
+            FloorMechanism.class, Skill.class, Gem.class, Fragment.class
     };
     public static final Class<? extends DynamicedEntity>[] ALL_DYNAMICED_CLASS = new Class[]{
             PropertyEffect.class, Spell.class, God.class, Weapon.class, Companion.class, ObjectMechanism.class,

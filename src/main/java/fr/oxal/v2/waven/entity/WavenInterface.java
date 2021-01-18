@@ -3,7 +3,7 @@ package fr.oxal.v2.waven.entity;
 import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.effect.WavenEffect;
 import fr.oxal.v2.waven.entity.base.StatEntity.StatEntity;
-import fr.oxal.v2.waven.entity.pvm.equipment.Ring;
+import fr.oxal.v2.waven.entity.pvm.equipment.ring.Ring;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithCastTarget;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithFilters;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithSelector;

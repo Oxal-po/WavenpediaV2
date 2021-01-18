@@ -13,6 +13,9 @@ public interface WithRangeValues extends WavenInterface {
     String RANGE_VALUE = "rangeValues";
     String VALUE = "value";
     String REF_NAME = "thisRingValueRefName";
+    String MIN = "min";
+    String MAX = "max";
+    String LEVEL_AVAILABLE = "visibleLevelAvailable";
 
     Optional<JsonObject> getRangeValues();
     default Optional<JsonObject> getRangeValues(JsonObject o){
@@ -32,6 +35,18 @@ public interface WithRangeValues extends WavenInterface {
             }
             return null;
         });
+    }
+
+    default Optional<Integer> getMinLevel(){
+        return getRangeValues().map(a -> a.get(MIN).getAsInt());
+    }
+
+    default Optional<Integer> getMaxLevel(){
+        return getRangeValues().map(a -> a.get(MAX).getAsInt());
+    }
+
+    default Optional<JsonArray> getAvailableLevel(){
+        return getRangeValues().map(a -> a.get(LEVEL_AVAILABLE).getAsJsonArray());
     }
 
     default Optional<Integer> getArrayValue(String name, int level){

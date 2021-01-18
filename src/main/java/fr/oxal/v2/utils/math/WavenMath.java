@@ -5,11 +5,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import fr.oxal.v2.Wavenpedia;
-import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.entity.WavenInterface;
-import fr.oxal.v2.waven.entity.base.spell.Spell;
-import fr.oxal.v2.waven.entity.pvm.equipment.Ring;
-import fr.oxal.v2.waven.utils.stat.WithStat;
+import fr.oxal.v2.waven.entity.pvm.equipment.ring.Ring;
 
 import java.io.*;
 import java.util.Optional;
@@ -25,6 +22,7 @@ public class WavenMath {
     private static final String FUNCTION_MULT_SCALING = "MultiplyScaleLevelOnlyBasedDynamicValue";
     private static final String FUNCTION_LIN_SCALING = "LinearScaleLevelOnlyBasedDynamicValue";
     private static final String FUNCTION_SUM = "SumValue";
+    private static final String SPELL_EVOLVE = "ThisSpellEvolutionValue";
     private static final String FUNCTION_RANGE_VALUE_RING = "ThisRingRangeDynamicValue";
     private static final String FACTOR = "factor";
     private static final String BASE_VALUE = "baseValue";
@@ -46,18 +44,17 @@ public class WavenMath {
         }else if(j.get(TYPE).getAsString().equals(FUNCTION_LIN_SCALING)){
             return scaling(j, level);
         }else if(j.get(TYPE).getAsString().equals(FUNCTION_RANGE_VALUE_RING)){
-            System.out.println(j);
             return ringRange(level, w, j.get(REF_NAME).getAsString());
         }else if(j.get(TYPE).getAsString().equals(FUNCTION_SUM)){
-            System.out.println("test");
-            System.out.println(j.get(TYPE));
             return sum(j);
         }else if(j.get(TYPE).getAsString().equals("ConstIntegerValue")){
             return j.get(VALUE).getAsInt();
         }else if(j.get(TYPE).getAsString().equals("SpellsCountValue")){
             return -1000;
-        }else if(j.get(TYPE).equals("NegativeValue")){
+        }else if(j.get(TYPE).getAsString().equals("NegativeValue")){
             return getNumber((JsonObject) j.get("valueToNeg"), level, w);
+        }else if(j.get(TYPE).getAsString().equals(SPELL_EVOLVE)){
+            return 0;
         }else{
             System.err.println("erreur wavenMath getNumber");
             //j.forEach((k, v) -> System.out.println(k + " : " + v));
@@ -68,14 +65,10 @@ public class WavenMath {
 
     private static int sum(JsonObject j) {
         int base = 0;
-        System.out.println(j);
         JsonArray jsonArray = (JsonArray) j.get("valuesToSum");
-
         for (Object object : jsonArray){
-            System.out.println(object);
             JsonObject json = (JsonObject) object;
             if (json.has(TYPE)){
-                System.out.println(json.get(VALUE));
                 if (json.has(VALUE)){
                     base = json.get(VALUE).getAsInt();
                 }
