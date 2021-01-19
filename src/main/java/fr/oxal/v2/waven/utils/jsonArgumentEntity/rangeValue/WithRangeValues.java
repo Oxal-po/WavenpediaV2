@@ -8,6 +8,8 @@ import fr.oxal.v2.waven.entity.WavenInterface;
 
 import java.util.Optional;
 
+import static fr.oxal.v2.utils.math.WavenMath.FACTOR;
+
 public interface WithRangeValues extends WavenInterface {
 
     String RANGE_VALUE = "rangeValues";
@@ -37,11 +39,22 @@ public interface WithRangeValues extends WavenInterface {
         });
     }
 
-    default Optional<Integer> getMinLevel(){
+    default Optional<Double> getFactorRange(String name){
+        return getArrayValues().map(a -> {
+            for (JsonElement e : a){
+                if (name.equals(e.getAsJsonObject().get(REF_NAME).getAsString())){
+                    return e.getAsJsonObject().get(FACTOR).getAsDouble();
+                }
+            }
+            return 0.0;
+        });
+    }
+
+    default Optional<Integer> getMinRandom(){
         return getRangeValues().map(a -> a.get(MIN).getAsInt());
     }
 
-    default Optional<Integer> getMaxLevel(){
+    default Optional<Integer> getMaxRandom(){
         return getRangeValues().map(a -> a.get(MAX).getAsInt());
     }
 

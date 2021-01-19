@@ -6,12 +6,14 @@ import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.effect.WithEffect;
 import fr.oxal.v2.waven.entity.pvm.equipment.Equipment;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.WithSlot;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.passif.WithPassiveModifiers;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.rangeValue.WithRangeValues;
 
 import java.util.Optional;
 
-public class Ring extends Equipment implements WithEffect, DynamicedEntity, WithRangeValues, WithSlot {
+public class Ring extends Equipment implements WithEffect, DynamicedEntity, WithRangeValues,
+        WithSlot, WithPassiveModifiers {
 
 
     //todo faire le level caping (min, max, et tableau de valeur)
@@ -34,5 +36,10 @@ public class Ring extends Equipment implements WithEffect, DynamicedEntity, With
     @Override
     public Optional<JsonArray> getDetailSlots() {
         return getDetailSlots(getJsonRepresentation());
+    }
+
+    @Override
+    public Optional<JsonArray> getPassiveModifiers() {
+        return getPassiveModifiers(getJsonRepresentation());
     }
 }
