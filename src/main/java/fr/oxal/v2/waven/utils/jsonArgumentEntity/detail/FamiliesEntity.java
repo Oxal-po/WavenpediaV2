@@ -4,13 +4,15 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.DetailsEntity;
 
+import java.util.Optional;
+
 public interface FamiliesEntity extends DetailsEntity {
 
     String FAMILIES = "families";
 
-    default JsonArray getFamilies(JsonObject j){
-        return (JsonArray) getDetails(j).get(FAMILIES);
+    default Optional<JsonArray> getFamilies(JsonObject j){
+        return getDetails(j).map(a -> (JsonArray) a.get(FAMILIES));
     }
 
-    JsonArray getFamilies();
+    Optional<JsonArray> getFamilies();
 }

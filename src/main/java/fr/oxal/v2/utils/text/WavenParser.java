@@ -17,15 +17,15 @@ public class WavenParser {
     public final static ReferenceValueEntityEffectParser refValEntity = new ReferenceValueEntityEffectParser();
 
 
-    public static String parse(String text){
+    public static String parse(String text) {
         return parse(text, null, 1);
     }
 
-    public static String parse(String text, NamedEntity waven){
+    public static String parse(String text, NamedEntity waven) {
         return parse(text, waven, 1);
     }
 
-    public static String parse(String text, NamedEntity waven, int level){
+    public static String parse(String text, NamedEntity waven, int level) {
 
         Pattern p = Pattern.compile("\\{((?!\\{).)*\\}");
         Matcher m = p.matcher(text);
@@ -33,31 +33,31 @@ public class WavenParser {
     }
 
     private static String matcher(Matcher m, String text, NamedEntity waven, int level) {
-        while (m.find()){
+        while (m.find()) {
             String find = m.group();
 
             //setup est ici car j'en ai besoin dans le canParse
             effectParser.setup(waven, level);
 
-            if (entityParser.canParse(find)){
+            if (entityParser.canParse(find)) {
                 //je check si entité avec id
                 entityParser.setup(waven, level);
                 text = text.replace(find, entityParser.parse(find));
-            }else if (simpleEffectParser.canParse(find)){
+            } else if (simpleEffectParser.canParse(find)) {
                 //je check si c'est un effet simple
                 simpleEffectParser.setup(waven, level);
                 text = text.replace(find, simpleEffectParser.parse(find));
-            } else if (effectParser.canParse(find)){
+            } else if (effectParser.canParse(find)) {
                 //je check si c'est un effet a valeur (et donc a reférence)
                 text = text.replace(find, effectParser.parse(find));
-            }  else if (refValEntity.canParse(find)){
+            } else if (refValEntity.canParse(find)) {
                 //je check si c'est un effet a valeur (et donc a reférence)
                 text = text.replace(find, refValEntity.parse(find));
-            }  else if (mathematicEffectParser.canParse(find)){
+            } else if (mathematicEffectParser.canParse(find)) {
                 //je check si c'est un effet avec calcul
                 mathematicEffectParser.setup(waven, level);
                 text = text.replace(find, mathematicEffectParser.parse(find));
-            }  else if (symboleEffectParser.canParse(find)){
+            } else if (symboleEffectParser.canParse(find)) {
                 //je check si c'est un effet avec un symbole
                 symboleEffectParser.setup(waven, level);
                 text = text.replace(find, symboleEffectParser.parse(find));

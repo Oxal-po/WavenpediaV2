@@ -20,18 +20,19 @@ public interface WithRangeValues extends WavenInterface {
     String LEVEL_AVAILABLE = "visibleLevelAvailable";
 
     Optional<JsonObject> getRangeValues();
-    default Optional<JsonObject> getRangeValues(JsonObject o){
+
+    default Optional<JsonObject> getRangeValues(JsonObject o) {
         return Optional.of((JsonObject) o.get(RANGE_VALUE));
     }
 
-    default Optional<JsonArray> getArrayValues(){
+    default Optional<JsonArray> getArrayValues() {
         return getRangeValues().map(a -> (JsonArray) a.get(VALUE));
     }
 
-    default Optional<JsonObject> getArrayValue(String name){
+    default Optional<JsonObject> getArrayValue(String name) {
         return getArrayValues().map(a -> {
-            for (JsonElement e : a){
-                if (name.equals(e.getAsJsonObject().get(REF_NAME).getAsString())){
+            for (JsonElement e : a) {
+                if (name.equals(e.getAsJsonObject().get(REF_NAME).getAsString())) {
                     return e.getAsJsonObject();
                 }
             }
@@ -39,10 +40,10 @@ public interface WithRangeValues extends WavenInterface {
         });
     }
 
-    default Optional<Double> getFactorRange(String name){
+    default Optional<Double> getFactorRange(String name) {
         return getArrayValues().map(a -> {
-            for (JsonElement e : a){
-                if (name.equals(e.getAsJsonObject().get(REF_NAME).getAsString())){
+            for (JsonElement e : a) {
+                if (name.equals(e.getAsJsonObject().get(REF_NAME).getAsString())) {
                     return e.getAsJsonObject().get(FACTOR).getAsDouble();
                 }
             }
@@ -50,19 +51,19 @@ public interface WithRangeValues extends WavenInterface {
         });
     }
 
-    default Optional<Integer> getMinRandom(){
+    default Optional<Integer> getMinRandom() {
         return getRangeValues().map(a -> a.get(MIN).getAsInt());
     }
 
-    default Optional<Integer> getMaxRandom(){
+    default Optional<Integer> getMaxRandom() {
         return getRangeValues().map(a -> a.get(MAX).getAsInt());
     }
 
-    default Optional<JsonArray> getAvailableLevel(){
+    default Optional<JsonArray> getAvailableLevel() {
         return getRangeValues().map(a -> a.get(LEVEL_AVAILABLE).getAsJsonArray());
     }
 
-    default Optional<Integer> getArrayValue(String name, int level){
+    default Optional<Integer> getArrayValue(String name, int level) {
         return getArrayValue(name).map(a -> WavenMath.getNumber(a.get(VALUE).getAsJsonObject(), level, this));
     }
 }

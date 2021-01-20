@@ -3,6 +3,7 @@ package fr.oxal.v2.waven.entity;
 import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.effect.WavenEffect;
 import fr.oxal.v2.waven.entity.base.StatEntity.StatEntity;
+import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.pvm.equipment.ring.Ring;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithCastTarget;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithFilters;
@@ -91,5 +92,13 @@ public interface WavenInterface {
 
     default Ring asRing(){
         return (Ring) this;
+    }
+
+    default boolean isSpell(){
+        return this instanceof Spell;
+    }
+
+    default Spell asSpell(){
+        return (Spell) this;
     }
 }

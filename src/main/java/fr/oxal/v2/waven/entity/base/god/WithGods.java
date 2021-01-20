@@ -1,6 +1,7 @@
 package fr.oxal.v2.waven.entity.base.god;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.FamiliesEntity;
 
 import java.util.ArrayList;
@@ -9,14 +10,22 @@ import java.util.Optional;
 
 public interface WithGods extends FamiliesEntity {
 
-    default List<Double> getGodIds(){
-        return new Gson().fromJson(getFamilies(), ArrayList.class);
+    default List<Integer> getGodIds(){
+        ArrayList<Integer> list = new ArrayList<>();
+        getFamilies().ifPresent(a -> {
+            for (JsonElement e : a){
+                if (e.isJsonPrimitive()){
+                    list.add(e.getAsInt());
+                }
+            }
+        });
+        return list;
     }
 
     default ArrayList<God> getGods(){
         ArrayList<God> gods = new ArrayList<>();
 
-        for (int i = 0; i<getGodIds().size(); i++){
+        for (Integer i : getGodIds()){
             getGod(i).ifPresent(g -> gods.add(g));
         }
 

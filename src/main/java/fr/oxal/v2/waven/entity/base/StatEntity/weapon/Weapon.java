@@ -9,15 +9,18 @@ import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.base.spell.WithSpells;
 import fr.oxal.v2.waven.entity.pvm.skill.WithSkills;
 import fr.oxal.v2.waven.entity.pvm.skill.WithSpecificSkills;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.image.skin.WithSkin;
 import fr.oxal.v2.waven.utils.stat.WithAtk;
 import fr.oxal.v2.waven.utils.stat.WithLife;
 import fr.oxal.v2.waven.utils.stat.WithPm;
 
+import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class Weapon extends StatEntity implements WithAtk, WithPm, WithLife,
-        WithGods, WithSpells, WithSpecificSkills {
+        WithGods, WithSpells, WithSpecificSkills, WithSkin {
 
     public final static String PATH_WEAPON = Wavenpedia.jsonPath + "WeaponDefinition/";
 
@@ -56,18 +59,18 @@ public class Weapon extends StatEntity implements WithAtk, WithPm, WithLife,
     }
 
     @Override
-    public JsonArray getFamilies() {
+    public Optional<JsonArray> getFamilies() {
         return getFamilies(getJsonRepresentation());
     }
 
     @Override
-    public JsonObject getDetails() {
+    public Optional<JsonObject> getDetails() {
         return getDetails(getJsonRepresentation());
     }
 
     @Override
-    public JsonArray getFamilies(JsonObject j) {
-        return j.get(FAMILIES).getAsJsonArray();
+    public Optional<JsonArray> getFamilies(JsonObject j) {
+        return Optional.of((JsonArray) j.get(FAMILIES));
     }
 
     @Override
@@ -87,5 +90,20 @@ public class Weapon extends StatEntity implements WithAtk, WithPm, WithLife,
     @Override
     public Optional<JsonArray> getJsonArraySpecificSkills() {
         return getJsonArraySpecificSkills(getJsonRepresentation());
+    }
+
+    @Override
+    public Optional<Integer> getDefaultSkin() {
+        return getDefaultSkin(getJsonRepresentation());
+    }
+
+    @Override
+    public Optional<JsonArray> getSkins() {
+        return getSkins(getJsonRepresentation());
+    }
+
+    @Override
+    public ArrayList<FileInputStream> getFileSkins() {
+        return getFileSkins(this);
     }
 }

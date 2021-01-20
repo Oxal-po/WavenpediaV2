@@ -11,13 +11,17 @@ import java.util.HashMap;
 
 public class DictionaryFabric {
 
-    public static HashMap<Class, JsonObject> dictionaries = new HashMap<>();
+    public static HashMap<String, JsonObject> dictionaries = new HashMap<>();
 
     public static JsonObject getDictionary(NamedWavenEntity entity){
         return getDictionary(entity.getClass(), Wavenpedia.dictionaryPath + entity.getNameDictionnaire());
     }
 
     public static JsonObject getDictionary(Class c, String file){
+        return getDictionary(c.getSimpleName(), file);
+    }
+
+    public static JsonObject getDictionary(String c, String file){
         if (!dictionaries.containsKey(c)){
             BufferedReader br = null;
             JsonObject j = null;

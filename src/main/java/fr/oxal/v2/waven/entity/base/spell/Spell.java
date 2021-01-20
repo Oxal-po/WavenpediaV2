@@ -9,13 +9,15 @@ import fr.oxal.v2.waven.effect.WithEffect;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.god.WithGods;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithFilters;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.WithElement;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.EquipeableEntity;
 
 import java.util.List;
 import java.util.Optional;
 
-public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntity, WithSpells, WithEffect, DynamicedEntity, WithFilters {
+public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntity, WithSpells, WithEffect,
+        DynamicedEntity, WithFilters, WithElement {
 
     public static final String PATH_SPELL = Wavenpedia.jsonPath + "SpellDefinition/";
 
@@ -39,12 +41,12 @@ public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntit
     }
 
     @Override
-    public JsonArray getFamilies() {
+    public Optional<JsonArray> getFamilies() {
         return getFamilies(getJsonRepresentation());
     }
 
     @Override
-    public JsonObject getDetails() {
+    public Optional<JsonObject> getDetails() {
         return getDetails(getJsonRepresentation());
     }
 

@@ -48,12 +48,12 @@ public class ObjectMechanism extends StatEntity implements WithShield, Precomput
     }
 
     @Override
-    public JsonObject getDetails() {
+    public Optional<JsonObject> getDetails() {
         return getDetails(getJsonRepresentation());
     }
 
     @Override
-    public JsonArray getFamilies() {
+    public Optional<JsonArray> getFamilies() {
         return getFamilies(getJsonRepresentation());
     }
 }
