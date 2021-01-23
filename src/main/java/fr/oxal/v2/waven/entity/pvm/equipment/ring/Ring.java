@@ -15,8 +15,6 @@ import java.util.Optional;
 public class Ring extends Equipment implements WithEffect, DynamicedEntity, WithRangeValues,
         WithSlot, WithPassiveModifiers {
 
-
-    //todo faire le level caping (min, max, et tableau de valeur)
     public static final String PATH_RING = Wavenpedia.jsonPath + "RingEquipmentDefinition/";
 
     public Ring(int id) {

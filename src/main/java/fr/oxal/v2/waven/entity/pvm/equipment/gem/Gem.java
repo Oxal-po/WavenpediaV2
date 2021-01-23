@@ -34,10 +34,10 @@ public class Gem extends Equipment implements WithEffect, WithSpells {
     }
 
     @Override
-    public String getParsedDescription(int level) {
-        return super.getParsedDescription(level) + " " + getSpells()
+    public String getParsedDescription(int level, int... option) {
+        return super.getParsedDescription(level, option) + " " + getSpells()
                 .stream()
-                .map(a -> a.getParsedName(level))
+                .map(a -> a.getParsedName(level, option))
                 .collect(Collectors.joining(", "))
                 ;
     }

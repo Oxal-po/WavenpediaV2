@@ -9,6 +9,7 @@ import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.base.spell.WithSpells;
 import fr.oxal.v2.waven.entity.pvm.skill.WithSkills;
 import fr.oxal.v2.waven.entity.pvm.skill.WithSpecificSkills;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.image.logo.WithLogo;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.image.skin.WithSkin;
 import fr.oxal.v2.waven.utils.stat.WithAtk;
 import fr.oxal.v2.waven.utils.stat.WithLife;
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class Weapon extends StatEntity implements WithAtk, WithPm, WithLife,
-        WithGods, WithSpells, WithSpecificSkills, WithSkin {
+        WithGods, WithSpells, WithSpecificSkills, WithSkin, WithLogo {
 
     public final static String PATH_WEAPON = Wavenpedia.jsonPath + "WeaponDefinition/";
 
@@ -105,5 +106,10 @@ public class Weapon extends StatEntity implements WithAtk, WithPm, WithLife,
     @Override
     public ArrayList<FileInputStream> getFileSkins() {
         return getFileSkins(this);
+    }
+
+    @Override
+    public Optional<FileInputStream> getLogo() {
+        return getLogo(this);
     }
 }

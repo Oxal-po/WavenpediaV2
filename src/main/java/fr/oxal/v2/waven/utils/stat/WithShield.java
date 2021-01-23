@@ -1,6 +1,7 @@
 package fr.oxal.v2.waven.utils.stat;
 
 import com.google.gson.JsonObject;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.passif.WithPassiveModifiers;
 
 import java.util.Optional;
 

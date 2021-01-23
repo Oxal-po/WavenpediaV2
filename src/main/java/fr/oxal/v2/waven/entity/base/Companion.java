@@ -4,16 +4,19 @@ import com.google.gson.JsonArray;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.pvm.skill.WithSkills;
+import fr.oxal.v2.waven.entity.pvm.skill.WithUnlockableSkill;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.image.skin.WithSkin;
 import fr.oxal.v2.waven.utils.stat.WithAtk;
 import fr.oxal.v2.waven.utils.stat.WithLife;
 import fr.oxal.v2.waven.utils.stat.WithPm;
+import fr.oxal.v2.waven.utils.updateGauge.WithCost;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class Companion extends NamedWavenEntity implements WithSkills, WithSkin, WithLife, WithPm, WithAtk {
+public class Companion extends NamedWavenEntity implements WithUnlockableSkill, WithSkin, WithLife, WithPm,
+        WithAtk, WithCost {
 
     private final static String PATH_COMPANION = Wavenpedia.jsonPath + "CompanionDefinition/";
 
@@ -64,5 +67,10 @@ public class Companion extends NamedWavenEntity implements WithSkills, WithSkin,
     @Override
     public Optional<Double> getPm(int level) {
         return getPm(level, getJsonRepresentation());
+    }
+
+    @Override
+    public Optional<JsonArray> getArrayCosts() {
+        return getArrayCosts(getJsonRepresentation());
     }
 }

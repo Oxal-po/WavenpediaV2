@@ -5,9 +5,11 @@ import fr.oxal.v2.waven.effect.WavenEffect;
 import fr.oxal.v2.waven.entity.base.StatEntity.StatEntity;
 import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.pvm.equipment.ring.Ring;
+import fr.oxal.v2.waven.entity.pvm.skill.WithSkills;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithCastTarget;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithFilters;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithSelector;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.passif.WithPassiveModifiers;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.PrecomputedEntity;
 
@@ -100,5 +102,13 @@ public interface WavenInterface {
 
     default Spell asSpell(){
         return (Spell) this;
+    }
+
+    default boolean isWithSkills(){
+        return this instanceof WithSkills;
+    }
+
+    default WithSkills asWithSkills(){
+        return (WithSkills) this;
     }
 }

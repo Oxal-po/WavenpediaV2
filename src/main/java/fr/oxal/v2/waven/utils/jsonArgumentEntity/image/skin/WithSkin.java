@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
+import fr.oxal.v2.utils.text.TextUtils;
 import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.entity.WavenInterface;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
@@ -20,9 +21,7 @@ public interface WithSkin extends WavenInterface {
 
     String DEFAULT_SKIN = "defaultSkin";
     String SKINS = "skins";
-
-
-    String SKIN_FORMAT = "%s - %s.png";
+    String SKIN_FORMAT = "%d#%d.png";
 
     Optional<Integer> getDefaultSkin();
 
@@ -44,10 +43,18 @@ public interface WithSkin extends WavenInterface {
         getSkins().ifPresent(a -> {
             for (JsonElement e : a){
                 if (e.isJsonPrimitive()){
-                    String name = Normalizer.normalize(Wavenpedia.imagePath + String.format(SKIN_FORMAT, getIdSkin(e.getAsInt()), w.getDisplayName().replaceAll("[\\.']", "")), Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
-                    System.out.println(w.getDisplayName());
-                    System.out.println(name);
-                    getInputStreamFileByName(name).ifPresent(fi -> files.add(fi));
+                    String name = Wavenpedia.imagePath + w.getClass().getSimpleName().toLowerCase() + "/" + String.format(SKIN_FORMAT, w.getId(), e.getAsInt());
+                    File f = new File(name);
+
+                    if (f.exists()){
+                        try {
+                            files.add(new FileInputStream(f));
+                        } catch (FileNotFoundException fileNotFoundException) {
+                            fileNotFoundException.printStackTrace();
+                        }
+                    }else{
+                        System.err.println("error Skin introuvable : " + w.getClass().getSimpleName().toLowerCase() + " : skin id : " + e.getAsInt() + " : " + w.getDisplayName() + " : " + f);
+                    }
                 }
             }
         });
@@ -57,7 +64,6 @@ public interface WithSkin extends WavenInterface {
     default Optional<FileInputStream> getInputStreamFileByName(String name){
         File f = new File(name);
         String[] nameSplit = name.split("-");
-        System.out.println(name);
         if (f.exists()){
             try {
                 return Optional.of(new FileInputStream(f));

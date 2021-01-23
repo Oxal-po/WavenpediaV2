@@ -2,6 +2,10 @@ package fr.oxal.v2.waven.utils.dictionary;
 
 import fr.oxal.v2.utils.text.WavenParser;
 
+import java.util.ArrayList;
+
+import static fr.oxal.v2.utils.text.TextUtils.upperCaseFirst;
+
 public interface NamedEntity extends HaveDictionary {
 
     String BASE_STRING = "none";
@@ -10,22 +14,42 @@ public interface NamedEntity extends HaveDictionary {
     long getDescriptionId();
 
     String getName();
+
+    default String getFileNameConsitution(){
+        String[] split = getName().split(" ");
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 0 ; i < split.length; i++){
+            builder.append(upperCaseFirst(split[i]));
+        }
+
+        return builder.toString().replace("'", "");
+    }
+
     String getDescription();
 
     default String getParsedName(){
         return getParsedName(0);
     }
 
-    default String getParsedName(int level){
-        return WavenParser.parse(getName(), this, level);
+    default String getParsedName(int level, int... option){
+        return WavenParser.parse(getName(), this, level, option);
+    }
+
+    default String getMardownParsedName(int level){
+        return getParsedName(level, WavenParser.MARKDOWN, WavenParser.DELETE_BALISE, WavenParser.GLOBAL);
     }
 
     default String getParsedDescription(){
         return getParsedDescription(0);
     }
 
-    default String getParsedDescription(int level){
-        return WavenParser.parse(getDescription(), this, level);
+    default String getParsedDescription(int level, int... option){
+        return WavenParser.parse(getDescription(), this, level, option);
+    }
+
+    default String getMardownParseDescription(int level){
+        return getParsedDescription(level, WavenParser.MARKDOWN, WavenParser.DELETE_BALISE, WavenParser.GLOBAL);
     }
 
     default boolean haveName(){

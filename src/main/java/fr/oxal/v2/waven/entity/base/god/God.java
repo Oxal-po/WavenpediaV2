@@ -43,7 +43,7 @@ public class God extends NamedWavenEntity implements WithSpells, WithWeapon, Wit
     @Override
     public List<Spell> getSpells() {
         return WavenEntities
-                .getAll(Spell.class, a -> a.isAvailable() && a.isEquipeable() && a.getGodIds().contains((double) getId()))
+                .getAll(Spell.class, a -> a.isAvailable() && a.isEquipeable() && a.getFamilyIds().contains((double) getId()))
                 .stream()
                 .collect(Collectors.toList());
     }
@@ -51,7 +51,7 @@ public class God extends NamedWavenEntity implements WithSpells, WithWeapon, Wit
     @Override
     public List<Double> getIdSpells() {
         return WavenEntities
-                .getAll(Spell.class, a -> a.isAvailable() && a.isEquipeable() && a.getGodIds().contains((double) getId()))
+                .getAll(Spell.class, a -> a.isAvailable() && a.isEquipeable() && a.getFamilyIds().contains((double) getId()))
                 .stream()
                 .map(a -> (double) a.getId())
                 .collect(Collectors.toList());
@@ -60,7 +60,7 @@ public class God extends NamedWavenEntity implements WithSpells, WithWeapon, Wit
     @Override
     public List<Double> getWeaponsId() {
         return WavenEntities
-                .getAll(Weapon.class, w -> w.getGodIds().contains((double) getId()))
+                .getAll(Weapon.class, w -> w.getFamilyIds().contains((double) getId()))
                 .stream()
                 .map(w -> (double) w.getId())
                 .collect(Collectors.toList());

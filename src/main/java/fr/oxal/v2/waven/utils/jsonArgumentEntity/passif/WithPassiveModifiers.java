@@ -8,8 +8,12 @@ import fr.oxal.v2.waven.entity.WavenInterface;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static fr.oxal.v2.utils.math.WavenMath.REF_NAME;
 
@@ -24,7 +28,7 @@ public interface WithPassiveModifiers extends DynamicedEntity {
         return Optional.of((JsonArray) o.get(PASSIVE_MODIFIERS));
     }
 
-    default ArrayList<Modifier> getModifiers() {
+    default List<Modifier> getModifiers() {
         ArrayList<Modifier> modifs = new ArrayList<>();
 
         getPassiveModifiers().ifPresent(a -> {
@@ -38,6 +42,13 @@ public interface WithPassiveModifiers extends DynamicedEntity {
         return modifs;
     }
 
+    default List<Modifier> getModifiers(Predicate<Modifier> predicate) {
+        return getModifiers()
+                .stream()
+                .filter(predicate)
+                .collect(Collectors.toList());
+    }
+
     default Optional<Modifier> getModifier(String key) {
         for (Modifier m : getModifiers()) {
             if (m.getRefId().equals(key)) {
@@ -47,12 +58,31 @@ public interface WithPassiveModifiers extends DynamicedEntity {
         return Optional.empty();
     }
 
+    default double getValueModifier(Predicate<Modifier> mod){
+        return getModifiers()
+                .stream()
+                .filter(mod)
+                .map(m -> m.getValue(1))
+                .reduce(0.0, Double::sum);
+    }
+
+    static double getValueModifier(List<Modifier> list, Predicate<Modifier> mod){
+        return list
+                .stream()
+                .filter(mod)
+                .map(m -> m.getValue(1))
+                .reduce(0.0, Double::sum);
+    }
+
 
     class Modifier {
         public static final String CARACT_IDS = "caracIds";
+        public static final String LIFE_MODIFIER = "LifeModifier";
+        public static final String ATK_MODIFIER = "ActionValueModifier";
+        public static final String PM_MODIFIER = "MovementPointModifier";
 
         private ArrayList<Integer> caracId;
-        private String type, refId, refName;
+        private String type, refId;
         private Function<Integer, Integer> function;
 
         public Modifier() {
@@ -62,11 +92,13 @@ public interface WithPassiveModifiers extends DynamicedEntity {
         public Modifier(JsonObject j, WavenInterface w) {
             this();
             JsonObject json = j.get(MODIFIER).getAsJsonObject();
-            for (JsonElement e : json.get(CARACT_IDS).getAsJsonArray()) {
-                if (e.isJsonPrimitive()) {
-                    caracId.add(e.getAsInt());
-                } else {
-                    System.err.println(e);
+            if (json.has(CARACT_IDS)){
+                for (JsonElement e : json.get(CARACT_IDS).getAsJsonArray()) {
+                    if (e.isJsonPrimitive()) {
+                        caracId.add(e.getAsInt());
+                    } else {
+                        System.err.println(e);
+                    }
                 }
             }
             type = json.get(TYPE).getAsString();
@@ -75,15 +107,16 @@ public interface WithPassiveModifiers extends DynamicedEntity {
 
         private void setup(JsonObject j, WavenInterface w) {
             refId = j.get(REF_ID).getAsString();
-            refName = j.get(REF_NAME).getAsString();
 
             Optional<JsonObject> json = w.asDynamicedEntity().getDynamicJson(getRefId());
             if (json.isPresent()) {
                 function = i -> WavenMath.getNumber(json.get(), i, w);
+            }else{
+                function = i -> WavenMath.getNumber(j, i, w);
             }
         }
 
-        public int getValue(int level) {
+        public double getValue(int level) {
             return function.apply(level);
         }
 
@@ -111,12 +144,20 @@ public interface WithPassiveModifiers extends DynamicedEntity {
             this.refId = refId;
         }
 
-        public String getRefName() {
-            return refName;
+        public boolean isLifeModifier(){
+            return LIFE_MODIFIER.equals(type);
         }
 
-        public void setRefName(String refName) {
-            this.refName = refName;
+        public boolean isAtkModifier(){
+            return ATK_MODIFIER.equals(type);
+        }
+
+        public boolean isPmModifier(){
+            return PM_MODIFIER.equals(type);
+        }
+
+        public boolean isStatModifier(){
+            return isLifeModifier() || isAtkModifier() || isPmModifier();
         }
 
         @Override
@@ -125,7 +166,6 @@ public interface WithPassiveModifiers extends DynamicedEntity {
                     "caracId=" + caracId +
                     ", type='" + type + '\'' +
                     ", refId='" + refId + '\'' +
-                    ", refName='" + refName + '\'' +
                     '}';
         }
     }

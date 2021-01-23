@@ -15,21 +15,25 @@ public class WavenParser {
     public static final SymboleEffectParser symboleEffectParser = new SymboleEffectParser();
     public static final ReferenceEffectParser effectParser = new ReferenceEffectParser();
     public final static ReferenceValueEntityEffectParser refValEntity = new ReferenceValueEntityEffectParser();
+    public final static int MARKDOWN = 4;
+    public final static int GLOBAL = 3;
+    public final static int DELETE_CONDI = 2;
+    public final static int DELETE_BALISE = 1;
+    public final static int NONE = 0;
 
 
-    public static String parse(String text) {
-        return parse(text, null, 1);
+    public static String parse(String text, int... option) {
+        return parse(text, null, 1, option);
     }
 
-    public static String parse(String text, NamedEntity waven) {
-        return parse(text, waven, 1);
+    public static String parse(String text, NamedEntity waven, int... option) {
+        return parse(text, waven, 1, option);
     }
 
-    public static String parse(String text, NamedEntity waven, int level) {
-
+    public static String parse(String text, NamedEntity waven, int level, int... option) {
         Pattern p = Pattern.compile("\\{((?!\\{).)*\\}");
         Matcher m = p.matcher(text);
-        return matcher(m, text, waven, level);
+        return parseOption(matcher(m, text, waven, level), option);
     }
 
     private static String matcher(Matcher m, String text, NamedEntity waven, int level) {
@@ -63,12 +67,45 @@ public class WavenParser {
                 text = text.replace(find, symboleEffectParser.parse(find));
             } else {
                 System.err.println("-ERROR- erreur WavenParser : ce text n'est pas parser : " + text + " : " + find);
-                System.err.println(waven.asDynamicedEntity().getDynamicValues());
+                if (waven.isDynamicedEntity()){
+                    System.err.println(waven.asDynamicedEntity().getDynamicValues());
+                }
             }
         }
 
         return text;
     }
 
+    public static String parseOption(String text, int... option){
+        String str = text;
+        Pattern pattern;
+        Matcher matcher;
+        for (int i : option){
+            switch (i){
+                case 0:
+                    str = text;
+                    break;
+                case 1:
+                    str = str.replaceAll("\\<((?!\\>).)*\\>", "");
+
+                    break;
+                case 2:
+                    str = text.replaceAll("\\<if fight\\>.*\\</if\\>", "");
+                    break;
+                case 3:
+                    str = str.replaceAll("\\\\n", "\n")
+                            .replaceAll("\\\\_", " ")
+                            .replaceAll("\\\\-\\-\\-", "")
+                            .replaceAll("\\\\v", "");
+                    break;
+                case 4:
+                    str = str.replaceAll("<b>", "**")
+                            .replaceAll("</b>", "**");
+                    break;
+            }
+        }
+
+        return str.trim();
+    }
 
 }

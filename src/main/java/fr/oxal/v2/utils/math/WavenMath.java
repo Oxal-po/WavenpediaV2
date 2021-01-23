@@ -32,17 +32,18 @@ public class WavenMath {
     public static final String COMPA_SCALE = "companionStatScalingFactor";
     public static final String SPELL_MONSTER_SCALING = "monsterSpellScalingFactor";
     public static final String INVOC_SCALE = "summoningStatScalingFactor";
+    public static final String MECA_SCALE = "mechanismStatScalingFactor";
     public static final String MONSTER_SCALE = "monsterStatScalingFactor";
     public static final String PER_RANGE_LEVEL = "PerRangeLevelOnlyBasedDynamicValue";
     private static final String TYPE = "type";
     private static final String VALUE = "value";
     private static final String VALUES = "values";
+    private static final String REF = "reference";
 
     //todo surement a refaire
 
     public static int getNumber(JsonObject j, int level, WavenInterface w) {
         if (j == null) return -1000;
-        System.out.println(j);
         if (j.get(TYPE).getAsString().equals(FUNCTION_LINEAR)) {
             return linear(j, level);
         } else if (j.get(TYPE).getAsString().equals(FUNCTION_MULT_SCALING)) {
@@ -64,9 +65,7 @@ public class WavenMath {
         } else if (j.get(TYPE).getAsString().equals(PER_RANGE_LEVEL)) {
             return dynamicValuePerRange(level, j.get(VALUES).getAsJsonArray(), w);
         } else {
-            System.err.println("erreur wavenMath getNumber");
-            //j.forEach((k, v) -> System.out.println(k + " : " + v));
-            System.err.println(j.get(TYPE));
+            System.err.println("error wavenMath getNumber : " + j.get(TYPE) + " : " + w.asWavenEntity().getDisplayName() + " : " + j);
         }
         return -1000;
     }
@@ -119,10 +118,6 @@ public class WavenMath {
 
     public static int scaling(JsonObject j, int level) {
         double base = j.get(BASE_VALUE).getAsDouble();
-
-        System.out.println(level);
-        System.out.println(base);
-        System.out.println(parserConst(j));
         return (int) Math.round((base + (base * parserConst(j) * (level - 1))));
     }
 
@@ -140,6 +135,7 @@ public class WavenMath {
         return (int) Math.round(base * Math.pow(parserConst(j) + 1, level - 1));
     }
 
+
     public static double parserConst(JsonObject j) {
         BufferedReader br = null;
         try {
@@ -148,26 +144,26 @@ public class WavenMath {
             e.printStackTrace();
         }
 
-        JsonObject factorJson = (JsonObject) j.get("factor");
+        JsonObject factorJson = (JsonObject) j.get(FACTOR);
         String name = "";
 
-        if (factorJson.get("reference") instanceof JsonPrimitive) {
-            JsonPrimitive p = factorJson.get("reference").getAsJsonPrimitive();
+        if (factorJson.get(REF) instanceof JsonPrimitive) {
+            JsonPrimitive p = factorJson.get(REF).getAsJsonPrimitive();
             switch (p.getAsInt()) {
                 case 0:
-                    name = "monsterStatScalingFactor";
+                    name = MONSTER_SCALE;
                     break;
                 case 1:
-                    name = "monsterSpellScalingFactor";
+                    name = SPELL_MONSTER_SCALING;
                     break;
                 case 2:
-                    name = "companionStatScalingFactor";
+                    name = COMPA_SCALE;
                     break;
                 case 3:
-                    name = "summoningStatScalingFactor";
+                    name = INVOC_SCALE;
                     break;
                 case 4:
-                    name = "mechanismStatScalingFactor";
+                    name = MECA_SCALE;
                     break;
             }
         }
@@ -176,7 +172,7 @@ public class WavenMath {
         try (Reader reader = br) {
             JsonObject jsonObject = (JsonObject) new JsonParser().parse(reader);
             jsonObject = (JsonObject) jsonObject.get(JSON);
-            jsonObject = (JsonObject) jsonObject.get("fightConstants");
+            jsonObject = (JsonObject) jsonObject.get(FIGHT);
 
 
             if (jsonObject.has(VALUE)) {
@@ -205,53 +201,6 @@ public class WavenMath {
             default:
                 System.err.println("erreur symbole WavenMath calc : " + symbole);
                 return -1000;
-        }
-    }
-
-//    public static double calc(String str, WavenEntity a, int level){
-//        String sym = findSymbole(str);
-//        String[] tab = str.split(sym);
-//        double i1, i2;
-//        if (a instanceof Ring){
-//            i1 = ((Ring) a).getValue(tab[0], level);
-//        }else {
-//            i1 = get(a, tab, 0, level);
-//        }
-//        if (tab[1].matches("[0-9]+")){
-//            i2 = Double.parseDouble(tab[1]);
-//        }else{
-//            i2 = get(a, tab, 1, level);
-//        }
-//
-//        return calc(i1, i2, sym);
-//    }
-
-//    public static long get(WavenEntity a, String[] tab, int index, int level){
-//        long i1 = -0;
-//        for (Object o : a.getDynamicValueReferences()){
-//            JSONObject jsonObject = (JSONObject) o;
-//            if (jsonObject.get(REF_ID).equals(tab[index]) && jsonObject.containsKey(VALUE)){
-//                i1 = ((Long) jsonObject.get(VALUE));
-//            }else if (jsonObject.get(REF_ID).equals(tab[index])){
-//                i1 = WavenMath.getNumber(jsonObject, level, a, tab[index]);
-//            }
-//        }
-//
-//        return i1;
-//    }
-
-    public static String findSymbole(String str) {
-        if (str.contains("/")) {
-            return "/";
-        } else if (str.contains("+")) {
-            return "\\+";
-        } else if (str.contains("-")) {
-            return "-";
-        } else if (str.contains("*")) {
-            return "*";
-        } else {
-            System.err.println("erreur symbole WavenMath findSymbole : " + str);
-            return "";
         }
     }
 }

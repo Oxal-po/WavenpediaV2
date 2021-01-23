@@ -10,14 +10,18 @@ import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.god.WithGods;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithFilters;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.WithElement;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.image.WithImage;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.EquipeableEntity;
+import fr.oxal.v2.waven.utils.updateGauge.WithCost;
+import fr.oxal.v2.waven.utils.updateGauge.WithGains;
 
+import java.io.FileInputStream;
 import java.util.List;
 import java.util.Optional;
 
 public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntity, WithSpells, WithEffect,
-        DynamicedEntity, WithFilters, WithElement {
+        DynamicedEntity, WithFilters, WithElement, WithImage, WithGains, WithCost {
 
     public static final String PATH_SPELL = Wavenpedia.jsonPath + "SpellDefinition/";
 
@@ -73,5 +77,20 @@ public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntit
     @Override
     public Optional<JsonObject> getCastTarget() {
         return getCastTarget(getJsonRepresentation());
+    }
+
+    @Override
+    public Optional<FileInputStream> getImage() {
+        return getImage(this);
+    }
+
+    @Override
+    public Optional<JsonArray> getArrayCosts() {
+        return getArrayCosts(getJsonRepresentation());
+    }
+
+    @Override
+    public Optional<JsonArray> getArrayGains() {
+        return getArrayGains(getJsonRepresentation());
     }
 }

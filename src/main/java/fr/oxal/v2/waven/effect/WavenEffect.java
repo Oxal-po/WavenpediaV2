@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.utils.dictionary.DictionaryFabric;
+import fr.oxal.v2.waven.utils.dictionary.HaveDictionary;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 
 import java.util.Optional;
@@ -57,12 +58,12 @@ public class WavenEffect implements NamedEntity {
 
     @Override
     public String getName() {
-        return getDictionary().get(getNameId()+"").getAsString();
+        return getNameId() == 0l ? BASE_STRING : getDictionary().get(getNameId()+"").getAsString();
     }
 
     @Override
     public String getDescription() {
-        return getDictionary().get(getDescriptionId()+"").getAsString();
+        return getDescriptionId() == 0l ? BASE_STRING : getDictionary().get(getDescriptionId()+"").getAsString();
     }
 
     @Override

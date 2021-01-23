@@ -27,7 +27,6 @@ public class ReferenceValueEntityEffectParser extends WavenEntityParsing impleme
             Optional<JsonObject> o = getJsonRef(text, entity.get());
             if (o.isPresent()){
                 Optional<WavenEffect> effect = getObject(text);
-                System.out.println(text);
                 Optional<Integer> i = getValue(text, getLevel(), entity.get());
                 if (effect.isPresent()){
                     //parse de l'effet
@@ -44,7 +43,6 @@ public class ReferenceValueEntityEffectParser extends WavenEntityParsing impleme
                         return valueParser.parse(effect.get().getName());
                     }else if (effect.get().haveName()){
                         //parser pou les effet dit sans valeur mais qui en on quand même une au final parceque pourquoi pas
-                        System.out.println(getNamedEntity());
                         Optional<Integer> optional = getSecondObject(text).get().asDynamicedEntity().getDynamicValue(getKeyRef(text), getLevel());
                         if (optional.isPresent()){
                             return String.format(VALUE_FORMAT, effect.get().getName(), optional.get());
