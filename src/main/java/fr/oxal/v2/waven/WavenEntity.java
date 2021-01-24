@@ -1,19 +1,13 @@
 package fr.oxal.v2.waven;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import fr.oxal.v2.waven.effect.WavenEffect;
-import fr.oxal.v2.waven.entity.NamedWavenEntity;
-import fr.oxal.v2.waven.entity.base.StatEntity.StatEntity;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Optional;
 
 public abstract class WavenEntity  implements Comparable<WavenEntity>{
 

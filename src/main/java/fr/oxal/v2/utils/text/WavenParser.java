@@ -3,6 +3,7 @@ package fr.oxal.v2.utils.text;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 import fr.oxal.v2.waven.utils.parser.effect.*;
 import fr.oxal.v2.waven.utils.parser.entity.EntityParser;
+import fr.oxal.v2.waven.utils.parser.other.GenderParser;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,6 +16,7 @@ public class WavenParser {
     public static final SymboleEffectParser symboleEffectParser = new SymboleEffectParser();
     public static final ReferenceEffectParser effectParser = new ReferenceEffectParser();
     public final static ReferenceValueEntityEffectParser refValEntity = new ReferenceValueEntityEffectParser();
+    public final static GenderParser genderParser = new GenderParser();
     public final static int MARKDOWN = 4;
     public final static int GLOBAL = 3;
     public final static int DELETE_CONDI = 2;
@@ -65,6 +67,9 @@ public class WavenParser {
                 //je check si c'est un effet avec un symbole
                 symboleEffectParser.setup(waven, level);
                 text = text.replace(find, symboleEffectParser.parse(find));
+            }  else if (genderParser.canParse(find)) {
+                //je check si c'est en fonction du genre
+                text = text.replace(find, genderParser.parse(find));
             } else {
                 System.err.println("-ERROR- erreur WavenParser : ce text n'est pas parser : " + text + " : " + find);
                 if (waven.isDynamicedEntity()){

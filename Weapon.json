@@ -1,0 +1,271 @@
+[
+  {
+    "type": "Weapon",
+    "id": 497,
+    "name": "Bouvaloir Orok",
+    "description": "Inflige son  AT à la cible quand votre héros charge.",
+    "gods": [
+      1
+    ],
+    "spells": [
+      1355
+    ],
+    "stat": {
+      "atk": 24.0,
+      "life": 396.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 366,
+    "name": "Sabliaton Jikan",
+    "description": "Ajoute +1 PA à votre réserve quand vous construisez un SINISTRO.",
+    "gods": [
+      7
+    ],
+    "spells": [
+      938
+    ],
+    "stat": {
+      "atk": 22.0,
+      "life": 390.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 614,
+    "name": "Catalysateur Pramium",
+    "description": "ATTAQUE : Piochez votre prochain SINISTRO.",
+    "gods": [
+      7
+    ],
+    "spells": [
+      642
+    ],
+    "stat": {
+      "atk": 23.0,
+      "life": 393.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 534,
+    "name": "Flamboyante Kasaï",
+    "description": "COUP DE GRÂCE : Rejoue son tour (limité à une fois par tour).",
+    "gods": [
+      1
+    ],
+    "spells": [
+      885
+    ],
+    "stat": {
+      "atk": 28.0,
+      "life": 390.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 143,
+    "name": "Lamarguedon Spectral",
+    "description": "Gagne DÉPHASAGE et 1 PM pour le tour par PA obtenu quand vous videz votre Réserve.",
+    "gods": [
+      1
+    ],
+    "spells": [
+      162
+    ],
+    "stat": {
+      "atk": 34.0,
+      "life": 406.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 919,
+    "name": "Justelame Brutale",
+    "description": "DÉBUT DU TOUR : Gagne 4 AT pour le tour par adversaire autour  de lui.",
+    "gods": [
+      1
+    ],
+    "spells": [
+      48
+    ],
+    "stat": {
+      "atk": 34.0,
+      "life": 400.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 490,
+    "name": "Synchronisateur Tako",
+    "description": "FIN DU TOUR : Ajoute jusqu\u0027à 3 de vos PA restants à votre Réserve.",
+    "gods": [
+      7
+    ],
+    "spells": [
+      183
+    ],
+    "stat": {
+      "atk": 20.0,
+      "life": 390.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 846,
+    "name": "Arc Piven",
+    "description": "Vole 1 PA à la réserve de la cible quand vous jouez un sort sur un adversaire à plus de 3 cases de votre héros.",
+    "gods": [
+      2
+    ],
+    "spells": [
+      806
+    ],
+    "stat": {
+      "atk": 18.0,
+      "life": 394.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 945,
+    "name": "Aiguille Pikuxala",
+    "description": "Inflige son  AT à l\u0027adversaire ayant le plus de  PV quand votre héros se téléporte.",
+    "gods": [
+      7
+    ],
+    "spells": [
+      153
+    ],
+    "stat": {
+      "atk": 22.0,
+      "life": 380.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 477,
+    "name": "Bunelame",
+    "description": "Piochez le sort Bumbond quand vous jouez un sort sur un adversaire à plus de 3 cases de votre héros.",
+    "gods": [
+      2
+    ],
+    "spells": [
+      531,
+      531
+    ],
+    "stat": {
+      "atk": 16.0,
+      "life": 382.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 953,
+    "name": "Voldorak Vo",
+    "description": "Confère +2 PM à votre héros pour le tour quand vous jouez un sort sur un adversaire à plus de 3 cases de votre héros.",
+    "gods": [
+      2
+    ],
+    "spells": [
+      667
+    ],
+    "stat": {
+      "atk": 24.0,
+      "life": 392.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 315,
+    "name": "Fantome",
+    "description": "INVULNÉRABLE\nNe peut plus invoquer de Compagnons.",
+    "gods": [],
+    "spells": [],
+    "stat": {
+      "atk": 20.0,
+      "life": 1.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 998,
+    "name": "Expingole",
+    "description": "Inflige 10 dégâts quand vous jouez un sort sur un adversaire à plus de 3 cases de votre héros.",
+    "gods": [
+      2
+    ],
+    "spells": [
+      114
+    ],
+    "stat": {
+      "atk": 10.0,
+      "life": 385.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 911,
+    "name": "Glaive Stalaktoss",
+    "description": "Gagne 15 AT tant qu\u0027il possède BOUCLIER.",
+    "gods": [
+      1
+    ],
+    "spells": [
+      476
+    ],
+    "stat": {
+      "atk": 30.0,
+      "life": 410.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 191,
+    "name": "Shiru Shaden",
+    "description": "Réduit de 1 PA le coût du prochain sort joué ce tour quand vous jouez un sort sur un adversaire à plus de 3 cases de votre héros.",
+    "gods": [
+      2
+    ],
+    "spells": [
+      289
+    ],
+    "stat": {
+      "atk": 20.0,
+      "life": 392.0,
+      "pm": 3.0
+    }
+  },
+  {
+    "type": "Weapon",
+    "id": 161,
+    "name": "Régulant Gurpapa",
+    "description": "Gagne 1 SABLIER VENGEUR quand votre héros gagne de l\u0027 AR.",
+    "gods": [
+      7
+    ],
+    "spells": [
+      611
+    ],
+    "stat": {
+      "atk": 17.0,
+      "life": 391.0,
+      "pm": 3.0
+    }
+  }
+]

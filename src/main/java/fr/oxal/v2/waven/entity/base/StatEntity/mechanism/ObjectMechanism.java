@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.effect.WithEffect;
-import fr.oxal.v2.waven.entity.base.StatEntity.StatEntity;
+import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.base.spell.WithSpells;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.FamiliesEntity;
@@ -14,7 +14,7 @@ import fr.oxal.v2.waven.utils.stat.WithShield;
 import java.util.List;
 import java.util.Optional;
 
-public class ObjectMechanism extends StatEntity implements WithShield, PrecomputedEntity, FamiliesEntity, WithSpells, WithEffect {
+public class ObjectMechanism extends NamedWavenEntity implements WithShield, PrecomputedEntity, FamiliesEntity, WithSpells, WithEffect {
 
     private final static String PATH_MECA = Wavenpedia.jsonPath + "ObjectMechanismDefinition/";
 
@@ -38,7 +38,7 @@ public class ObjectMechanism extends StatEntity implements WithShield, Precomput
     }
 
     @Override
-    public List<Double> getIdSpells() {
+    public List<Integer> getIdSpells() {
         return getIdSpells(getJsonRepresentation());
     }
 

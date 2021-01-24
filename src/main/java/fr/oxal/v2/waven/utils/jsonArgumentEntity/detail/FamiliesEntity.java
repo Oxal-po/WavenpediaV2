@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.entity.base.god.God;
+import fr.oxal.v2.waven.entity.pvm.family.Family;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,24 +54,5 @@ public interface FamiliesEntity extends DetailsEntity {
         }
 
         return list;
-    }
-
-    class Family extends WavenEntity {
-
-        public static final String FAMILY_PATH = Wavenpedia.jsonPath + "FamilyDefinition/";
-
-        public Family(int id) {
-            super(id);
-        }
-
-        @Override
-        public String getPathFolder() {
-            return FAMILY_PATH;
-        }
-
-        @Override
-        public int compareTo(WavenEntity wavenEntity) {
-            return 0;
-        }
     }
 }

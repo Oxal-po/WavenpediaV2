@@ -2,10 +2,9 @@ package fr.oxal.v2.waven.entity.base.StatEntity.summoning;
 
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.effect.WithEffect;
-import fr.oxal.v2.waven.entity.base.StatEntity.StatEntity;
+import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.base.spell.WithSpells;
-import fr.oxal.v2.waven.utils.dictionary.DictionaryFabric;
 import fr.oxal.v2.waven.utils.stat.WithAtk;
 import fr.oxal.v2.waven.utils.stat.WithLife;
 import fr.oxal.v2.waven.utils.stat.WithPm;
@@ -13,7 +12,7 @@ import fr.oxal.v2.waven.utils.stat.WithPm;
 import java.util.List;
 import java.util.Optional;
 
-public class Summoning extends StatEntity implements WithEffect, WithPm, WithAtk, WithLife, WithSpells {
+public class Summoning extends NamedWavenEntity implements WithEffect, WithPm, WithAtk, WithLife, WithSpells {
 
     public final static String PATH_SUMMONING = Wavenpedia.jsonPath + "SummoningDefinition/";
     public final static String MONSTRE = "MONSTRE";
@@ -28,7 +27,7 @@ public class Summoning extends StatEntity implements WithEffect, WithPm, WithAtk
     }
 
     @Override
-    public List<Double> getIdSpells() {
+    public List<Integer> getIdSpells() {
         return getIdSpells(getJsonRepresentation());
     }
 

@@ -24,7 +24,7 @@ public class Gem extends Equipment implements WithEffect, WithSpells {
     }
 
     @Override
-    public List<Double> getIdSpells() {
+    public List<Integer> getIdSpells() {
         return getIdSpells(getJsonRepresentation());
     }
 

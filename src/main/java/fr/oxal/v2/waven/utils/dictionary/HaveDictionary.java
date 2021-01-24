@@ -21,6 +21,8 @@ public interface HaveDictionary extends WavenInterface {
     String WORLD = "Worlds.json";
     String RESOURCES = "Resources.json";
     String SKILLS = "Skills.json";
+    String CUSTOM_RULES = "CustomRules.json";
+    String ZONES = "Zones.json";
 
     String getNameDictionnaire();
 

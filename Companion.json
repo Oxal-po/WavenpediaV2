@@ -1,0 +1,2166 @@
+[
+  {
+    "type": "Companion",
+    "id": 221,
+    "name": "Yugo",
+    "description": "SORT : Portail de Yugo.\n\nPasse dans le dos de son adversaire quand il subit une ATTAQUE.",
+    "spells": [
+      739
+    ],
+    "stat": {
+      "atk": 36.0,
+      "life": 130.0,
+      "pm": 4.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 7,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 753,
+    "name": "Championne Périmée",
+    "description": "DÉBUT DU TOUR : Réduit le coût du prochain sort joué ce tour de -1 PA.\n\nNécrome",
+    "spells": [],
+    "stat": {
+      "atk": 15.0,
+      "life": 67.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 3,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 975,
+    "name": "Colombe",
+    "description": "Ne peut pas subir de dégât.\n\nATTAQUE : Repousse d\u00271 à 3 cases",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 1.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 176,
+    "name": "Adamaï",
+    "description": "SORT : Écailles d\u0027Adamaï.\n\nATTAQUE : Téléporte la cible dans son dos.",
+    "spells": [
+      834
+    ],
+    "stat": {
+      "atk": 30.0,
+      "life": 113.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 6,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 256,
+    "name": "Plume",
+    "description": "Peut être invoquée sur une case adjacente  à un personnage allié.\n\nDÉBUT DU TOUR : Inflige son  AT aux adversaires alignés avec elle.",
+    "spells": [],
+    "stat": {
+      "atk": 18.0,
+      "life": 82.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 2,
+      "air": 2,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 778,
+    "name": "Delta",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 60.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 3,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 192,
+    "name": "Flopin",
+    "description": "SORT : Ingéniosité de Flopin.\n\nAPPARITION ou DÉBUT DU TOUR : Gagne 1 MIRE MOTIVANTE.",
+    "spells": [
+      339
+    ],
+    "stat": {
+      "atk": 12.0,
+      "life": 93.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 5,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 94,
+    "name": "Coqueline",
+    "description": "SORT : Toucher de Coqueline.\n\nDÉPHASAGE",
+    "spells": [
+      520
+    ],
+    "stat": {
+      "atk": 26.0,
+      "life": 100.0,
+      "pm": 4.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 5,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 832,
+    "name": "Priss",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 26.0,
+      "life": 110.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 6,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 772,
+    "name": "Capitaine Raskass",
+    "description": "FIN DU TOUR : 50% de chance d\u0027ENRAGER les Bworks jusqu\u0027à 2 cases.\n\nCOUP DE GRÂCE : Se soigne d\u0027une valeur égale à son  AT.",
+    "spells": [],
+    "stat": {
+      "atk": 23.0,
+      "life": 104.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 229,
+    "name": "Igror",
+    "description": "ATTAQUE : Applique l\u0027état HUILÉ.",
+    "spells": [],
+    "stat": {
+      "atk": 16.0,
+      "life": 86.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 4,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 506,
+    "name": "Creuzar le Creuvar",
+    "description": "INCIBLABLE",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 60.0,
+      "pm": 4.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 173,
+    "name": "Eclaireur d\u0027Elite",
+    "description": "APPARITION et DÉBUT DU TOUR : Gagne 1 MIRE DE PROTECTION.",
+    "spells": [],
+    "stat": {
+      "atk": 7.0,
+      "life": 54.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 4,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 802,
+    "name": "Bernadette",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 60.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 3,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 745,
+    "name": "Achméa",
+    "description": "ATTAQUE : +1 à votre jauge TERRE.\n\nNécrome",
+    "spells": [],
+    "stat": {
+      "atk": 9.0,
+      "life": 54.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 3,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 568,
+    "name": "Héros Félin",
+    "description": "ATTAQUE : +1 à votre jauge AIR.",
+    "spells": [],
+    "stat": {
+      "atk": 9.0,
+      "life": 54.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 3,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 302,
+    "name": "Elely",
+    "description": "SORT : Fury d\u0027Elely.\n\nDouble son  AT de base tant qu\u0027elle est le seul compagnon allié en jeu.",
+    "spells": [
+      24
+    ],
+    "stat": {
+      "atk": 15.0,
+      "life": 105.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 5,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 376,
+    "name": "Comte Harebourg",
+    "description": "SORT : Gel d\u0027Harebourg.\n\n-1 PA au coût de vos sorts EAU.",
+    "spells": [
+      594
+    ],
+    "stat": {
+      "atk": 15.0,
+      "life": 76.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 5,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 683,
+    "name": "Empaleur Embusqué",
+    "description": "APPARITION et DÉBUT DU TOUR : Gagne 1 MIRE REPOUSSANTE.\n\nNécrome",
+    "spells": [],
+    "stat": {
+      "atk": 9.0,
+      "life": 82.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 4,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 117,
+    "name": "Niels Laren",
+    "description": "ATTAQUE SUR ALLIÉ : Soigne 12  PV et retire ASSOMMÉ.",
+    "spells": [],
+    "stat": {
+      "atk": 15.0,
+      "life": 157.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 97,
+    "name": "Vorti le Rebelle",
+    "description": "Sa première ATTAQUE est un COUP CRITIQUE.\n\nRAGE : Double ses dégâts.",
+    "spells": [],
+    "stat": {
+      "atk": 15.0,
+      "life": 70.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 594,
+    "name": "Chevaucheur Ancien",
+    "description": "APPARITION : Retire l\u0027état élémentaire des personnages autour .",
+    "spells": [],
+    "stat": {
+      "atk": 18.0,
+      "life": 86.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 4,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 32,
+    "name": "Jahash",
+    "description": "SORT : Protection de Jahash.\n\nATTAQUE : Confère autant d\u0027 AR que son  AT aux alliés autour  de lui.",
+    "spells": [
+      313
+    ],
+    "stat": {
+      "atk": 25.0,
+      "life": 143.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 8,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 231,
+    "name": "Toxine",
+    "description": "SORT : Hypnose de Toxine.\n\nATTAQUE : Réduit de 1 les PM de la cible pour le tour.",
+    "spells": [
+      502
+    ],
+    "stat": {
+      "atk": 26.0,
+      "life": 100.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 5,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 835,
+    "name": "Séraphin",
+    "description": "ATTAQUE : -1 PA à la Réserve de la cible.",
+    "spells": [],
+    "stat": {
+      "atk": 18.0,
+      "life": 84.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 4,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 807,
+    "name": "Assa",
+    "description": "ATTAQUE : Applique l\u0027état ÉVENTÉ.",
+    "spells": [],
+    "stat": {
+      "atk": 16.0,
+      "life": 86.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 4,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 946,
+    "name": "Shushire",
+    "description": "Peut-être invoquée sur une case adjacente  à un personnage allié.\n\nATTAQUE : Réduit le coût du prochain sort joué ce tour de -1 PA.",
+    "spells": [],
+    "stat": {
+      "atk": 16.0,
+      "life": 78.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 2,
+      "eau": 0,
+      "terre": 0,
+      "air": 2,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 178,
+    "name": "Nugget",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 60.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 3,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 416,
+    "name": "Giny",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 60.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 3,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 821,
+    "name": "Craqueleur Magmatique",
+    "description": "Ne peut pas subir de dégât.\n\nDouble son  AT pour sa prochaine ATTAQUE quand le VOLCAN ou une FLAQUE DE LAVE le touche.",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 1.0,
+      "pm": 2.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 841,
+    "name": "Barry",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 15.0,
+      "life": 80.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 4,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 483,
+    "name": "Atcham",
+    "description": "SORT : Jalousie d\u0027Atcham.\n\nMORT : Peut être invoqué à nouveau.",
+    "spells": [
+      45
+    ],
+    "stat": {
+      "atk": 27.0,
+      "life": 95.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 6,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 628,
+    "name": "Baron Sramedi",
+    "description": "MORT : Peut être invoqué à nouveau.",
+    "spells": [],
+    "stat": {
+      "atk": 14.0,
+      "life": 72.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 4,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 689,
+    "name": "Betty",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 26.0,
+      "life": 110.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 6,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 666,
+    "name": "Écho",
+    "description": "SORT : Espoir d\u0027Écho.\n\nATTAQUE : Soigne votre héros d\u0027une valeur égale à son  AT.",
+    "spells": [
+      429
+    ],
+    "stat": {
+      "atk": 17.0,
+      "life": 117.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 6,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 342,
+    "name": "Tika",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 60.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 3,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 244,
+    "name": "Gousset",
+    "description": "APPARITION : +1 {%PA} à votre réserve.",
+    "spells": [],
+    "stat": {
+      "atk": 12.0,
+      "life": 59.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 3,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 642,
+    "name": "Rémus",
+    "description": "ATTAQUE : Vole 1 PA à la Réserve de la cible.",
+    "spells": [],
+    "stat": {
+      "atk": 16.0,
+      "life": 79.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 4,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 824,
+    "name": "Initiée Funèbre",
+    "description": "INCIBLABLE\n\nNécrome",
+    "spells": [],
+    "stat": {
+      "atk": 16.0,
+      "life": 53.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 3,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 804,
+    "name": "Danny Zepig",
+    "description": "NE DOIT PAS MOURIR\n\nCOUP DE GRÂCE : Récupère les AURAS BUSHIde la cible.",
+    "spells": [],
+    "stat": {
+      "atk": 20.0,
+      "life": 210.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 83,
+    "name": "Corbeau Noir",
+    "description": "SORT : Vol du Corbeau Noir.\n\nCOUP DE GRÂCE : Piochez 1 sort.",
+    "spells": [
+      173
+    ],
+    "stat": {
+      "atk": 27.0,
+      "life": 95.0,
+      "pm": 4.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 5,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 276,
+    "name": "Phaeris",
+    "description": "SORT : Souffle de Phaeris.\n\nAPPARITION : Échange sa place avec votre héros.\n\nPeut-être invoqué jusqu\u0027à 3 cases.",
+    "spells": [
+      802
+    ],
+    "stat": {
+      "atk": 42.0,
+      "life": 154.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 8,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 845,
+    "name": "Sentinelle Affutée",
+    "description": "ATTAQUE : +1 à votre jauge FEU.",
+    "spells": [],
+    "stat": {
+      "atk": 9.0,
+      "life": 54.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 3,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 359,
+    "name": "Championne Sanglante",
+    "description": "GARDE DU CORPS de votre héros.\n\nNécrome",
+    "spells": [],
+    "stat": {
+      "atk": 7.0,
+      "life": 63.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 4,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 89,
+    "name": "Alchimiste Armurée",
+    "description": "Peut être invoquée jusqu\u0027à 3 cases de votre héros.\n\nAPPARITION : Repousse de 11 case les personnages adjacents .",
+    "spells": [],
+    "stat": {
+      "atk": 17.0,
+      "life": 87.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 2,
+      "eau": 0,
+      "terre": 0,
+      "air": 2,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 52,
+    "name": "Joris",
+    "description": "SORT : Course de Joris.\n\nINCIBLABLE",
+    "spells": [
+      13
+    ],
+    "stat": {
+      "atk": 22.0,
+      "life": 79.0,
+      "pm": 4.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 5,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 846,
+    "name": "Exécuteur Endeuillé",
+    "description": "DÉBUT DU TOUR : Se soigne de la valeur de son  AT.",
+    "spells": [],
+    "stat": {
+      "atk": 23.0,
+      "life": 84.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 4,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 847,
+    "name": "Nox",
+    "description": "SORT : Eliacube de Nox.\n\nATTAQUE : +1 {%PA} à votre réserve.",
+    "spells": [
+      2
+    ],
+    "stat": {
+      "atk": 30.0,
+      "life": 141.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 7,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 339,
+    "name": "Bakara",
+    "description": "SORT : Surcharge de Bakara.\n\n-1 PA au coût de vos sorts FEU.",
+    "spells": [
+      507
+    ],
+    "stat": {
+      "atk": 18.0,
+      "life": 94.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 6,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 861,
+    "name": "Bourrin",
+    "description": "ATTAQUE : Touche les 3 cases devant lui.",
+    "spells": [],
+    "stat": {
+      "atk": 19.0,
+      "life": 83.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 4,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 98,
+    "name": "Ruel",
+    "description": "SORT : Pelle de Ruel.\n\nCOUP DE GRÂCE : +1 à votre jauge TERRE.",
+    "spells": [
+      716
+    ],
+    "stat": {
+      "atk": 30.0,
+      "life": 121.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 6,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 442,
+    "name": "Remington",
+    "description": "SORT : Bombe de Remington.\n\nAPPARITION ou DÉBUT DU TOUR : Gagne 1 MIRE PUISSANTE.",
+    "spells": [
+      409
+    ],
+    "stat": {
+      "atk": 12.0,
+      "life": 90.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 5,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 950,
+    "name": "Suzy",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 26.0,
+      "life": 110.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 6,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 162,
+    "name": "Paco",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 60.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 3,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 144,
+    "name": "Goultard",
+    "description": "SORT : Bond de Goultard.",
+    "spells": [
+      145
+    ],
+    "stat": {
+      "atk": 45.0,
+      "life": 176.0,
+      "pm": 5.0
+    },
+    "costs": {
+      "feu": 9,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 844,
+    "name": "Évangelyne",
+    "description": "SORT : Trait d\u0027Évangelyne.\n\nAPPARITION ou DÉBUT DU TOUR : Gagne 1 MIRE SACRÉE.",
+    "spells": [
+      718
+    ],
+    "stat": {
+      "atk": 14.0,
+      "life": 109.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 6,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 389,
+    "name": "Gardienne Inflexible",
+    "description": "ATTAQUE : Applique l\u0027état MOUILLÉ.",
+    "spells": [],
+    "stat": {
+      "atk": 16.0,
+      "life": 86.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 4,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 171,
+    "name": "Shura",
+    "description": "DÉPHASAGE",
+    "spells": [],
+    "stat": {
+      "atk": 16.0,
+      "life": 66.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 3,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 457,
+    "name": "Baron Roméro",
+    "description": "Gagne +2  AT quand un Chafer meurt.\n\nVous ne pouvez invoquer qu\u0027un seul compagnon tant qu\u0027il est présent.",
+    "spells": [],
+    "stat": {
+      "atk": 15.0,
+      "life": 170.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 792,
+    "name": "Héros Endurci",
+    "description": "APPARITION : Inflige son  AT aux adversaires autour .",
+    "spells": [],
+    "stat": {
+      "atk": 14.0,
+      "life": 72.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 4,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 601,
+    "name": "Dark Vlad",
+    "description": "SORT : Folie du Dark Vlad.\n\nATTAQUE : Inflige le double de dégâts si la cible a l\u0027état HUILÉ.",
+    "spells": [
+      474
+    ],
+    "stat": {
+      "atk": 20.0,
+      "life": 99.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 5,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 135,
+    "name": "Oropo",
+    "description": "SORT : Soif d\u0027Oropo.\n\nATTAQUE : Piochez 1 sort.",
+    "spells": [
+      575
+    ],
+    "stat": {
+      "atk": 27.0,
+      "life": 137.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 7,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 858,
+    "name": "Columba",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 26.0,
+      "life": 110.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 6,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 124,
+    "name": "Soigneuse Corrompue",
+    "description": "ATTAQUE : Soigne votre héros d\u0027une valeur égale à son  AT.\n\nNécrome",
+    "spells": [],
+    "stat": {
+      "atk": 13.0,
+      "life": 80.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 4,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 801,
+    "name": "Bump",
+    "description": "SORT : Bouclier de Bump.\n\nCOUP DE GRÂCE : Confère autant d\u0027 AR que son  AT aux personnages alliés.",
+    "spells": [
+      329
+    ],
+    "stat": {
+      "atk": 20.0,
+      "life": 97.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 5,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 966,
+    "name": "Angèle",
+    "description": "DÉPHASAGE",
+    "spells": [],
+    "stat": {
+      "atk": 16.0,
+      "life": 66.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 3,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 188,
+    "name": "Saly",
+    "description": "ATTAQUE : +1 à votre jauge EAU.",
+    "spells": [],
+    "stat": {
+      "atk": 9.0,
+      "life": 54.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 3,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 378,
+    "name": "Flècheur",
+    "description": "APPARITION et DÉBUT DU TOUR : Gagne 1 MIRE AÉRIENNE.",
+    "spells": [],
+    "stat": {
+      "atk": 5.0,
+      "life": 50.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 3,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 316,
+    "name": "Teri",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 15.0,
+      "life": 80.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 4,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 65,
+    "name": "César",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 15.0,
+      "life": 80.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 4,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 507,
+    "name": "Ush",
+    "description": "SORT : Ush le Tricheur.\n\nDÉBUT DU TOUR : Double son  AT pour le tour si vous avez au moins 5 sorts dans votre main.",
+    "spells": [
+      410
+    ],
+    "stat": {
+      "atk": 18.0,
+      "life": 108.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 5,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 561,
+    "name": "Tristepin",
+    "description": "SORT : Fureur de Tristepin.\n\nMORT : ASSOMME vos adversaires.",
+    "spells": [
+      159
+    ],
+    "stat": {
+      "atk": 40.0,
+      "life": 139.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 7,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 487,
+    "name": "Rooster",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 60.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 3,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 90,
+    "name": "Yaki",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 60.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 3,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 819,
+    "name": "Skhul",
+    "description": "DÉBUT DU TOUR : Inflige son  AT à l\u0027adversaire ayant le plus de  PV.",
+    "spells": [],
+    "stat": {
+      "atk": 15.0,
+      "life": 66.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 3,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 788,
+    "name": "Farnix",
+    "description": "APPARITION et DÉBUT DU TOUR : Gagne 1 MIRE SACRÉE.",
+    "spells": [],
+    "stat": {
+      "atk": 9.0,
+      "life": 70.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 4,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 657,
+    "name": "Kaotika",
+    "description": "APPARITION : Détruit les MÉCANISMES et SOLS autour  d\u0027elle.",
+    "spells": [],
+    "stat": {
+      "atk": 13.0,
+      "life": 56.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 3,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 897,
+    "name": "Championne du Blasphème",
+    "description": "ATTAQUE : Inflige le double de dégâtssi la cible a l\u0027état ÉVENTÉ.\n\nNécrome",
+    "spells": [],
+    "stat": {
+      "atk": 16.0,
+      "life": 63.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 3,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 191,
+    "name": "Klaus",
+    "description": "APPARITION : Échange sa place avec votre héros.\n\nCOUP DE GRÂCE : Ce compagnon peut rejouer son tour.",
+    "spells": [],
+    "stat": {
+      "atk": 16.0,
+      "life": 80.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 2,
+      "eau": 0,
+      "terre": 2,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 664,
+    "name": "Amalia",
+    "description": "SORT : Ronces d\u0027Amalia.\n\n-1 PA au coût de vos sorts TERRE.",
+    "spells": [
+      558
+    ],
+    "stat": {
+      "atk": 18.0,
+      "life": 94.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 6,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 293,
+    "name": "Shani",
+    "description": "Peut être invoquée sur une case adjacente  à un personnage allié.\n\nATTAQUE : Passe dans le dos de sa cible.",
+    "spells": [],
+    "stat": {
+      "atk": 19.0,
+      "life": 82.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 2,
+      "eau": 2,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 948,
+    "name": "Shuther",
+    "description": "APPARITION : Gagne 2 AURAS POINGS VOLANTS.",
+    "spells": [],
+    "stat": {
+      "atk": 7.0,
+      "life": 70.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 4,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 401,
+    "name": "Julith",
+    "description": "SORT : Ombres de Julith.\n\nATTAQUE : Réduit le coût du prochain sort joué ce tour de -2 PA.",
+    "spells": [
+      553
+    ],
+    "stat": {
+      "atk": 25.0,
+      "life": 135.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 7,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 633,
+    "name": "Oracle Offensé",
+    "description": "ATTAQUE : Repousse de 2 cases.",
+    "spells": [],
+    "stat": {
+      "atk": 16.0,
+      "life": 63.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 3,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 213,
+    "name": "Argolio",
+    "description": "APPARITION et DÉBUT DU TOUR : Gagne 1 MIRE DE PIERRE.",
+    "spells": [],
+    "stat": {
+      "atk": 5.0,
+      "life": 48.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 3,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 661,
+    "name": "Grougaloragran",
+    "description": "SORT : Souffle de Grougaloragran.\n\nAPPARITION : +2 à votre jauge NEUTRE.",
+    "spells": [
+      3271
+    ],
+    "stat": {
+      "atk": 38.0,
+      "life": 147.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 8,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 42,
+    "name": "Duelliste Spectral",
+    "description": "ATTAQUE : REBOND.\n\nNécrome",
+    "spells": [],
+    "stat": {
+      "atk": 17.0,
+      "life": 81.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 4,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 215,
+    "name": "Cody",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 15.0,
+      "life": 80.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 4,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 933,
+    "name": "Griffeur Tonkino",
+    "description": "ATTAQUE : Applique l\u0027état BOUEUX.\n\nNécrome",
+    "spells": [],
+    "stat": {
+      "atk": 16.0,
+      "life": 86.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 4,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 976,
+    "name": "Abigaïl",
+    "description": "APPARITION : Gagne 2 AURAS ÉPÉES SANGLANTES.",
+    "spells": [],
+    "stat": {
+      "atk": 7.0,
+      "life": 59.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 3,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 944,
+    "name": "Cochonnette",
+    "description": "SORT : Passe-Passe.",
+    "spells": [
+      534
+    ],
+    "stat": {
+      "atk": 5.0,
+      "life": 80.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 99,
+    "name": "Épinette",
+    "description": "APPARITION : Échange sa place avec votre héros et piochez 1 sort.",
+    "spells": [],
+    "stat": {
+      "atk": 13.0,
+      "life": 74.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 2,
+      "terre": 0,
+      "air": 2,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 538,
+    "name": "Champion Croulant",
+    "description": "Peut être invoqué sur une case adjacente  à un ennemi.\n\nDÉBUT DU TOUR : Inflige son  AT à l\u0027adversaire ayant le moins de  PV.\n\nNécrome",
+    "spells": [],
+    "stat": {
+      "atk": 19.0,
+      "life": 82.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 2,
+      "eau": 2,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 309,
+    "name": "Justice",
+    "description": "SORT : Orbe de Justice.\n\nAPPARITION : Retire toutes les AURAS et MIRES présentes sur le terrain.",
+    "spells": [
+      795
+    ],
+    "stat": {
+      "atk": 21.0,
+      "life": 105.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 6,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 857,
+    "name": "Vorti le Rebelle",
+    "description": "Ne peut pas subir de dégâts.\n\nDevient ÉTREINT s\u0027il subit une ATTAQUE d\u0027un Bwork.\n\nFIN DU TOUR : S\u0027enfuit s\u0027il est ÉTREINT.",
+    "spells": [],
+    "stat": {
+      "atk": -1000.0,
+      "life": 70.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 492,
+    "name": "Ashmal",
+    "description": "ATTAQUE : Soigne votre héros d\u0027une valeur égale à son  AT.\n\nNécrome",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 60.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 3,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 445,
+    "name": "Marcus",
+    "description": "Inflige son  AT aux adversaires quand il effectue un COUP DE GRÂCE ou détruit un Mécanisme.",
+    "spells": [],
+    "stat": {
+      "atk": 16.0,
+      "life": 75.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 4,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 350,
+    "name": "Dathura",
+    "description": "SORT : Poupée de Dathura.\n\nMORT : Confère BOUCLIER aux alliés.",
+    "spells": [
+      15892
+    ],
+    "stat": {
+      "atk": 22.0,
+      "life": 96.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 5,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 72,
+    "name": "Alibert",
+    "description": "SORT : Répit d\u0027Alibert.\n\nCOUP DE GRÂCE : +2 {%PA} à votre réserve.",
+    "spells": [
+      209
+    ],
+    "stat": {
+      "atk": 23.0,
+      "life": 102.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 5,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 125,
+    "name": "Maitre Egreneur",
+    "description": "APPARITION : -2 PA à votre prochain Mécanisme ou SOL pour le tour.\n\nNécrome",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 52.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 3,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 815,
+    "name": "Zorine",
+    "description": "Aucun passif.",
+    "spells": [],
+    "stat": {
+      "atk": 18.0,
+      "life": 67.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 3,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 61,
+    "name": "Pacificatrice Enjouée",
+    "description": "ATTAQUE : Soigne votre héros d\u0027une valeur égale à son  AT.",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 60.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 3,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 261,
+    "name": "Kérubim",
+    "description": "SORT : Armure de Kérubim.\n\nMORT : Peut être invoqué à nouveau.",
+    "spells": [
+      601
+    ],
+    "stat": {
+      "atk": 30.0,
+      "life": 114.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 0,
+      "terre": 7,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 769,
+    "name": "Larch",
+    "description": "Peut-être invoqué jusqu\u0027à 3 cases de votre héros.\n\nAPPARITION : Attire les personnages alignés avec lui.",
+    "spells": [],
+    "stat": {
+      "atk": 14.0,
+      "life": 79.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 0,
+      "eau": 2,
+      "terre": 2,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  },
+  {
+    "type": "Companion",
+    "id": 555,
+    "name": "Dargone",
+    "description": "ATTAQUE : Soigne votre héros d\u0027une valeur égale à son  AT.",
+    "spells": [],
+    "stat": {
+      "atk": 10.0,
+      "life": 60.0,
+      "pm": 3.0
+    },
+    "costs": {
+      "feu": 3,
+      "eau": 0,
+      "terre": 0,
+      "air": 0,
+      "neutre": 0,
+      "PA": 0
+    }
+  }
+]

@@ -40,6 +40,10 @@ public interface NamedEntity extends HaveDictionary {
         return getParsedName(level, WavenParser.MARKDOWN, WavenParser.DELETE_BALISE, WavenParser.GLOBAL);
     }
 
+    default String getGlobalParsedName(int level){
+        return getParsedName(level, WavenParser.DELETE_BALISE, WavenParser.GLOBAL);
+    }
+
     default String getParsedDescription(){
         return getParsedDescription(0);
     }
@@ -50,6 +54,10 @@ public interface NamedEntity extends HaveDictionary {
 
     default String getMardownParseDescription(int level){
         return getParsedDescription(level, WavenParser.MARKDOWN, WavenParser.DELETE_BALISE, WavenParser.GLOBAL);
+    }
+
+    default String getGlobalParsedDescription(int level){
+        return getParsedDescription(level, WavenParser.DELETE_BALISE, WavenParser.GLOBAL);
     }
 
     default boolean haveName(){

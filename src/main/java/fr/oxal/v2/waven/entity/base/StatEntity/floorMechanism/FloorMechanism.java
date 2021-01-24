@@ -1,17 +1,15 @@
 package fr.oxal.v2.waven.entity.base.StatEntity.floorMechanism;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.effect.WithEffect;
-import fr.oxal.v2.waven.entity.base.StatEntity.StatEntity;
-import fr.oxal.v2.waven.entity.base.god.WithGods;
+import fr.oxal.v2.waven.entity.NamedWavenEntity;
+import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
 
 import java.util.Optional;
 
-public class FloorMechanism extends StatEntity implements DynamicedEntity, WithEffect {
+public class FloorMechanism extends NamedWavenEntity implements DynamicedEntity, WithEffect {
 
     public final static String PATH_FLOOR_MECA = Wavenpedia.jsonPath + "FloorMechanismDefinition/";
     public final static String FLOOR_TYPE = "floorType";

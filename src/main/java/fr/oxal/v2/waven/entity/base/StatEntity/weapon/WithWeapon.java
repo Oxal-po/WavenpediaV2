@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface WithWeapon {
 
-    List<Double> getWeaponsId();
+    List<Integer> getWeaponsId();
 
     default boolean haveWeapon(){
         return getWeapons().size() > 0;
@@ -13,11 +13,11 @@ public interface WithWeapon {
 
     default List<Weapon> getWeapons(){
        ArrayList<Weapon> l = new ArrayList<>();
-       for (Double d : getWeaponsId()){
-           if (Weapon.fileExist(d.intValue(), Weapon.PATH_WEAPON)){
-               l.add(new Weapon(d.intValue()));
+       for (int d : getWeaponsId()){
+           if (Weapon.fileExist(d, Weapon.PATH_WEAPON)){
+               l.add(new Weapon(d));
            }else{
-               System.err.println(String.format("le fichier %d.json n'es pas trouver dans le dossier %s", d.intValue(), Weapon.PATH_WEAPON));
+               System.err.println(String.format("le fichier %d.json n'es pas trouver dans le dossier %s", d, Weapon.PATH_WEAPON));
            }
        }
 

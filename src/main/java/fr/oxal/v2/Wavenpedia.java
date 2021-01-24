@@ -1,5 +1,6 @@
 package fr.oxal.v2;
 
+import fr.oxal.v2.mongo.MongoFabric;
 import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.effect.FloatingCounterEffect;
 import fr.oxal.v2.waven.effect.PropertyEffect;
@@ -29,9 +30,7 @@ public class Wavenpedia {
     public static String dictionaryPath;
     public static String keyWordPath;
     public static String constPath;
-    public static String placeholderPath;
-    public static String fontPath;
-    public static Font wavenFont;
+    public static final MongoFabric mongo = new MongoFabric();
 
     public static final Class<? extends NamedWavenEntity>[] ALL_NAMED_CLASS = new Class[]{
             Spell.class, God.class, Weapon.class, Companion.class, ObjectMechanism.class, Summoning.class,
@@ -80,6 +79,10 @@ public class Wavenpedia {
 
     public static void setConstPath(String constPath) {
         Wavenpedia.constPath = constPath;
+    }
+
+    public static MongoFabric getMongo() {
+        return mongo;
     }
 
     public static void start(){

@@ -8,14 +8,11 @@ import fr.oxal.v2.waven.entity.WavenInterface;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
-import static fr.oxal.v2.utils.math.WavenMath.REF_NAME;
 
 public interface WithPassiveModifiers extends DynamicedEntity {
 
@@ -80,6 +77,9 @@ public interface WithPassiveModifiers extends DynamicedEntity {
         public static final String LIFE_MODIFIER = "LifeModifier";
         public static final String ATK_MODIFIER = "ActionValueModifier";
         public static final String PM_MODIFIER = "MovementPointModifier";
+
+        public static final int CRIT_DAMAGE_JSON = 18;
+        public static final int CRIT_CHANGE_JSON = 16;
 
         private ArrayList<Integer> caracId;
         private String type, refId;
@@ -154,6 +154,13 @@ public interface WithPassiveModifiers extends DynamicedEntity {
 
         public boolean isPmModifier(){
             return PM_MODIFIER.equals(type);
+        }
+
+        public boolean isCritDamageModifier(){
+            return caracId.contains(CRIT_DAMAGE_JSON);
+        }
+        public boolean isCritChanceModifier(){
+            return caracId.contains(CRIT_CHANGE_JSON);
         }
 
         public boolean isStatModifier(){

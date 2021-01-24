@@ -16,21 +16,25 @@ public interface WithSpells extends WithRefEntity {
     String TYPE = "type";
     int SPELL_ID_TYPE = 25;
 
-    List<Double> getIdSpells();
+    List<Integer> getIdSpells();
     List<Spell> getSpells();
 
-    default List<Double> getIdSpells(JsonObject j){
+    default List<Integer> getIdSpells(JsonObject j){
 
-        ArrayList<Double> l = new ArrayList<>();
-        ArrayList<Double> g = new Gson().fromJson(j.get(SPELLS), ArrayList.class);
-        if (g != null){
-            l.addAll(g);
+        ArrayList<Integer> l = new ArrayList<>();
+
+        if (j.has(SPELLS)){
+            for (JsonElement e : j.get(SPELLS).getAsJsonArray()){
+                if (e.isJsonPrimitive()){
+                    l.add(e.getAsInt());
+                }
+            }
         }
         getWavenRef().ifPresent(a -> {
             for (JsonElement e : a){
                 if (e.isJsonObject() && e.getAsJsonObject().get(TYPE).getAsInt() == SPELL_ID_TYPE
                         && !l.contains(e.getAsJsonObject().get(ID).getAsDouble())){
-                    l.add(e.getAsJsonObject().get(ID).getAsDouble());
+                    l.add(e.getAsJsonObject().get(ID).getAsInt());
                 }
             }
         });
@@ -63,12 +67,12 @@ public interface WithSpells extends WithRefEntity {
         }
     }
 
-    default void addSpell(double spell){
+    default void addSpell(int spell){
         getIdSpells().add(spell);
     }
 
     default void addSpell(Spell spell){
-        getIdSpells().add((double) spell.getId());
+        getIdSpells().add(spell.getId());
     }
 
     default Spell getSpell(int i){

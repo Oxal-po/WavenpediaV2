@@ -2,15 +2,18 @@ package fr.oxal.v2.waven.entity.base.StatEntity.weapon;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import fr.oxal.v2.Wavenpedia;
-import fr.oxal.v2.waven.entity.base.StatEntity.StatEntity;
+import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.god.WithGods;
 import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.base.spell.WithSpells;
-import fr.oxal.v2.waven.entity.pvm.skill.WithSkills;
 import fr.oxal.v2.waven.entity.pvm.skill.WithSpecificSkills;
+import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.WithElement;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.image.logo.WithLogo;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.image.skin.WithSkin;
+import fr.oxal.v2.waven.utils.jsonCreator.Jsoneable;
 import fr.oxal.v2.waven.utils.stat.WithAtk;
 import fr.oxal.v2.waven.utils.stat.WithLife;
 import fr.oxal.v2.waven.utils.stat.WithPm;
@@ -20,8 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class Weapon extends StatEntity implements WithAtk, WithPm, WithLife,
-        WithGods, WithSpells, WithSpecificSkills, WithSkin, WithLogo {
+public class Weapon extends NamedWavenEntity implements WithAtk, WithPm, WithLife,
+        WithGods, WithSpells, WithSpecificSkills, WithSkin, WithLogo, Jsoneable {
 
     public final static String PATH_WEAPON = Wavenpedia.jsonPath + "WeaponDefinition/";
 
@@ -79,7 +82,7 @@ public class Weapon extends StatEntity implements WithAtk, WithPm, WithLife,
         return getSpells(getJsonRepresentation());
     }
     @Override
-    public List<Double> getIdSpells() {
+    public List<Integer> getIdSpells() {
         return getIdSpells(getJsonRepresentation());
     }
 
@@ -111,5 +114,21 @@ public class Weapon extends StatEntity implements WithAtk, WithPm, WithLife,
     @Override
     public Optional<FileInputStream> getLogo() {
         return getLogo(this);
+    }
+
+
+    @Override
+    public JsonObject transformToJson() {
+        JsonObject json = defaultJson(this);
+        json.add(NAME_JSON, new JsonPrimitive(getGlobalParsedName(0)));
+        String descri = getGlobalParsedDescription(0);
+        if (!descri.equals(NamedEntity.BASE_STRING)){
+            json.add(DESCRI_JSON, new JsonPrimitive(descri));
+        }
+        json.add("gods", Jsoneable.toJsonArray(getFamilyIds()));
+        json.add("spells", Jsoneable.toJsonArray(getIdSpells()));
+        json.add(STAT_JSON, Jsoneable.statJson(this));
+
+        return json;
     }
 }

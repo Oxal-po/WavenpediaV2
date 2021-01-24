@@ -12,6 +12,6 @@ public interface EquipeableEntity extends DetailsEntity {
     boolean isEquipeable();
 
     default boolean isEquipeable(JsonObject j){
-        return (j.get(EQUIPABLE) != null && j.get(EQUIPABLE).getAsBoolean()) || getDetails().isPresent() ? getDetails().get().get(EQUIPABLE_DETAIL).getAsBoolean() : false;
+        return (j.has(EQUIPABLE) && j.get(EQUIPABLE).getAsBoolean()) || getDetails().isPresent() ? getDetails().get().get(EQUIPABLE_DETAIL).getAsBoolean() : false;
     }
 }

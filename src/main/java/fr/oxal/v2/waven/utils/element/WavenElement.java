@@ -7,6 +7,8 @@ import fr.oxal.v2.waven.entity.WavenInterface;
 import fr.oxal.v2.waven.utils.dictionary.DictionaryFabric;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,7 +20,8 @@ public class WavenElement implements WavenInterface , NamedEntity {
     private int id, value;
     public final static String REF_NAME_DICO = "UI";
     public final static int PA = -1;
-    public final static int[] ALL_ELEMENT = new int[]{1, 2, 3, 4, 6};
+    public final static int[] ALL_ELEMENT = new int[]{1, 2, 3, 4, 6, PA};
+    public final static int[] ALL_GAUGE = new int[]{19, 1, 2, 3, 4, 6};
 
 
     public WavenElement(int id) {
@@ -157,6 +160,22 @@ public class WavenElement implements WavenInterface , NamedEntity {
         }
 
         return Optional.empty();
+    }
+
+    public static List<WavenElement> getAllElement(){
+        ArrayList<WavenElement> elem = new ArrayList<>();
+        for (int i : ALL_ELEMENT){
+            elem.add(new WavenElement(i));
+        }
+        return elem;
+    }
+
+    public static List<WavenElement> getAllGauge(){
+        ArrayList<WavenElement> elem = new ArrayList<>();
+        for (int i : ALL_GAUGE){
+            elem.add(new WavenElement(i));
+        }
+        return elem;
     }
 
     @Override
