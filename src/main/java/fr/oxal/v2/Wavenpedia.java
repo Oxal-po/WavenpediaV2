@@ -1,5 +1,7 @@
 package fr.oxal.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import fr.oxal.v2.mongo.MongoFabric;
 import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.effect.FloatingCounterEffect;
@@ -31,6 +33,7 @@ public class Wavenpedia {
     public static String keyWordPath;
     public static String constPath;
     public static final MongoFabric mongo = new MongoFabric();
+    public static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public static final Class<? extends NamedWavenEntity>[] ALL_NAMED_CLASS = new Class[]{
             Spell.class, God.class, Weapon.class, Companion.class, ObjectMechanism.class, Summoning.class,

@@ -12,9 +12,6 @@ import java.util.Optional;
 public interface WithSpells extends WithRefEntity {
 
     String SPELLS = "spells";
-    String ID = "id";
-    String TYPE = "type";
-    int SPELL_ID_TYPE = 25;
 
     List<Integer> getIdSpells();
     List<Spell> getSpells();

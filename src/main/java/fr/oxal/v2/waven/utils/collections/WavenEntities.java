@@ -1,6 +1,7 @@
 package fr.oxal.v2.waven.utils.collections;
 
 import fr.oxal.v2.Wavenpedia;
+import fr.oxal.v2.utils.text.TextUtils;
 import fr.oxal.v2.waven.WavenEntity;
 
 import java.io.File;
@@ -39,7 +40,7 @@ public class WavenEntities {
         return Wavenpedia.classedMappedEntity.get(c)
                 .entrySet()
                 .stream()
-                .filter(entry -> entry.getKey().toUpperCase().contains(name.toUpperCase()))
+                .filter(entry -> TextUtils.normalize(entry.getKey()).toUpperCase().contains(TextUtils.normalize(name).toUpperCase()))
                 .map(entry -> construct(c, entry.getValue()))
                 .filter(op -> op.isPresent())
                 .map(op -> op.get())

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static fr.oxal.v2.waven.utils.dictionary.HaveDictionary.UI;
 
@@ -20,8 +21,19 @@ public class WavenElement implements WavenInterface , NamedEntity {
     private int id, value;
     public final static String REF_NAME_DICO = "UI";
     public final static int PA = -1;
-    public final static int[] ALL_ELEMENT = new int[]{1, 2, 3, 4, 6, PA};
-    public final static int[] ALL_GAUGE = new int[]{19, 1, 2, 3, 4, 6};
+    public final static int FIRE = 1;
+    public final static int ADD_FIRE = 11;
+    public final static int WATER = 2;
+    public final static int ADD_WATER = 12;
+    public final static int EARTH = 3;
+    public final static int ADD_EARTH = 13;
+    public final static int WIND = 4;
+    public final static int ADD_WIND = 14;
+    public final static int NEUTRAL = 6;
+    public final static int ADD_NEUTRAL = 57;
+    public final static int ADD_RESERVE = 19;
+    public final static int[] ALL_ELEMENT = new int[]{FIRE, WATER, EARTH, WIND, NEUTRAL, PA};
+    public final static int[] ALL_GAUGE = new int[]{ADD_RESERVE, ADD_FIRE, ADD_WATER, ADD_EARTH, ADD_WIND, ADD_NEUTRAL};
 
 
     public WavenElement(int id) {
@@ -31,22 +43,22 @@ public class WavenElement implements WavenInterface , NamedEntity {
     @Override
     public long getNameId() {
         switch (id) {
-            case 1:
-            case 11:
+            case FIRE:
+            case ADD_FIRE:
                 return 94269;
-            case 2:
-            case 12:
+            case WATER:
+            case ADD_WATER:
                 return 4241;
-            case 3:
-            case 13:
+            case EARTH:
+            case ADD_EARTH:
                 return 71144;
-            case 4:
-            case 14:
+            case WIND:
+            case ADD_WIND:
                 return 15128;
-            case 6:
-            case 57:
+            case NEUTRAL:
+            case ADD_NEUTRAL:
                 return 43151;
-            case 19:
+            case ADD_RESERVE:
                 return 15321;
             case PA:
                 return 96095;
@@ -64,7 +76,7 @@ public class WavenElement implements WavenInterface , NamedEntity {
     @Override
     public String getName() {
         if (isPa()){
-            return DictionaryFabric.getDictionary(WavenEffect.class, EFFECTS).get(getNameId() + "").getAsString();
+            return DictionaryFabric.getDictionary(WavenEffect.class, Wavenpedia.dictionaryPath + EFFECTS).get(getNameId() + "").getAsString();
         }
         return getText(getNameId());
     }
@@ -104,16 +116,6 @@ public class WavenElement implements WavenInterface , NamedEntity {
     @Override
     public String toString() {
         return value + " : " + getName();
-    }
-
-    public static Optional<WavenElement> getElementByName(String name){
-        for (int i : ALL_ELEMENT){
-            WavenElement e = new WavenElement(i);
-            if (name.toLowerCase().equals(e.getParsedName().toLowerCase())){
-                return Optional.of(e);
-            }
-        }
-        return Optional.empty();
     }
 
     public static boolean haveElement(String text){
@@ -170,6 +172,10 @@ public class WavenElement implements WavenInterface , NamedEntity {
         return elem;
     }
 
+    public static List<String> getAllElementName(){
+        return getAllElement().stream().map(a -> a.getName()).collect(Collectors.toList());
+    }
+
     public static List<WavenElement> getAllGauge(){
         ArrayList<WavenElement> elem = new ArrayList<>();
         for (int i : ALL_GAUGE){
@@ -187,5 +193,25 @@ public class WavenElement implements WavenInterface , NamedEntity {
         }
 
         return super.equals(o);
+    }
+
+    public boolean isFire(){
+        return getId() == FIRE || getId() == ADD_FIRE;
+    }
+
+    public boolean isWater(){
+        return getId() == WATER || getId() == ADD_WATER;
+    }
+
+    public boolean isEarth(){
+        return getId() == EARTH || getId() == ADD_EARTH;
+    }
+
+    public boolean isWind(){
+        return getId() == WIND || getId() == ADD_WIND;
+    }
+
+    public boolean isNeutral(){
+        return getId() == NEUTRAL || getId() == ADD_NEUTRAL;
     }
 }

@@ -5,9 +5,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
-import fr.oxal.v2.waven.effect.WavenEffect;
 import fr.oxal.v2.waven.effect.WithEffect;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
+import fr.oxal.v2.waven.entity.base.StatEntity.WithStatEntities;
 import fr.oxal.v2.waven.entity.base.god.WithGods;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithFilters;
@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntity, WithSpells, WithEffect,
-        DynamicedEntity, WithFilters, WithElement, WithImage, WithGains, WithCost, Jsoneable {
+        DynamicedEntity, WithFilters, WithElement, WithImage, WithGains, WithCost, Jsoneable, WithStatEntities {
 
     public static final String PATH_SPELL = Wavenpedia.jsonPath + "SpellDefinition/";
 

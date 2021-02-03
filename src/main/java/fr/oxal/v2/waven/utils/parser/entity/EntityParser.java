@@ -70,10 +70,7 @@ public class EntityParser extends WavenEntityParsing implements OverrideablePars
 
     private String getEntityId(String text){
         Optional<String> s = getTextByRegex(text,REGEX_NOT_OVERRIDE_ENTITY, 1);
-        if (s.isPresent()){
-            return s.get();
-        }
-        return WavenEntity.NOT_ENTITY + "";
+        return s.orElse(WavenEntity.NOT_ENTITY + "");
     }
 
 }

@@ -10,7 +10,6 @@ import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.base.spell.WithSpells;
 import fr.oxal.v2.waven.entity.pvm.skill.WithSpecificSkills;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
-import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.WithElement;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.image.logo.WithLogo;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.image.skin.WithSkin;
 import fr.oxal.v2.waven.utils.jsonCreator.Jsoneable;

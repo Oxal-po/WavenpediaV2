@@ -17,6 +17,9 @@ public interface FamiliesEntity extends DetailsEntity {
     String FAMILIES = "families";
 
     default Optional<JsonArray> getFamilies(JsonObject j) {
+        if (j.has(FAMILIES)){
+            return Optional.of((JsonArray) j.get(FAMILIES));
+        }
         return getDetails(j).map(a -> (JsonArray) a.get(FAMILIES));
     }
 
@@ -54,5 +57,13 @@ public interface FamiliesEntity extends DetailsEntity {
         }
 
         return list;
+    }
+
+    default boolean hasFamily(Family f){
+        return getFamilyIds().stream().anyMatch(a -> a == f.getId());
+    }
+
+    default boolean hasFamily(God f){
+        return getFamilyIds().stream().anyMatch(a -> a == f.getId());
     }
 }

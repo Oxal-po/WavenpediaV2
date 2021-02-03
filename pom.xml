@@ -6,7 +6,7 @@
 
     <groupId>github.com.oxal</groupId>
     <artifactId>wavenpedia</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.2</version>
     <build>
         <plugins>
             <plugin>
@@ -41,6 +41,13 @@
             <artifactId>mongo-java-driver</artifactId>
             <version>2.12.3</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.squareup.okhttp/okhttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>2.7.5</version>
+        </dependency>
+
     </dependencies>
 
 </project>

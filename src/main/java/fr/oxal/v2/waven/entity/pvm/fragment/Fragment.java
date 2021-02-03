@@ -2,8 +2,11 @@ package fr.oxal.v2.waven.entity.pvm.fragment;
 
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.rarity.WithRarity;
 
-public class Fragment extends NamedWavenEntity {
+import java.util.Optional;
+
+public class Fragment extends NamedWavenEntity implements WithRarity {
 
     public static final String PATH_FRAG = Wavenpedia.jsonPath + "FragmentDefinition/";
 
@@ -19,5 +22,10 @@ public class Fragment extends NamedWavenEntity {
     @Override
     public String getNameDictionnaire() {
         return RESOURCES;
+    }
+
+    @Override
+    public Optional<Integer> getRarity() {
+        return getRarity(getJsonRepresentation());
     }
 }

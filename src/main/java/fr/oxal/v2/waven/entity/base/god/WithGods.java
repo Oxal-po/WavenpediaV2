@@ -22,4 +22,8 @@ public interface WithGods extends FamiliesEntity {
     default boolean haveGod(){
         return getFamilyIds().size() > 1;
     }
+
+    default boolean hasGod(God g){
+        return hasFamily(g);
+    }
 }

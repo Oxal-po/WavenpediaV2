@@ -2,6 +2,7 @@ package fr.oxal.v2.waven.entity.base.god;
 
 import com.google.gson.*;
 import fr.oxal.v2.Wavenpedia;
+import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.StatEntity.weapon.Weapon;
 import fr.oxal.v2.waven.entity.base.StatEntity.weapon.WithWeapon;
@@ -10,13 +11,16 @@ import fr.oxal.v2.waven.entity.base.spell.WithSpells;
 import fr.oxal.v2.waven.entity.pvm.skill.WithElementarySkills;
 import fr.oxal.v2.waven.utils.collections.WavenEntities;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.order.WithOrder;
 import fr.oxal.v2.waven.utils.jsonCreator.Jsoneable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class God extends NamedWavenEntity implements WithSpells, WithWeapon, WithElementarySkills, Jsoneable {
+public class God extends NamedWavenEntity implements WithSpells, WithWeapon,
+        WithElementarySkills, WithOrder, Jsoneable {
 
     public static final String PATH_GOD = Wavenpedia.jsonPath + "GodDefinition/";
 
@@ -43,10 +47,8 @@ public class God extends NamedWavenEntity implements WithSpells, WithWeapon, Wit
     //todo faire equipeable pour finir ce getSpells -> getAll(Spell) -> getGods -> add
     @Override
     public List<Spell> getSpells() {
-        return WavenEntities
-                .getAll(Spell.class, a -> a.isAvailable() && a.isEquipeable() && a.getFamilyIds().contains((double) getId()))
-                .stream()
-                .collect(Collectors.toList());
+        return new ArrayList<>(WavenEntities
+                .getAll(Spell.class, a -> a.isAvailable() && a.isEquipeable() && a.getFamilyIds().contains(getId())));
     }
 
     @Override
@@ -54,7 +56,7 @@ public class God extends NamedWavenEntity implements WithSpells, WithWeapon, Wit
         return WavenEntities
                 .getAll(Spell.class, a -> a.isAvailable() && a.isEquipeable() && a.getFamilyIds().contains(getId()))
                 .stream()
-                .map(a ->a.getId())
+                .map(WavenEntity::getId)
                 .collect(Collectors.toList());
     }
 
@@ -89,5 +91,10 @@ public class God extends NamedWavenEntity implements WithSpells, WithWeapon, Wit
         json.add("spells", Jsoneable.toJsonArray(getIdSpells()));
 
         return json;
+    }
+
+    @Override
+    public Optional<Integer> getOrder() {
+        return getOrder(getJsonRepresentation());
     }
 }
