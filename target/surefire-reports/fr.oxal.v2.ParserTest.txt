@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: fr.oxal.v2.ParserTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.922 s <<< FAILURE! - in fr.oxal.v2.ParserTest
+testAllDescriptionParser  Time elapsed: 0.603 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+expected: <> but was: <error testAllDescriptionParser : 
+	class : Companion
+	id : 496
+	nameID : 28903
+	descriID : 35883
+error testAllDescriptionParser : 
+	class : ObjectMechanism
+	id : 166
+	nameID : 5815
+	descriID : 11270
+>
+	at fr.oxal.v2.ParserTest.baseTest(ParserTest.java:51)
+	at fr.oxal.v2.ParserTest.testAllDescriptionParser(ParserTest.java:62)
+

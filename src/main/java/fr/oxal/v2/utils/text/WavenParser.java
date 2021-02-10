@@ -91,7 +91,7 @@ public class WavenParser {
                     str = text;
                     break;
                 case 1:
-                    str = str.replaceAll("\\<((?!\\>).)*\\>", "");
+                    str = str.replaceAll("\\<((?!\\>).)*\\>", " ");
 
                     break;
                 case 2:
@@ -105,7 +105,9 @@ public class WavenParser {
                     break;
                 case 4:
                     str = str.replaceAll("<b>", "**")
-                            .replaceAll("</b>", "**");
+                            .replaceAll("</b>", "**")
+                            .replaceAll("<B>", "**")
+                            .replaceAll("</B>", "**");
                     break;
             }
         }

@@ -23,6 +23,7 @@ public class ReferenceEffectParser extends WavenEntityParsing implements Referen
     public final static String VALUE_EFFECT = "value";
     public final static String MECHANISM_SPAWN_RANGE = "MECHANISMSPAWNRANGE";
     public final static String DISTANCE = "distance";
+    public final static String SPAWN_RANGE_MECA = "mechanismSpawnRange";
     public final static String VALUE_FORMAT = "%s(%d)";
     public final static QuantityParser quantityParser = new QuantityParser();
     public final static ValueParser valueParser = new ValueParser();
@@ -53,6 +54,8 @@ public class ReferenceEffectParser extends WavenEntityParsing implements Referen
                         Optional<Integer> option = getNamedEntity().asWithFilters().getDynamicFilterValue(DISTANCE, getLevel());
                         if (option.isPresent()){
                             return option.get() + "";
+                        }else{
+
                         }
                     }
                 } else if (effect.get().haveName()){

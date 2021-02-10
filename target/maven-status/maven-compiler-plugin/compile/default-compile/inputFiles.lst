@@ -55,13 +55,14 @@
 /home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/utils/jsonArgumentEntity/precompueted/DynamicedEntity.java
 /home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/utils/parser/entity/EntityParser.java
 /home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/WavenEntity.java
-/home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/utils/element/WithElement.java
 /home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/entity/pvm/skill/UnlockableSkill.java
+/home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/utils/jsonArgumentEntity/detail/WithElement.java
 /home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/utils/parser/Parser.java
 /home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/utils/parser/WavenEntityParsing.java
 /home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/entity/pvm/equipment/Equipment.java
 /home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/entity/base/StatEntity/mechanism/ObjectMechanism.java
 /home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/utils/jsonArgumentEntity/detail/FamiliesEntity.java
+/home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/entity/base/StatEntity/WithStatEntities.java
 /home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/utils/updateGauge/WithCost.java
 /home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/entity/NamedWavenEntity.java
 /home/oxal/Documents/Code/WavenpediaProject/WavenpediaV2/src/main/java/fr/oxal/v2/waven/effect/WavenEffect.java

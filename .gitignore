@@ -25,6 +25,7 @@ hs_err_pid*
 # intellij
 /.idea
 *.iml
+/out
 
 # my test
 /src/main/java/Main.java

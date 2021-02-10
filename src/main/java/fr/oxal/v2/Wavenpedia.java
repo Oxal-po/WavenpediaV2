@@ -37,7 +37,7 @@ public class Wavenpedia {
 
     public static final Class<? extends NamedWavenEntity>[] ALL_NAMED_CLASS = new Class[]{
             Spell.class, God.class, Weapon.class, Companion.class, ObjectMechanism.class, Summoning.class,
-            FloorMechanism.class, Skill.class, Gem.class, Fragment.class
+            FloorMechanism.class, Skill.class, Gem.class, Fragment.class,
     };
     public static final Class<? extends DynamicedEntity>[] ALL_DYNAMICED_CLASS = new Class[]{
             PropertyEffect.class, Spell.class, God.class, Weapon.class, Companion.class, ObjectMechanism.class,
