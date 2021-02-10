@@ -4,12 +4,10 @@ import com.google.gson.*;
 import com.mongodb.BasicDBObject;
 import fr.oxal.v2.mongo.utils.MongoUtils;
 import fr.oxal.v2.waven.WavenEntity;
-import fr.oxal.v2.waven.entity.NamedWavenEntity;
-import fr.oxal.v2.waven.entity.WavenInterface;
+import fr.oxal.v2.waven.element.WavenElements;
 import fr.oxal.v2.waven.utils.collections.WavenEntities;
-import fr.oxal.v2.waven.utils.element.WavenElement;
+import fr.oxal.v2.waven.element.WavenElement;
 import fr.oxal.v2.waven.utils.stat.*;
-import fr.oxal.v2.waven.utils.updateGauge.UpdateGauge;
 import fr.oxal.v2.waven.utils.updateGauge.WithCost;
 import fr.oxal.v2.waven.utils.updateGauge.WithGains;
 
@@ -18,7 +16,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.List;
 
 public interface Jsoneable {
 
@@ -86,7 +83,7 @@ public interface Jsoneable {
     static JsonObject costJson(WithCost s){
         JsonObject json = new JsonObject();
 
-        for (WavenElement e : WavenElement.getAllElement()){
+        for (WavenElement e : WavenElements.getAllElement()){
             json.add(e.getGlobalParsedName(0), new JsonPrimitive(0));
         }
 
@@ -100,7 +97,7 @@ public interface Jsoneable {
     static JsonObject gainJson(WithGains s){
         JsonObject json = new JsonObject();
 
-        for (WavenElement e : WavenElement.getAllGauge()){
+        for (WavenElement e : WavenElements.getAllGauge()){
             json.add(e.getGlobalParsedName(0), new JsonPrimitive(0));
         }
 

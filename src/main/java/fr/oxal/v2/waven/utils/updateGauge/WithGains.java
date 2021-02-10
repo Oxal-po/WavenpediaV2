@@ -2,7 +2,7 @@ package fr.oxal.v2.waven.utils.updateGauge;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import fr.oxal.v2.waven.utils.element.WavenElement;
+import fr.oxal.v2.waven.element.WavenElement;
 
 import java.util.List;
 import java.util.Optional;

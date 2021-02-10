@@ -1,8 +1,7 @@
 package fr.oxal.v2.waven.utils.jsonArgumentEntity.detail;
 
 import com.google.gson.JsonObject;
-import fr.oxal.v2.waven.utils.element.WavenElement;
-import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.DetailsEntity;
+import fr.oxal.v2.waven.element.WavenElement;
 
 import java.util.Optional;
 

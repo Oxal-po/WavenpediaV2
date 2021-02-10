@@ -2,13 +2,13 @@ package fr.oxal.v2.waven.utils.parser.effect;
 
 import fr.oxal.v2.waven.effect.WavenEffect;
 import fr.oxal.v2.waven.utils.parser.ParserUtils;
-import fr.oxal.v2.waven.utils.parser.WavenEntityParsing;
+import fr.oxal.v2.waven.utils.parser.WavenEntityParser;
 import fr.oxal.v2.waven.utils.parser.utils.OverrideableParser;
 import fr.oxal.v2.waven.utils.parser.utils.WavenObjectParser;
 
 import java.util.Optional;
 
-public class EffectParser extends WavenEntityParsing implements OverrideableParser, WavenObjectParser<WavenEffect> {
+public class EffectParser extends WavenEntityParser implements OverrideableParser, WavenObjectParser<WavenEffect> {
 
     public final static String REGEX_GLOBAL_EFFECT = "\\{#?%?([aA-zZ]+)(\\[.*\\])?!?\\}";
     public final static String REGEX_NOT_OVERRIDE_EFFECT = "\\{#?%?([aA-zZ]+)!?\\}";

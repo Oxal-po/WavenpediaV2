@@ -2,20 +2,15 @@ package fr.oxal.v2.waven.utils.parser.effect;
 
 import com.google.gson.JsonObject;
 import fr.oxal.v2.waven.effect.WavenEffect;
-import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 import fr.oxal.v2.waven.utils.parser.ParserUtils;
-import fr.oxal.v2.waven.utils.parser.WavenEntityParsing;
+import fr.oxal.v2.waven.utils.parser.WavenEntityParser;
 import fr.oxal.v2.waven.utils.parser.other.QuantityParser;
 import fr.oxal.v2.waven.utils.parser.other.ValueParser;
-import fr.oxal.v2.waven.utils.parser.utils.OverrideableParser;
 import fr.oxal.v2.waven.utils.parser.utils.ReferenceParser;
-import fr.oxal.v2.waven.utils.parser.utils.WavenObjectParser;
 
 import java.util.Optional;
 
-import static fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithFilters.FILTERS;
-
-public class ReferenceEffectParser extends WavenEntityParsing implements ReferenceParser<WavenEffect> {
+public class ReferenceEffectParser extends WavenEntityParser implements ReferenceParser<WavenEffect> {
 
     public final static String REGEX_GLOBAL_EFFECT = "\\{((?!\\.).*):((?!\\.)[aA0-zZ9]+)!?\\}";
     public final static String REGEX_GLOBAL_EFFECT_REF = "\\{([aA-zZ]+):([aA-zZ]+)\\.([0-9]+)\\.([aA-zZ]+)\\}";

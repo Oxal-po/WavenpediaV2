@@ -1,12 +1,11 @@
 package fr.oxal.v2.waven.utils.parser.effect;
 
-import fr.oxal.v2.utils.math.WavenMath;
 import fr.oxal.v2.waven.utils.parser.ParserUtils;
-import fr.oxal.v2.waven.utils.parser.WavenEntityParsing;
+import fr.oxal.v2.waven.utils.parser.WavenEntityParser;
 
 import java.util.Optional;
 
-public class SymboleEffectParser extends WavenEntityParsing {
+public class SymboleEffectParser extends WavenEntityParser {
 
     public static final String REGEX_MATH = "\\{[aA-zZ]+:\\(?([\\+\\-])([aA0-zZ9]+)\\)?\\}";
     @Override

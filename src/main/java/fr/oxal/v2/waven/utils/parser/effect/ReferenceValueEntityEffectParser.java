@@ -6,7 +6,7 @@ import fr.oxal.v2.waven.effect.WavenEffect;
 import fr.oxal.v2.waven.utils.collections.WavenEntities;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
 import fr.oxal.v2.waven.utils.parser.ParserUtils;
-import fr.oxal.v2.waven.utils.parser.WavenEntityParsing;
+import fr.oxal.v2.waven.utils.parser.WavenEntityParser;
 import fr.oxal.v2.waven.utils.parser.utils.ReferenceParser;
 import fr.oxal.v2.waven.utils.parser.utils.SecondReferenceParser;
 
@@ -14,7 +14,7 @@ import java.util.Optional;
 
 import static fr.oxal.v2.waven.utils.parser.effect.ReferenceEffectParser.*;
 
-public class ReferenceValueEntityEffectParser extends WavenEntityParsing implements ReferenceParser<WavenEffect>, SecondReferenceParser<DynamicedEntity> {
+public class ReferenceValueEntityEffectParser extends WavenEntityParser implements ReferenceParser<WavenEffect>, SecondReferenceParser<DynamicedEntity> {
 
     public final static String REGEX_GLOBAL_EFFECT = "\\{([aA-zZ]+):([aA-zZ]+)\\.([0-9]+)\\.([aA0-zZ9]+)\\}";
     public final static String VALUE_NEXT_EFFECT = "valueAndNext";

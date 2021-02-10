@@ -2,7 +2,7 @@ package fr.oxal.v2.waven.utils.parser;
 
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 
-public abstract class WavenEntityParsing extends Parser{
+public abstract class WavenEntityParser extends Parser{
 
     private NamedEntity namedEntity;
     private int level;

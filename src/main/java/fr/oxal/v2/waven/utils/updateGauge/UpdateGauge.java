@@ -4,9 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import fr.oxal.v2.utils.math.WavenMath;
-import fr.oxal.v2.waven.effect.WavenEffect;
 import fr.oxal.v2.waven.entity.WavenInterface;
-import fr.oxal.v2.waven.utils.element.WavenElement;
+import fr.oxal.v2.waven.element.WavenElement;
 
 import java.util.ArrayList;
 import java.util.List;

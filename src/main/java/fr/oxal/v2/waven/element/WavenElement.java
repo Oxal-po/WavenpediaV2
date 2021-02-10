@@ -1,4 +1,5 @@
-package fr.oxal.v2.waven.utils.element;
+package fr.oxal.v2.waven.element;
+
 
 import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
@@ -14,9 +15,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static fr.oxal.v2.waven.utils.dictionary.HaveDictionary.UI;
+import static fr.oxal.v2.waven.element.WavenElements.ALL_ELEMENT;
 
-public class WavenElement implements WavenInterface , NamedEntity {
+public class WavenElement implements WavenInterface, NamedEntity {
 
     private int id, value;
     public final static String REF_NAME_DICO = "UI";
@@ -32,8 +33,6 @@ public class WavenElement implements WavenInterface , NamedEntity {
     public final static int NEUTRAL = 6;
     public final static int ADD_NEUTRAL = 57;
     public final static int ADD_RESERVE = 19;
-    public final static int[] ALL_ELEMENT = new int[]{FIRE, WATER, EARTH, WIND, NEUTRAL, PA};
-    public final static int[] ALL_GAUGE = new int[]{ADD_RESERVE, ADD_FIRE, ADD_WATER, ADD_EARTH, ADD_WIND, ADD_NEUTRAL};
 
 
     public WavenElement(int id) {
@@ -162,26 +161,6 @@ public class WavenElement implements WavenInterface , NamedEntity {
         }
 
         return Optional.empty();
-    }
-
-    public static List<WavenElement> getAllElement(){
-        ArrayList<WavenElement> elem = new ArrayList<>();
-        for (int i : ALL_ELEMENT){
-            elem.add(new WavenElement(i));
-        }
-        return elem;
-    }
-
-    public static List<String> getAllElementName(){
-        return getAllElement().stream().map(a -> a.getName()).collect(Collectors.toList());
-    }
-
-    public static List<WavenElement> getAllGauge(){
-        ArrayList<WavenElement> elem = new ArrayList<>();
-        for (int i : ALL_GAUGE){
-            elem.add(new WavenElement(i));
-        }
-        return elem;
     }
 
     @Override

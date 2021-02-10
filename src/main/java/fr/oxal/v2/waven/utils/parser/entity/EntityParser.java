@@ -6,7 +6,7 @@ import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.utils.collections.WavenEntities;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 import fr.oxal.v2.waven.utils.parser.ParserUtils;
-import fr.oxal.v2.waven.utils.parser.WavenEntityParsing;
+import fr.oxal.v2.waven.utils.parser.WavenEntityParser;
 import fr.oxal.v2.waven.utils.parser.utils.OverrideableParser;
 import fr.oxal.v2.waven.utils.parser.utils.WavenObjectParser;
 
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 import static fr.oxal.v2.waven.utils.parser.ParserUtils.getTextByRegex;
 
-public class EntityParser extends WavenEntityParsing implements OverrideableParser, WavenObjectParser<NamedWavenEntity> {
+public class EntityParser extends WavenEntityParser implements OverrideableParser, WavenObjectParser<NamedWavenEntity> {
 
     public final static String REGEX_GLOBAL_ENTITY = "\\{[aA-zZ]+:([0-9]+)(\\[.*\\])?!?\\}";
     public final static String REGEX_NOT_OVERRIDE_ENTITY = "\\{[aA-zZ]+:([0-9]+)!?\\}";
