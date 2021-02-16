@@ -12,6 +12,7 @@ import fr.oxal.v2.waven.entity.base.StatEntity.weapon.Weapon;
 import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.pvm.equipment.ring.Ring;
 import fr.oxal.v2.waven.entity.pvm.skill.WithSkills;
+import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.WithElement;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithCastTarget;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithFilters;
@@ -25,12 +26,20 @@ import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.PrecomputedEntity;
 public interface WavenInterface {
 
 
-    default boolean isNamedEntity(){
+    default boolean isNamedWavenEntity(){
         return this instanceof NamedWavenEntity;
     }
 
-    default NamedWavenEntity asNamedEntity(){
+    default NamedWavenEntity asNamedWavenEntity(){
         return (NamedWavenEntity) this;
+    }
+
+    default boolean isNamedEntity(){
+        return this instanceof NamedEntity;
+    }
+
+    default NamedEntity asNamedEntity(){
+        return (NamedEntity) this;
     }
 
     default boolean isWavenEntity(){

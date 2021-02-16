@@ -3,13 +3,14 @@ package fr.oxal.v2.waven;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import fr.oxal.v2.waven.entity.WavenInterface;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 
-public abstract class WavenEntity  implements Comparable<WavenEntity>{
+public abstract class WavenEntity  implements Comparable<WavenEntity>, WavenInterface {
 
     private int id;
     private String m_displayName;

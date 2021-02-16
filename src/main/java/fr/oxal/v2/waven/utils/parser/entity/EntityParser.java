@@ -60,7 +60,7 @@ public class EntityParser extends WavenEntityParser implements OverrideableParse
                 .map(o -> (NamedEntity) o.get())
                 .collect(Collectors.toList());
         if (list.size() == 1){
-            return Optional.of(list.get(0).asNamedEntity());
+            return Optional.of(list.get(0).asNamedWavenEntity());
         }else {
             System.err.println("erreur EntityParser : Object introuvable");
         }

@@ -1,7 +1,7 @@
 fr/oxal/v2/waven/utils/jsonArgumentEntity/merchant/Buyable.class
 fr/oxal/v2/waven/entity/pvm/dungeon/chapter/WithChapters.class
 fr/oxal/v2/waven/utils/jsonArgumentEntity/rarity/WithRarity.class
-fr/oxal/v2/waven/utils/element/WavenElements.class
+fr/oxal/v2/waven/utils/parser/WavenEntityParser.class
 fr/oxal/v2/waven/utils/jsonArgumentEntity/order/WithOrder.class
 fr/oxal/v2/waven/entity/pvm/dungeon/chapter/DungeonChapter.class
 fr/oxal/v2/waven/entity/pvm/currency/Currency.class
