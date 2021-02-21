@@ -10,20 +10,18 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 
-public abstract class WavenEntity  implements Comparable<WavenEntity>, WavenInterface {
+public abstract class WavenEntity implements Comparable<WavenEntity>, WavenInterface {
 
+    public static final int NOT_ENTITY = -1;
+    public static final JsonParser parser = new JsonParser();
+    public static final Gson gson = new Gson();
     private int id;
     private String m_displayName;
     private int m_availability;
     private JsonObject m_jsonRepresentation;
 
-
-    public static final int NOT_ENTITY = -1;
-    public static final JsonParser parser = new JsonParser();
-    public static final Gson gson = new Gson();
-
     public WavenEntity(int id) {
-        if (id != NOT_ENTITY){
+        if (id != NOT_ENTITY) {
             this.id = id;
             try {
                 BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(getPathFolder() + id + ".json")), StandardCharsets.UTF_8));
@@ -36,12 +34,12 @@ public abstract class WavenEntity  implements Comparable<WavenEntity>, WavenInte
         }
     }
 
-    public static boolean fileExist(int id, String path){
+    public static boolean fileExist(int id, String path) {
         File f = new File(path + id + ".json");
         return f.exists();
     }
 
-    public static boolean fileExist(int id, Class c){
+    public static boolean fileExist(int id, Class c) {
         try {
             Constructor constructor = c.getConstructor(int.class);
             return WavenEntity.fileExist(id, (String) c.getMethod("getPathFolder").invoke(constructor.newInstance(WavenEntity.NOT_ENTITY)));
@@ -59,13 +57,13 @@ public abstract class WavenEntity  implements Comparable<WavenEntity>, WavenInte
 
     public abstract String getPathFolder();
 
-    public void clone(WavenEntity entity){
+    public void clone(WavenEntity entity) {
         m_displayName = entity.m_displayName;
         m_availability = entity.m_availability;
         m_jsonRepresentation = entity.m_jsonRepresentation;
     }
 
-    public boolean isEntity(){
+    public boolean isEntity() {
         return id != NOT_ENTITY;
     }
 
