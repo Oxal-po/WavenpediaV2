@@ -34,6 +34,7 @@ public class WavenParser {
 
     public static String parse(String text, NamedEntity waven, int level, int... option) {
         Pattern p = Pattern.compile("\\{((?!\\{).)*\\}");
+        text = text.replace("\t", "");
         Matcher m = p.matcher(text);
         return parseOption(matcher(m, text, waven, level), option);
     }
@@ -71,8 +72,11 @@ public class WavenParser {
                 //je check si c'est en fonction du genre
                 text = text.replace(find, genderParser.parse(find));
             } else {
-                System.err.println("-ERROR- erreur WavenParser : ce text n'est pas parser : " + text + " : " + find);
-                if (waven.isDynamicedEntity()){
+                System.err.println("-ERROR- erreur WavenParser : ce text n'est pas parser : " + waven.getClass().getSimpleName() + " : " + text + " : " + find);
+                if (waven.isWavenEntity()) {
+                    System.err.println(waven.asWavenEntity().getId());
+                }
+                if (waven.isDynamicedEntity()) {
                     System.err.println(waven.asDynamicedEntity().getDynamicValues());
                 }
             }

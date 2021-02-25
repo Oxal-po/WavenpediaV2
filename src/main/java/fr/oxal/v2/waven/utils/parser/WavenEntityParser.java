@@ -14,7 +14,7 @@ public abstract class WavenEntityParser extends Parser{
                 namedEntity = (NamedEntity) objects[0];
                 level = (int) objects[1];
             }else{
-                System.err.println("erreur EntityParser : mauvais typage");
+                System.err.println("erreur EntityParser : mauvais typage : " + objects[0] + " : " + objects[1]);
             }
         }else{
             System.err.println("erreur EntityParser : mauvais argument");
