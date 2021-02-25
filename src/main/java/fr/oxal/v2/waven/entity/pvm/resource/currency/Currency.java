@@ -1,4 +1,4 @@
-package fr.oxal.v2.waven.entity.pvm.currency;
+package fr.oxal.v2.waven.entity.pvm.resource.currency;
 
 public class Currency {
 
