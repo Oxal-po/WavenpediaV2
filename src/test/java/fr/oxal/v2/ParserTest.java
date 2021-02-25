@@ -1,6 +1,5 @@
 package fr.oxal.v2;
 
-import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.utils.collections.WavenEntities;
@@ -26,24 +25,24 @@ public class ParserTest{
         Wavenpedia.start();
     }
 
-    public void baseTest(Class<? extends NamedWavenEntity>[] classes, Predicate<NamedWavenEntity> predicate, Function<NamedWavenEntity, String> notParse, Function<NamedWavenEntity, String> parse){
+    public void baseTest(Class<? extends NamedEntity>[] classes, Predicate<NamedWavenEntity> predicate, Function<NamedWavenEntity, String> notParse, Function<NamedWavenEntity, String> parse) {
         Throwable t = new Throwable();
         t.fillInStackTrace();
         StackTraceElement elem = t.getStackTrace()[1];
         String functionName = elem.getMethodName();
 
         StringBuilder builder = new StringBuilder();
-        for (Class<? extends NamedWavenEntity> c : classes){
-            for (NamedWavenEntity n : WavenEntities.getAll( (Class<NamedWavenEntity>) c, predicate)){
-                try{
+        for (Class<? extends NamedEntity> c : classes) {
+            for (NamedWavenEntity n : WavenEntities.getAll((Class<NamedWavenEntity>) c, predicate)) {
+                try {
                     notParse.apply(n);
                     parse.apply(n);
-                }catch (NullPointerException e){
+                } catch (NullPointerException e) {
                     builder.append(String.format(FORMAT_ERROR, functionName, n.getClass().getSimpleName(),
                             n.getId(), n.getNameId(), n.getDescriptionId()) + "\n");
-                    try{
+                    try {
                         builder.append(String.format(FORMAT_ERROR_2, n.getName(), n.getDescription()) + "\n");
-                    }catch (NullPointerException ex){
+                    } catch (NullPointerException ex) {
                     }
                 }
             }
