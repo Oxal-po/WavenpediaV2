@@ -4,8 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 public interface WithElementarySkills extends WithSkills {
@@ -25,7 +25,7 @@ public interface WithElementarySkills extends WithSkills {
         return getJsonArraySkills(1, 2, 3, 4);
     }
 
-    default ArrayList<Skill> getSkills(int... keys) {
+    default List<Skill> getSkills(int... keys) {
         return getSkills(getJsonArraySkills(keys));
     }
 

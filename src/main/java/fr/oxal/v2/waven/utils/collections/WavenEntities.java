@@ -3,31 +3,41 @@ package fr.oxal.v2.waven.utils.collections;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.utils.text.TextUtils;
 import fr.oxal.v2.waven.WavenEntity;
+import fr.oxal.v2.waven.effect.WavenEffect;
+import fr.oxal.v2.waven.element.WavenElement;
+import fr.oxal.v2.waven.element.WavenElements;
+import fr.oxal.v2.waven.entity.WavenInterface;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class WavenEntities {
-    
-    public static <T extends WavenEntity> List<T> getAll(Class<T> c){
+
+    public static <T extends WavenInterface> List<T> getAll(Class<T> c) {
         ArrayList<T> list = new ArrayList<>();
-        construct(c, WavenEntity.NOT_ENTITY)
-                .ifPresent(e -> {
-                    File folder = new File(e.getPathFolder());
-                    if (folder.isDirectory()){
-                        for (File file : folder.listFiles()){
-                            construct(c, Integer.parseInt(file.getName().split("\\.")[0])).ifPresent(list::add);
+
+        if (c == WavenElement.class) {
+            return (List<T>) WavenElements.getAllElement();
+        } else if (c == WavenEffect.class) {
+            return (List<T>) WavenEffects.getAllEffect();
+        } else {
+            construct(c, WavenEntity.NOT_ENTITY)
+                    .ifPresent(e -> {
+                        File folder = new File(e.asWavenEntity().getPathFolder());
+                        if (folder.isDirectory()) {
+                            for (File file : folder.listFiles()) {
+                                construct(c, Integer.parseInt(file.getName().split("\\.")[0])).ifPresent(list::add);
+                            }
                         }
-                    }
-                });
+                    });
+        }
+
 
         return list;
     }
@@ -76,6 +86,7 @@ public class WavenEntities {
     }
 
     public static <T> Optional<T> construct(Class<T> c, int id){
+
         try {
             Constructor constructor = c.getConstructor(int.class);
             if (WavenEntity.fileExist(id, c) || id == WavenEntity.NOT_ENTITY){

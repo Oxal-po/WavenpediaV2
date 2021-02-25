@@ -113,7 +113,7 @@ public class ReferenceValueEntityEffectParser extends WavenEntityParser implemen
                 return c;
             }
         }
-        System.err.println("erreur ReferenceValueEntityEffectParser : aucune classe trouver avec le nom : " + name);
+        System.err.println("erreur ReferenceValueEntityEffectParser : aucune classe trouver avec le nom : " + name + " : " + text);
         return null;
     }
 }

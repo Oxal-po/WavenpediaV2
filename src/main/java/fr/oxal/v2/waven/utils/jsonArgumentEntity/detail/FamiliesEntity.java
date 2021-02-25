@@ -3,14 +3,13 @@ package fr.oxal.v2.waven.utils.jsonArgumentEntity.detail;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import fr.oxal.v2.Wavenpedia;
-import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.entity.base.god.God;
 import fr.oxal.v2.waven.entity.pvm.family.Family;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public interface FamiliesEntity extends DetailsEntity {
 
@@ -28,8 +27,8 @@ public interface FamiliesEntity extends DetailsEntity {
     default List<Integer> getFamilyIds(){
         ArrayList<Integer> list = new ArrayList<>();
         getFamilies().ifPresent(a -> {
-            for (JsonElement e : a){
-                if (e.isJsonPrimitive()){
+            for (JsonElement e : a) {
+                if (e.isJsonPrimitive()) {
                     list.add(e.getAsInt());
                 }
             }
@@ -37,12 +36,16 @@ public interface FamiliesEntity extends DetailsEntity {
         return list;
     }
 
-    default Optional<String> getNameFamily(int id){
-        if (God.fileExist(id, God.class)){
+    default List<Integer> getFamilyIdsNoGods() {
+        return getFamilyIds().stream().filter(a -> !God.fileExist(a, God.class)).collect(Collectors.toList());
+    }
+
+    default Optional<String> getNameFamily(int id) {
+        if (God.fileExist(id, God.class)) {
             return Optional.of(new God(id).getName());
-        }else if (Family.fileExist(id, Family.class)){
+        } else if (Family.fileExist(id, Family.class)) {
             return Optional.of(new Family(id).getDisplayName());
-        }else{
+        } else {
             System.err.println("error FamiliesEntity : getNameFamily : id non reconnu : " + id + " : " + asNamedEntity().getName());
         }
 

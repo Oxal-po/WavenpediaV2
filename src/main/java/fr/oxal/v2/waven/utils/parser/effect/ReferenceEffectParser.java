@@ -1,6 +1,7 @@
 package fr.oxal.v2.waven.utils.parser.effect;
 
 import com.google.gson.JsonObject;
+import fr.oxal.v2.utils.text.WavenParser;
 import fr.oxal.v2.waven.effect.WavenEffect;
 import fr.oxal.v2.waven.utils.parser.ParserUtils;
 import fr.oxal.v2.waven.utils.parser.WavenEntityParser;
@@ -42,7 +43,7 @@ public class ReferenceEffectParser extends WavenEntityParser implements Referenc
                 } else if (valueParser.canParse(effect.get().getName())){
                     //parser de valeur {0}
                     valueParser.setup(i.get());
-                    return valueParser.parse(effect.get().getName());
+                    return WavenParser.parse(valueParser.parse(effect.get().getName()), effect.get());
                 } else if (getNamedEntity().isWithFilters() && !effect.get().haveName()){
                     //parser si "l'effet" n'est pas trouver (utile que pour la rangeMeca actuellement)
                     if (effect.get().getKeyWord().equals(MECHANISM_SPAWN_RANGE)){
@@ -64,21 +65,22 @@ public class ReferenceEffectParser extends WavenEntityParser implements Referenc
 
                 }else if (ParserUtils.getText(text, REGEX_GLOBAL_EFFECT, 1).equals(VALUE_EFFECT) || ParserUtils.getText(text, REGEX_GLOBAL_EFFECT, 1).equals(VALUE_NEXT_EFFECT) && i.isPresent()){
                     return i.get() + "";
-                }else {
+                } else {
                     System.err.println("erreur ReferenceEffectParser : echec du parsing : " + effect.get().getName() + " : " + effect.get().getKeyWord());
                 }
-            }else if (ParserUtils.getText(text, REGEX_GLOBAL_EFFECT, 1).equals(VALUE_EFFECT) && i.isPresent()){
+            } else if (ParserUtils.getText(text, REGEX_GLOBAL_EFFECT, 1).equals(VALUE_EFFECT) && i.isPresent()) {
                 return i.get() + "";
-            }else{
+            } else {
                 System.err.println("erreur ReferenceEffectParser : L'effet n'est pas trouver avec la ref : " + getKeyRef(text));
             }
 
-        } else{
-            if (getKeyRef(text).equals("limit")){
-                System.err.println("-WARNING- changer ce système c'est foireux");
+        } else {
+            if (getKeyRef(text).equals("limit") || getKeyRef(text).equals("c")) {
+                System.err.println("-WARNING- changer ce système c'est foireux (valeur par defaut ?)");
                 return 1 + "";
             }
-            System.err.println(getObject(text));
+            System.err.println(text);
+            System.err.println(getNamedEntity().asDynamicedEntity().getDynamicValues());
             System.err.println("erreur ReferenceEffectParser : La refference n'est pas présente dans l'objet : " + getKeyRef(text));
         }
         return null;

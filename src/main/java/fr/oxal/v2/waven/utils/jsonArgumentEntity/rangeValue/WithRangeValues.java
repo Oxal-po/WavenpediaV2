@@ -6,6 +6,8 @@ import com.google.gson.JsonObject;
 import fr.oxal.v2.utils.math.WavenMath;
 import fr.oxal.v2.waven.entity.WavenInterface;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static fr.oxal.v2.utils.math.WavenMath.FACTOR;
@@ -61,6 +63,28 @@ public interface WithRangeValues extends WavenInterface {
 
     default Optional<JsonArray> getAvailableLevel() {
         return getRangeValues().map(a -> a.get(LEVEL_AVAILABLE).getAsJsonArray());
+    }
+
+    default List<Integer> getLevels() {
+        ArrayList<Integer> list = new ArrayList<>();
+
+        getAvailableLevel().ifPresent(a -> {
+            for (JsonElement e : a) {
+                if (e.isJsonPrimitive() && e.getAsJsonPrimitive().isNumber()) {
+                    list.add(e.getAsInt());
+                }
+            }
+        });
+
+        return list;
+    }
+
+    default int getMaxLevel() {
+        return getLevels().stream().max(Integer::compareTo).orElse(0);
+    }
+
+    default int getMinLevel() {
+        return getLevels().stream().min(Integer::compareTo).orElse(0);
     }
 
     default Optional<Integer> getArrayValue(String name, int level) {

@@ -1,7 +1,7 @@
 package fr.oxal.v2.waven.entity.base.StatEntity;
 
 import com.google.gson.JsonElement;
-import fr.oxal.v2.waven.entity.NamedWavenEntity;
+import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.entity.WavenInterface;
 import fr.oxal.v2.waven.entity.base.Companion;
 import fr.oxal.v2.waven.entity.base.StatEntity.floorMechanism.FloorMechanism;
@@ -16,14 +16,14 @@ import java.util.stream.Collectors;
 
 public interface WithStatEntities extends WithRefEntity {
 
-    default List<NamedWavenEntity> getStatEntities(){
-        ArrayList<NamedWavenEntity> entities = new ArrayList<>();
+    default List<WavenEntity> getStatEntities() {
+        ArrayList<WavenEntity> entities = new ArrayList<>();
 
         getWavenRef().ifPresent(a -> {
-            for (JsonElement e : a){
-                if (e.isJsonObject()){
+            for (JsonElement e : a) {
+                if (e.isJsonObject()) {
                     getEntityByRef(e.getAsJsonObject()).ifPresent(entity -> {
-                        if (!entity.isSpell()){
+                        if (!entity.isSpell()) {
                             entities.add(entity);
                         }
                     });

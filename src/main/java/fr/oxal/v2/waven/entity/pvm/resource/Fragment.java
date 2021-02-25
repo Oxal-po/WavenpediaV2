@@ -1,4 +1,4 @@
-package fr.oxal.v2.waven.entity.pvm.resource.fragment;
+package fr.oxal.v2.waven.entity.pvm.resource;
 
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;

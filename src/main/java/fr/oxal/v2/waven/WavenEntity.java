@@ -9,6 +9,7 @@ import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 public abstract class WavenEntity implements Comparable<WavenEntity>, WavenInterface {
 
@@ -97,5 +98,18 @@ public abstract class WavenEntity implements Comparable<WavenEntity>, WavenInter
 
     public void setJsonRepresentation(JsonObject m_jsonRepresentation) {
         this.m_jsonRepresentation = m_jsonRepresentation;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WavenEntity that = (WavenEntity) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
