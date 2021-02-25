@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public class UnlockableSkill extends WavenEntity implements WithParent<Companion> {
 
-    public final static String UNLOCK_SKILL_PAT = Wavenpedia.jsonPath + "SubCompanionUnlockableSkillDefinition/";
+    public final static String UNLOCK_SKILL_PAT = Wavenpedia.jsonPath + "UnlockableSkillDefinition/";
     public final static String SKILL = "skill";
 
     public UnlockableSkill(int id) {
