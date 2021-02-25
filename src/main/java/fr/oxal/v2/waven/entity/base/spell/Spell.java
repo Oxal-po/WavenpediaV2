@@ -2,20 +2,20 @@ package fr.oxal.v2.waven.entity.base.spell;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.effect.WithEffect;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.StatEntity.WithStatEntities;
 import fr.oxal.v2.waven.entity.base.god.WithGods;
-import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
+import fr.oxal.v2.waven.entity.pvm.drop.SingleObtainableItemListDefinition;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithFilters;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.EquipeableEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.WithElement;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.image.WithImage;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
-import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.EquipeableEntity;
-import fr.oxal.v2.waven.utils.jsonCreator.Jsoneable;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.pvm.Dropeable;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.pvm.MerchantCost;
 import fr.oxal.v2.waven.utils.updateGauge.WithCost;
 import fr.oxal.v2.waven.utils.updateGauge.WithGains;
 
@@ -24,7 +24,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntity, WithSpells, WithEffect,
-        DynamicedEntity, WithFilters, WithElement, WithImage, WithGains, WithCost, Jsoneable, WithStatEntities {
+        DynamicedEntity, WithFilters, WithElement, WithImage, WithGains, WithCost, WithStatEntities, MerchantCost,
+        Dropeable {
 
     public static final String PATH_SPELL = Wavenpedia.jsonPath + "SpellDefinition/";
 
@@ -97,23 +98,13 @@ public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntit
         return getArrayGains(getJsonRepresentation());
     }
 
-
+    @Override
+    public Optional<JsonArray> getMerchantCost() {
+        return getMerchantCost(getJsonRepresentation());
+    }
 
     @Override
-    public JsonObject transformToJson() {
-        JsonObject json = defaultJson(this);
-        json.add(NAME_JSON, new JsonPrimitive(getGlobalParsedName(1)));
-        String descri = getGlobalParsedDescription(1);
-        if (!descri.equals(NamedEntity.BASE_STRING)){
-            json.add(DESCRI_JSON, new JsonPrimitive(descri));
-        }
-        json.add("spells", Jsoneable.toJsonArray(getIdSpells()));
-        json.add("costs", Jsoneable.costJson(this));
-        json.add("gains", Jsoneable.gainJson(this));
-        json.add("gods", Jsoneable.toJsonArray(getFamilyIds()));
-        json.add("equipeable", new JsonPrimitive(isEquipeable()));
-        json.add(ELEMENT_JSON, getElement().isPresent() ? new JsonPrimitive(getElement().get().getGlobalParsedName(0)) : null);
-
-        return json;
+    public List<SingleObtainableItemListDefinition> getDropZone() {
+        return getDropZone(this);
     }
 }
