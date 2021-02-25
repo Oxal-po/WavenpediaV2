@@ -16,6 +16,7 @@ public class Summoning extends NamedWavenEntity implements WithEffect, WithPm, W
 
     public final static String PATH_SUMMONING = Wavenpedia.jsonPath + "SummoningDefinition/";
     public final static String MONSTRE = "MONSTRE";
+    private static final int MAX_LEVEL_SUMMONING = 100;
 
     public Summoning(int id) {
         super(id);
@@ -56,7 +57,7 @@ public class Summoning extends NamedWavenEntity implements WithEffect, WithPm, W
         return getPm(level, getJsonRepresentation());
     }
 
-    public boolean isMonster(){
+    public boolean isMonster() {
         return getDisplayName().contains(MONSTRE);
     }
 }

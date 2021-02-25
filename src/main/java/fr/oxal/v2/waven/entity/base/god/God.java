@@ -1,6 +1,7 @@
 package fr.oxal.v2.waven.entity.base.god;
 
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
@@ -10,9 +11,7 @@ import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.base.spell.WithSpells;
 import fr.oxal.v2.waven.entity.pvm.skill.WithElementarySkills;
 import fr.oxal.v2.waven.utils.collections.WavenEntities;
-import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.order.WithOrder;
-import fr.oxal.v2.waven.utils.jsonCreator.Jsoneable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class God extends NamedWavenEntity implements WithSpells, WithWeapon,
-        WithElementarySkills, WithOrder, Jsoneable {
+        WithElementarySkills, WithOrder {
 
     public static final String PATH_GOD = Wavenpedia.jsonPath + "GodDefinition/";
 
@@ -77,20 +76,6 @@ public class God extends NamedWavenEntity implements WithSpells, WithWeapon,
     @Override
     public Optional<JsonArray> getElementarySkill() {
         return getElementarySkill(getJsonRepresentation());
-    }
-
-    @Override
-    public JsonObject transformToJson() {
-        JsonObject json = defaultJson(this);
-        json.add(NAME_JSON, new JsonPrimitive(getGlobalParsedName(0)));
-        String descri = getGlobalParsedDescription(0);
-        if (!descri.equals(NamedEntity.BASE_STRING)){
-            json.add(DESCRI_JSON, new JsonPrimitive(descri));
-        }
-        json.add("weapons", Jsoneable.toJsonArray(getWeaponsId()));
-        json.add("spells", Jsoneable.toJsonArray(getIdSpells()));
-
-        return json;
     }
 
     @Override
