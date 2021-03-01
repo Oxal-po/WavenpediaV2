@@ -84,7 +84,7 @@ public class ReferenceValueEntityEffectParser extends WavenEntityParser implemen
     @Override
     public Optional<WavenEffect> getObject(String text) {
         String name = ParserUtils.getText(text, REGEX_GLOBAL_EFFECT, 1);
-        if (name.equals(VALUE_EFFECT)){
+        if (name.equals(VALUE_EFFECT) || !WavenEffect.exist(name.toUpperCase())) {
             return Optional.empty();
         }
         return Optional.of(new WavenEffect(name.toUpperCase()));

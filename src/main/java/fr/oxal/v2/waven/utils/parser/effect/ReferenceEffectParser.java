@@ -27,6 +27,7 @@ public class ReferenceEffectParser extends WavenEntityParser implements Referenc
     @Override
     public String parse(String text) {
         Optional<JsonObject> o = getJsonRef(text, getNamedEntity());
+
         if (o.isPresent()){
             Optional<WavenEffect> effect = getObject(text);
             Optional<Integer> i = getValue(text, getLevel(), getNamedEntity());
@@ -44,16 +45,6 @@ public class ReferenceEffectParser extends WavenEntityParser implements Referenc
                     //parser de valeur {0}
                     valueParser.setup(i.get());
                     return WavenParser.parse(valueParser.parse(effect.get().getName()), effect.get());
-                } else if (getNamedEntity().isWithFilters() && !effect.get().haveName()){
-                    //parser si "l'effet" n'est pas trouver (utile que pour la rangeMeca actuellement)
-                    if (effect.get().getKeyWord().equals(MECHANISM_SPAWN_RANGE)){
-                        Optional<Integer> option = getNamedEntity().asWithFilters().getDynamicFilterValue(DISTANCE, getLevel());
-                        if (option.isPresent()){
-                            return option.get() + "";
-                        }else{
-
-                        }
-                    }
                 } else if (effect.get().haveName()){
                     //parser pou les effet dit sans valeur mais qui en on quand même une au final parceque pourquoi pas
                     Optional<Integer> optional = getNamedEntity().asDynamicedEntity().getDynamicValue(getKeyRef(text), getLevel());
@@ -70,6 +61,20 @@ public class ReferenceEffectParser extends WavenEntityParser implements Referenc
                 }
             } else if (ParserUtils.getText(text, REGEX_GLOBAL_EFFECT, 1).equals(VALUE_EFFECT) && i.isPresent()) {
                 return i.get() + "";
+            } else if (ParserUtils.getText(text, REGEX_GLOBAL_EFFECT, 1).equals(VALUE_NEXT_EFFECT) && i.isPresent()) {
+                return i.get() + "";
+            } else if (getNamedEntity().isWithFilters()) {
+                //parser si "l'effet" n'est pas trouver (utile que pour la rangeMeca actuellement)
+                if (getNameRef(text).toUpperCase().equals(MECHANISM_SPAWN_RANGE)) {
+                    Optional<Integer> option = getNamedEntity().asWithFilters().getDynamicFilterValue(DISTANCE, getLevel());
+                    if (option.isPresent()) {
+                        return option.get() + "";
+                    } else {
+                        System.err.println("error ReferenceEffectParser");
+                    }
+                }
+            } else if (getNamedEntity().isDynamicedEntity()) {
+                return "" + getNamedEntity().asDynamicedEntity().getDynamicValue(getKeyRef(text), getLevel());
             } else {
                 System.err.println("erreur ReferenceEffectParser : L'effet n'est pas trouver avec la ref : " + getKeyRef(text));
             }
@@ -101,7 +106,7 @@ public class ReferenceEffectParser extends WavenEntityParser implements Referenc
     @Override
     public Optional<WavenEffect> getObject(String text) {
         String name = ParserUtils.getText(text, REGEX_GLOBAL_EFFECT, 1);
-        if (name.equals(VALUE_EFFECT)){
+        if (name.equals(VALUE_EFFECT) || !WavenEffect.exist(name.toUpperCase())) {
             return Optional.empty();
         }
         return Optional.of(new WavenEffect(ParserUtils.getText(text, REGEX_GLOBAL_EFFECT, 1).toUpperCase()));
@@ -110,5 +115,9 @@ public class ReferenceEffectParser extends WavenEntityParser implements Referenc
     @Override
     public String getKeyRef(String text) {
         return ParserUtils.getText(text, REGEX_GLOBAL_EFFECT, 2);
+    }
+
+    public String getNameRef(String text) {
+        return ParserUtils.getText(text, REGEX_GLOBAL_EFFECT, 1);
     }
 }

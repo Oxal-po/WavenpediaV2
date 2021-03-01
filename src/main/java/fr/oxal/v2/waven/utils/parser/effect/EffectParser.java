@@ -20,7 +20,7 @@ public class EffectParser extends WavenEntityParser implements OverrideableParse
         if (isOverride(text)) {
             return getOverride(text);
         }
-        return getObject(text).get().getName().replaceAll("\\{[0-9]+\\}", "");
+        return getObject(text).get().getName().replaceAll("\\{[0-9]+\\}", "").replace("(", "").replace(")", "");
     }
 
     @Override

@@ -14,7 +14,9 @@ public class WavenParser {
     public static final EffectParser simpleEffectParser = new EffectParser();
     public static final MathematicEffectParser mathematicEffectParser = new MathematicEffectParser();
     public static final SymboleEffectParser symboleEffectParser = new SymboleEffectParser();
+    public static final ReferenceValueParser referenceValueParser = new ReferenceValueParser();
     public static final ReferenceEffectParser effectParser = new ReferenceEffectParser();
+    public static final MathematicReferenceParser mathematicReferenceParser = new MathematicReferenceParser();
     public final static ReferenceValueEntityEffectParser refValEntity = new ReferenceValueEntityEffectParser();
     public final static GenderParser genderParser = new GenderParser();
     public final static int MARKDOWN = 4;
@@ -45,6 +47,8 @@ public class WavenParser {
 
             //setup est ici car j'en ai besoin dans le canParse
             effectParser.setup(waven, level);
+            referenceValueParser.setup(waven, level);
+
 
             if (entityParser.canParse(find)) {
                 //je check si entité avec id
@@ -53,7 +57,11 @@ public class WavenParser {
             } else if (simpleEffectParser.canParse(find)) {
                 //je check si c'est un effet simple
                 simpleEffectParser.setup(waven, level);
-                text = text.replace(find, simpleEffectParser.parse(find));
+                try {
+                    text = text.replace(find, simpleEffectParser.parse(find));
+                } catch (Exception exception) {
+                    text = text.replace(find, referenceValueParser.parse(find));
+                }
             } else if (effectParser.canParse(find)) {
                 //je check si c'est un effet a valeur (et donc a reférence)
                 text = text.replace(find, effectParser.parse(find));
@@ -71,7 +79,12 @@ public class WavenParser {
             }  else if (genderParser.canParse(find)) {
                 //je check si c'est en fonction du genre
                 text = text.replace(find, genderParser.parse(find));
+            } else if (mathematicReferenceParser.canParse(find)) {
+                //
+                mathematicReferenceParser.setup(waven, level);
+                text = text.replace(find, mathematicReferenceParser.parse(find));
             } else {
+                System.err.println(waven.asWavenEntity().getJsonRepresentation());
                 System.err.println("-ERROR- erreur WavenParser : ce text n'est pas parser : " + waven.getClass().getSimpleName() + " : " + text + " : " + find);
                 if (waven.isWavenEntity()) {
                     System.err.println(waven.asWavenEntity().getId());
@@ -105,7 +118,7 @@ public class WavenParser {
                     str = str.replaceAll("\\\\n", "\n")
                             .replaceAll("\\\\_", " ")
                             .replaceAll("\\\\-\\-\\-", "")
-                            .replaceAll("\\\\v", "");
+                            .replaceAll("\\\\v", " ");
                     break;
                 case 4:
                     str = str.replaceAll("<b>", "**")

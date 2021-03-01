@@ -4,7 +4,7 @@ import fr.oxal.v2.waven.utils.parser.Parser;
 
 public class GenderParser extends Parser {
 
-    public static final String FORMAT_GENDER = "\\{heroGender: m\\[([aA-zZ]+)\\] f\\[([aA-zZ]+)\\]\\}";
+    public static final String FORMAT_GENDER = "\\{heroGender: m\\[(.+)\\] f\\[(.+)\\]\\}";
     @Override
     public void setup(Object... objects) {
 
