@@ -17,12 +17,12 @@ import fr.oxal.v2.waven.utils.jsonArgumentEntity.rarity.WithRarity;
 import java.util.List;
 import java.util.Optional;
 
-public class Ring extends Equipment implements WithEffect, DynamicedEntity, WithRangeValues,
+public class RingEquipment extends Equipment implements WithEffect, DynamicedEntity, WithRangeValues,
         WithSlot, WithPassiveModifiers, WithRarity, Dropeable, WithUnlockableSkill {
 
     public static final String PATH_RING = Wavenpedia.jsonPath + "RingEquipmentDefinition/";
 
-    public Ring(int id) {
+    public RingEquipment(int id) {
         super(id);
     }
 
