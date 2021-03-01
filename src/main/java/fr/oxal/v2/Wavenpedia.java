@@ -17,12 +17,14 @@ import fr.oxal.v2.waven.entity.base.StatEntity.weapon.Weapon;
 import fr.oxal.v2.waven.entity.base.god.God;
 import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.pvm.equipment.gem.Gem;
-import fr.oxal.v2.waven.entity.pvm.equipment.ring.Ring;
+import fr.oxal.v2.waven.entity.pvm.equipment.ring.RingEquipment;
 import fr.oxal.v2.waven.entity.pvm.resource.Fragment;
+import fr.oxal.v2.waven.entity.pvm.resource.astre.RingResource;
 import fr.oxal.v2.waven.entity.pvm.skill.Skill;
 import fr.oxal.v2.waven.utils.collections.WavenEntities;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.pvm.Dropeable;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -34,15 +36,18 @@ public class Wavenpedia {
     public static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     public static final Class<? extends NamedWavenEntity>[] ALL_NAMED_CLASS = new Class[]{
             Spell.class, God.class, Weapon.class, Companion.class, ObjectMechanism.class, Summoning.class,
-            FloorMechanism.class, Skill.class, Gem.class, Fragment.class, Ring.class
+            FloorMechanism.class, Skill.class, Gem.class, Fragment.class, RingEquipment.class
     };
     public static final Class<? extends NamedEntity>[] ALL_NAMED_ENTITY = new Class[]{
             Spell.class, God.class, Weapon.class, Companion.class, ObjectMechanism.class, Summoning.class,
-            FloorMechanism.class, Skill.class, Gem.class, Fragment.class, Ring.class, WavenEffect.class, WavenElement.class
+            FloorMechanism.class, Skill.class, Gem.class, Fragment.class, RingEquipment.class, WavenEffect.class, WavenElement.class
     };
     public static final Class<? extends DynamicedEntity>[] ALL_DYNAMICED_CLASS = new Class[]{
             PropertyEffect.class, Spell.class, God.class, Weapon.class, Companion.class, ObjectMechanism.class,
-            Summoning.class, FloatingCounterEffect.class, FloorMechanism.class, Skill.class
+            Summoning.class, FloatingCounterEffect.class, FloorMechanism.class, Skill.class, RingEquipment.class
+    };
+    public static final Class<? extends Dropeable>[] ALL_DROPEABLE_CLASS = new Class[]{
+            Spell.class, Companion.class, RingEquipment.class, Fragment.class, RingResource.class
     };
     public static String jsonPath;
     public static String imagePath;
