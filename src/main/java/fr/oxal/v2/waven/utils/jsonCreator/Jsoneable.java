@@ -69,10 +69,9 @@ public interface Jsoneable {
     }
 
     static JsonElement getStat(WithStat waven, int max) {
-        JsonArray array = new JsonArray();
+        JsonObject json = new JsonObject();
 
-        for (int i = 1; i <= max; i++) {
-            JsonObject json = new JsonObject();
+        for (int i = 1; i <= 1; i++) {
 
             if (waven.isWithAtk()) {
                 waven.asWithAtk().getAtk(i).ifPresent(a -> {
@@ -115,10 +114,9 @@ public interface Jsoneable {
                 });
             }
 
-            array.add(json);
         }
 
-        return array;
+        return json;
     }
 
     static void saveJson(Class<? extends NamedEntity> c, String out) {
@@ -262,11 +260,11 @@ public interface Jsoneable {
         }
 
         if (waven.isWithStat()) {
-            JsonElement e = getDescription(waven.asNamedEntity());
+            JsonElement e = getStat(waven.asWithStat());
 
             if (e != null && e.isJsonArray() && e.getAsJsonArray().size() > 0) {
                 json.add("stat_level", e);
-            } else if (e != null && e.isJsonPrimitive()) {
+            } else if (e != null && e.isJsonObject()) {
                 json.add("stat", e);
             }
         }
