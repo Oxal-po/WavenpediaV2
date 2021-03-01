@@ -3,7 +3,7 @@ package fr.oxal.v2.utils.math;
 import com.google.gson.*;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.entity.WavenInterface;
-import fr.oxal.v2.waven.entity.pvm.equipment.ring.Ring;
+import fr.oxal.v2.waven.entity.pvm.equipment.ring.RingEquipment;
 import fr.oxal.v2.waven.entity.pvm.skill.WithElementarySkills;
 
 import java.io.*;
@@ -21,6 +21,7 @@ public class WavenMath {
     public static final String FUNCTION_MULT_SCALING = "MultiplyScaleLevelOnlyBasedDynamicValue";
     public static final String FUNCTION_LIN_SCALING = "LinearScaleLevelOnlyBasedDynamicValue";
     public static final String FUNCTION_SUM = "SumValue";
+    public static final String FUNCTION_MULT = "MultValue";
     public static final String SPELL_EVOLVE = "ThisSpellEvolutionValue";
     public static final String FUNCTION_RANGE_VALUE_RING = "ThisRingRangeDynamicValue";
     public static final String FACTOR = "factor";
@@ -39,6 +40,22 @@ public class WavenMath {
     private static final String VALUE = "value";
     private static final String VALUES = "values";
     private static final String REF = "reference";
+    private static final String monsterNormalLife = "monsterNormalLife";
+    private static final String monsterNormalAttack = "monsterNormalAttack";
+    private static final String monsterAssassinLife = "monsterAssassinLife";
+    private static final String monsterAssassinAttack = "monsterAssassinAttack";
+    private static final String monsterTankLife = "monsterTankLife";
+    private static final String monsterTankAttack = "monsterTankAttack";
+    private static final String companionLife = "companionLife";
+    private static final String companionAttack = "companionAttack";
+    private static final String summoningLife = "summoningLife";
+    private static final String summoningAttack = "summoningAttack";
+    private static final String mechanismLife = "mechanismLife";
+    private static final String monsterSpell = "monsterSpell";
+
+    private static final String[] arrayStatScale = new String[]{monsterNormalLife,
+            monsterNormalAttack, monsterAssassinLife, monsterAssassinAttack, monsterTankLife, monsterTankAttack,
+            companionLife, companionAttack, summoningLife, summoningAttack, mechanismLife, monsterSpell};
 
     //todo surement a refaire
 
@@ -49,11 +66,13 @@ public class WavenMath {
         } else if (j.get(TYPE).getAsString().equals(FUNCTION_MULT_SCALING)) {
             return scalingMult(j, level);
         } else if (j.get(TYPE).getAsString().equals(FUNCTION_LIN_SCALING)) {
-            return scaling(j, level);
+            return scalingMult(j, level);
         } else if (j.get(TYPE).getAsString().equals(FUNCTION_RANGE_VALUE_RING)) {
             return ringRange(level, w, j);
         } else if (j.get(TYPE).getAsString().equals(FUNCTION_SUM)) {
             return sum(j);
+        } else if (j.get(TYPE).getAsString().equals(FUNCTION_MULT)) {
+            return mult(j);
         } else if (j.get(TYPE).getAsString().equals(CONST_VALUE)) {
             return j.get(VALUE).getAsInt();
         } else if (j.get(TYPE).getAsString().equals(SPELL_COUNT_VALUE)) {
@@ -98,9 +117,24 @@ public class WavenMath {
         return base;
     }
 
+    private static int mult(JsonObject j) {
+        int base = 0;
+        JsonArray jsonArray = (JsonArray) j.get("valuesToMult");
+        for (Object object : jsonArray) {
+            JsonObject json = (JsonObject) object;
+            if (json.has(TYPE)) {
+                if (json.has(VALUE)) {
+                    base = json.get(VALUE).getAsInt();
+                }
+            }
+        }
+
+        return base;
+    }
+
     private static int ringRange(int level, WavenInterface a, JsonObject o) {
         String key = o.get(REF_NAME).getAsString();
-        Ring r = a.asRing();
+        RingEquipment r = a.asRing();
         Optional<Integer> i = r.getArrayValue(key, level);
         Optional<Double> f = r.getFactorRange(key);
         if (i.isPresent() && f.isPresent()) {
@@ -118,7 +152,7 @@ public class WavenMath {
 
     public static int scaling(JsonObject j, int level) {
         double base = j.get(BASE_VALUE).getAsDouble();
-        return (int) Math.round((base + (base * parserConst(j) * (level - 1))));
+        return (int) Math.round((base + (base * parserConst(j) * (level))));
     }
 
     public static long getExp(int level) {
@@ -132,7 +166,7 @@ public class WavenMath {
 
     public static int scalingMult(JsonObject j, int level) {
         double base = j.get(BASE_VALUE).getAsDouble();
-        return (int) Math.round(base * Math.pow(parserConst(j) + 1, level - 1));
+        return (int) Math.round(base * (1 + parserConst(j) * (2 * level - 1)));
     }
 
 
@@ -149,23 +183,7 @@ public class WavenMath {
 
         if (factorJson.get(REF) instanceof JsonPrimitive) {
             JsonPrimitive p = factorJson.get(REF).getAsJsonPrimitive();
-            switch (p.getAsInt()) {
-                case 0:
-                    name = MONSTER_SCALE;
-                    break;
-                case 1:
-                    name = SPELL_MONSTER_SCALING;
-                    break;
-                case 2:
-                    name = COMPA_SCALE;
-                    break;
-                case 3:
-                    name = INVOC_SCALE;
-                    break;
-                case 4:
-                    name = MECA_SCALE;
-                    break;
-            }
+            name = arrayStatScale[p.getAsInt()];
         }
 
 
