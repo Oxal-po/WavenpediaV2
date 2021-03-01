@@ -14,7 +14,7 @@ import fr.oxal.v2.waven.entity.base.StatEntity.weapon.WithWeapon;
 import fr.oxal.v2.waven.entity.base.god.WithGods;
 import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.base.spell.WithSpells;
-import fr.oxal.v2.waven.entity.pvm.equipment.ring.Ring;
+import fr.oxal.v2.waven.entity.pvm.equipment.ring.RingEquipment;
 import fr.oxal.v2.waven.entity.pvm.skill.*;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithCastTarget;
@@ -108,23 +108,23 @@ public interface WavenInterface extends Jsoneable {
         return this instanceof WithSelector;
     }
 
-    default WithSelector asWithSelector(){
+    default WithSelector asWithSelector() {
         return (WithSelector) this;
     }
 
-    default boolean isRing(){
-        return this instanceof Ring;
+    default boolean isRing() {
+        return this instanceof RingEquipment;
     }
 
-    default Ring asRing(){
-        return (Ring) this;
+    default RingEquipment asRing() {
+        return (RingEquipment) this;
     }
 
-    default boolean isSpell(){
+    default boolean isSpell() {
         return this instanceof Spell;
     }
 
-    default Spell asSpell(){
+    default Spell asSpell() {
         return (Spell) this;
     }
 

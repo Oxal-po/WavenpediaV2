@@ -24,7 +24,10 @@ public interface WithRangeValues extends WavenInterface {
     Optional<JsonObject> getRangeValues();
 
     default Optional<JsonObject> getRangeValues(JsonObject o) {
-        return Optional.of((JsonObject) o.get(RANGE_VALUE));
+        if (o.has(RANGE_VALUE)) {
+            return Optional.of((JsonObject) o.get(RANGE_VALUE));
+        }
+        return Optional.empty();
     }
 
     default Optional<JsonArray> getArrayValues() {

@@ -3,8 +3,8 @@ package fr.oxal.v2.waven.effect;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
+import fr.oxal.v2.waven.utils.collections.WavenEffects;
 import fr.oxal.v2.waven.utils.dictionary.DictionaryFabric;
-import fr.oxal.v2.waven.utils.dictionary.HaveDictionary;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 
 import java.util.Optional;
@@ -56,14 +56,13 @@ public class WavenEffect implements NamedEntity {
         return getEffectJson().orElse(new Gson().fromJson(EFFECT_BASE, JsonObject.class)).get(DESCRI_EFFECT).getAsLong();
     }
 
-    @Override
-    public String getName() {
-        return getNameId() == 0l ? BASE_STRING : getDictionary().get(getNameId()+"").getAsString();
+    public static boolean exist(String key) {
+        return WavenEffects.getAllNameEffect().contains(key);
     }
 
     @Override
     public String getDescription() {
-        return getDescriptionId() == 0l ? BASE_STRING : getDictionary().get(getDescriptionId()+"").getAsString();
+        return getDescriptionId() == 0l ? BASE_STRING : getDictionary().get(getDescriptionId() + "").getAsString();
     }
 
     @Override
@@ -81,11 +80,16 @@ public class WavenEffect implements NamedEntity {
         return getDictionary().get(id + "").getAsString();
     }
 
-    public boolean haveKeyWord(){
+    public boolean haveKeyWord() {
         return getKeyWord() != null;
     }
 
-    public boolean haveDescription(){
+    public boolean haveDescription() {
         return getDescriptionId() != DESCRI_EFFECT_BASE;
+    }
+
+    @Override
+    public String getName() {
+        return getDictionary().get(getNameId() + "").getAsString();
     }
 }

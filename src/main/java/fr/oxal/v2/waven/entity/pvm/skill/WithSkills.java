@@ -18,7 +18,10 @@ public interface WithSkills extends WavenInterface {
     Optional<JsonArray> getJsonArraySkills();
 
     default Optional<JsonArray> getJsonArraySkills(JsonObject o) {
-        return Optional.of((JsonArray) o.get(SKILLS));
+        if (o.has(SKILLS)) {
+            return Optional.of((JsonArray) o.get(SKILLS));
+        }
+        return Optional.empty();
     }
 
     default List<Skill> getSkills() {

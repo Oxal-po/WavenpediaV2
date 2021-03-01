@@ -68,8 +68,20 @@ public class WavenEntities {
     public static <T extends WavenEntity> Optional<T> getOneByName(Class<T> c, String name){
         List<T> list = getAllByName(c, name);
 
-        if (list.size() == 1){
+        if (list.size() == 1) {
             return Optional.of(list.get(0));
+        } else if (list
+                .stream()
+                .filter(a -> a.isNamedWavenEntity())
+                .map(a -> a.asNamedWavenEntity())
+                .anyMatch(a -> a.getGlobalParsedName(0).equals(name))) {
+            List<T> l = list.stream()
+                    .filter(a -> a.isNamedWavenEntity() && a.asNamedWavenEntity().getGlobalParsedName(0).equals(name))
+                    .collect(Collectors.toList());
+
+            if (l.size() == 1) {
+                return Optional.of(l.get(0));
+            }
         }
 
         return Optional.empty();
