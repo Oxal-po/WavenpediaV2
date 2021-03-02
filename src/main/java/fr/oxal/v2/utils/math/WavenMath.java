@@ -63,10 +63,10 @@ public class WavenMath {
         if (j == null) return -1000;
         if (j.get(TYPE).getAsString().equals(FUNCTION_LINEAR)) {
             return linear(j, level);
-        } else if (j.get(TYPE).getAsString().equals(FUNCTION_MULT_SCALING)) {
+        } else if (j.get(TYPE).getAsString().equals(FUNCTION_LIN_SCALING) && w.isSummoning() && w.asSummoning().isMonster()) {
             return scalingMult(j, level);
         } else if (j.get(TYPE).getAsString().equals(FUNCTION_LIN_SCALING)) {
-            return scalingMult(j, level);
+            return scaling(j, level);
         } else if (j.get(TYPE).getAsString().equals(FUNCTION_RANGE_VALUE_RING)) {
             return ringRange(level, w, j);
         } else if (j.get(TYPE).getAsString().equals(FUNCTION_SUM)) {
@@ -152,7 +152,7 @@ public class WavenMath {
 
     public static int scaling(JsonObject j, int level) {
         double base = j.get(BASE_VALUE).getAsDouble();
-        return (int) Math.round((base + (base * parserConst(j) * (level))));
+        return (int) Math.round((base + (base * parserConst(j) * (level - 1))));
     }
 
     public static long getExp(int level) {
@@ -164,9 +164,17 @@ public class WavenMath {
         return Math.round(xp);
     }
 
+
     public static int scalingMult(JsonObject j, int level) {
         double base = j.get(BASE_VALUE).getAsDouble();
-        return (int) Math.round(base * (1 + parserConst(j) * (2 * level - 1)));
+
+        if (level < 31) {
+            return (int) Math.round(base * (1 + parserConst(j) * (2 * level - 1)));
+        } else if (level < 41) {
+            return (int) Math.round(base * (1 + parserConst(j) * (3 * level - 31)));
+        } else {
+            return (int) Math.round(base * (1 + parserConst(j) * (4 * level - 71)));
+        }
     }
 
 
