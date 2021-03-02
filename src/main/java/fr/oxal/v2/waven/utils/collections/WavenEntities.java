@@ -74,9 +74,9 @@ public class WavenEntities {
                 .stream()
                 .filter(a -> a.isNamedWavenEntity())
                 .map(a -> a.asNamedWavenEntity())
-                .anyMatch(a -> a.getGlobalParsedName(0).equals(name))) {
+                .anyMatch(a -> TextUtils.normalize(a.getGlobalParsedName(0).toLowerCase()).equals(TextUtils.normalize(name.toLowerCase())))) {
             List<T> l = list.stream()
-                    .filter(a -> a.isNamedWavenEntity() && a.asNamedWavenEntity().getGlobalParsedName(0).equals(name))
+                    .filter(a -> a.isNamedWavenEntity() && TextUtils.normalize(a.asNamedWavenEntity().getGlobalParsedName(0).toLowerCase()).equals(TextUtils.normalize(name.toLowerCase())))
                     .collect(Collectors.toList());
 
             if (l.size() == 1) {

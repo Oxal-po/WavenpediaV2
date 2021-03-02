@@ -1,5 +1,6 @@
 package fr.oxal.v2.waven.entity.base.StatEntity.summoning;
 
+import com.google.gson.JsonArray;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.effect.WithEffect;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
@@ -59,5 +60,10 @@ public class Summoning extends NamedWavenEntity implements WithEffect, WithPm, W
 
     public boolean isMonster() {
         return getDisplayName().contains(MONSTRE);
+    }
+
+    @Override
+    public Optional<JsonArray> getStatsArray() {
+        return getStatsArray(getJsonRepresentation());
     }
 }

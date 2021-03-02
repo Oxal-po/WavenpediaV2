@@ -56,4 +56,9 @@ public class ObjectMechanism extends NamedWavenEntity implements WithShield, Pre
     public Optional<JsonArray> getFamilies() {
         return getFamilies(getJsonRepresentation());
     }
+
+    @Override
+    public Optional<JsonArray> getStatsArray() {
+        return getStatsArray(getJsonRepresentation());
+    }
 }

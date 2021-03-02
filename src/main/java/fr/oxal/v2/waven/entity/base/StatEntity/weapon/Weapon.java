@@ -112,4 +112,9 @@ public class Weapon extends NamedWavenEntity implements WithAtk, WithPm, WithLif
     public Optional<FileInputStream> getLogo() {
         return getLogo(this);
     }
+
+    @Override
+    public Optional<JsonArray> getStatsArray() {
+        return getStatsArray(getJsonRepresentation());
+    }
 }

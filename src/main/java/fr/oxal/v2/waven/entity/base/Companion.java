@@ -115,4 +115,9 @@ public class Companion extends NamedWavenEntity implements WithUnlockableSkill, 
     public List<SingleObtainableItemListDefinition> getDropZone() {
         return getDropZone(this);
     }
+
+    @Override
+    public Optional<JsonArray> getStatsArray() {
+        return getStatsArray(getJsonRepresentation());
+    }
 }
