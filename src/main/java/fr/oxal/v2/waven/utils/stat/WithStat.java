@@ -74,7 +74,7 @@ public interface WithStat extends WavenInterface {
         final Optional<Integer>[] o = new Optional[]{Optional.empty()};
         getStatObject(id).ifPresent(a -> {
             if (a.has(VALUE)) {
-                o[0] = Optional.of(WavenMath.getNumber(a, level, this));
+                o[0] = Optional.of(WavenMath.getNumber(a.get(VALUE).getAsJsonObject(), level, this) / 10);
             }
         });
 
