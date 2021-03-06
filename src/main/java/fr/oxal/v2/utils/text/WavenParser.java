@@ -84,8 +84,6 @@ public class WavenParser {
                 mathematicReferenceParser.setup(waven, level);
                 text = text.replace(find, mathematicReferenceParser.parse(find));
             } else {
-                System.err.println(waven.asWavenEntity().getJsonRepresentation());
-                System.err.println("-ERROR- erreur WavenParser : ce text n'est pas parser : " + waven.getClass().getSimpleName() + " : " + text + " : " + find);
                 if (waven.isWavenEntity()) {
                     System.err.println(waven.asWavenEntity().getId());
                 }
