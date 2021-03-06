@@ -2,7 +2,7 @@ package fr.oxal.v2.waven.entity.pvm.family;
 
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
-
+import fr.oxal.v2.waven.entity.WavenInterface;
 
 
 public class Family extends WavenEntity {
@@ -19,7 +19,7 @@ public class Family extends WavenEntity {
     }
 
     @Override
-    public int compareTo(WavenEntity wavenEntity) {
+    public int compareTo(WavenInterface wavenEntity) {
         return 0;
     }
 }

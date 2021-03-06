@@ -57,11 +57,11 @@ public abstract class NamedWavenEntity extends WavenEntity implements NamedEntit
     }
 
     @Override
-    public int compareTo(WavenEntity wavenEntity) {
-        if (!(wavenEntity instanceof NamedWavenEntity)){
-            return Comparator.<Integer>naturalOrder().compare(getId(), wavenEntity.getId());
+    public int compareTo(WavenInterface wavenEntity) {
+        if (!(wavenEntity instanceof NamedWavenEntity)) {
+            return Comparator.<Integer>naturalOrder().compare(getId(), wavenEntity.asWavenEntity().getId());
         }
-        return getName().compareTo(((NamedWavenEntity)wavenEntity).getName());
+        return getName().compareTo(((NamedWavenEntity) wavenEntity).getName());
     }
 
     @Override

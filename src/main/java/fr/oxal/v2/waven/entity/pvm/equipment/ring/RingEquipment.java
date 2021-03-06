@@ -7,7 +7,6 @@ import fr.oxal.v2.waven.effect.WithEffect;
 import fr.oxal.v2.waven.entity.pvm.drop.SingleObtainableItemListDefinition;
 import fr.oxal.v2.waven.entity.pvm.equipment.Equipment;
 import fr.oxal.v2.waven.entity.pvm.skill.WithUnlockableSkill;
-import fr.oxal.v2.waven.utils.jsonArgumentEntity.WithSlot;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.passif.WithPassiveModifiers;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.pvm.Dropeable;
@@ -17,8 +16,8 @@ import fr.oxal.v2.waven.utils.jsonArgumentEntity.rarity.WithRarity;
 import java.util.List;
 import java.util.Optional;
 
-public class RingEquipment extends Equipment implements WithEffect, DynamicedEntity, WithRangeValues,
-        WithSlot, WithPassiveModifiers, WithRarity, Dropeable, WithUnlockableSkill {
+public class RingEquipment extends Equipment implements WithEffect, DynamicedEntity, WithRangeValues
+        , WithPassiveModifiers, WithRarity, Dropeable, WithUnlockableSkill {
 
     public static final String PATH_RING = Wavenpedia.jsonPath + "RingEquipmentDefinition/";
 
@@ -34,11 +33,6 @@ public class RingEquipment extends Equipment implements WithEffect, DynamicedEnt
     @Override
     public Optional<JsonObject> getRangeValues() {
         return getRangeValues(getJsonRepresentation());
-    }
-
-    @Override
-    public Optional<JsonArray> getDetailSlots() {
-        return getDetailSlots(getJsonRepresentation());
     }
 
     @Override

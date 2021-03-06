@@ -33,7 +33,7 @@ import fr.oxal.v2.waven.utils.stat.*;
 import fr.oxal.v2.waven.utils.updateGauge.WithCost;
 import fr.oxal.v2.waven.utils.updateGauge.WithGains;
 
-public interface WavenInterface extends Jsoneable {
+public interface WavenInterface extends Jsoneable, Comparable<WavenInterface> {
 
     @Override
     default JsonObject transformToJson() {
@@ -358,5 +358,25 @@ public interface WavenInterface extends Jsoneable {
 
     default WithUnlockableSkill asWithUnlockableSkill() {
         return (WithUnlockableSkill) this;
+    }
+
+    default boolean isWithPhysicStat() {
+        return isWithStat() && asWithStat().getCCPhyChance(0).orElse(0) > 0;
+    }
+
+    default boolean isWithMagicStat() {
+        return isWithStat() && asWithStat().getCCMagChance(0).orElse(0) > 0;
+    }
+
+    default boolean isWithResistance() {
+        return isWithStat() && asWithStat().getResMag(0).orElse(0) > 0 && asWithStat().getResPhy(0).orElse(0) > 0;
+    }
+
+    default boolean isWithPhyResistance() {
+        return isWithStat() && asWithStat().getResPhy(0).orElse(0) > 0;
+    }
+
+    default boolean isWithMagResistance() {
+        return isWithStat() && asWithStat().getResMag(0).orElse(0) > 0;
     }
 }

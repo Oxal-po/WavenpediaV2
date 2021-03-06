@@ -90,4 +90,9 @@ public class Chapter implements WavenInterface {
     public String toString() {
         return getChapterIndex().toString();
     }
+
+    @Override
+    public int compareTo(WavenInterface wavenEntity) {
+        return 0;
+    }
 }

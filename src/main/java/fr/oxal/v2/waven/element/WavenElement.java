@@ -8,12 +8,9 @@ import fr.oxal.v2.waven.entity.WavenInterface;
 import fr.oxal.v2.waven.utils.dictionary.DictionaryFabric;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import static fr.oxal.v2.waven.element.WavenElements.ALL_ELEMENT;
 
@@ -186,11 +183,16 @@ public class WavenElement implements WavenInterface, NamedEntity {
         return getId() == EARTH || getId() == ADD_EARTH;
     }
 
-    public boolean isWind(){
+    public boolean isWind() {
         return getId() == WIND || getId() == ADD_WIND;
     }
 
-    public boolean isNeutral(){
+    public boolean isNeutral() {
         return getId() == NEUTRAL || getId() == ADD_NEUTRAL;
+    }
+
+    @Override
+    public int compareTo(WavenInterface wavenEntity) {
+        return 0;
     }
 }

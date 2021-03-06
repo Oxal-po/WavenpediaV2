@@ -1,6 +1,7 @@
 package fr.oxal.v2.waven.entity.pvm.item;
 
 import com.google.gson.JsonObject;
+import fr.oxal.v2.waven.entity.WavenInterface;
 
 import java.util.Optional;
 
@@ -25,5 +26,10 @@ public class WavenItem implements Item {
     @Override
     public Optional<JsonObject> getItem() {
         return getItem(json);
+    }
+
+    @Override
+    public int compareTo(WavenInterface wavenInterface) {
+        return 0;
     }
 }

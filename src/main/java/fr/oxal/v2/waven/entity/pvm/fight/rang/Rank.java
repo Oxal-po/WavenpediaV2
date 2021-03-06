@@ -1,6 +1,7 @@
 package fr.oxal.v2.waven.entity.pvm.fight.rang;
 
 import com.google.gson.JsonObject;
+import fr.oxal.v2.waven.entity.WavenInterface;
 import fr.oxal.v2.waven.utils.dictionary.DictionaryFabric;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 
@@ -55,6 +56,11 @@ public class Rank implements NamedEntity {
             return json.get(START_CHAPTER).getAsInt();
         }
 
+        return 0;
+    }
+
+    @Override
+    public int compareTo(WavenInterface wavenEntity) {
         return 0;
     }
 }

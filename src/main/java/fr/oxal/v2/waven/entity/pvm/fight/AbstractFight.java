@@ -3,6 +3,7 @@ package fr.oxal.v2.waven.entity.pvm.fight;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import fr.oxal.v2.waven.WavenEntity;
+import fr.oxal.v2.waven.entity.WavenInterface;
 import fr.oxal.v2.waven.entity.pvm.fight.chapter.Chapter;
 import fr.oxal.v2.waven.entity.pvm.fight.chapter.WithChapters;
 import fr.oxal.v2.waven.entity.pvm.fight.rang.WithRanks;
@@ -28,7 +29,7 @@ public abstract class AbstractFight extends WavenEntity implements WithRanks, Wi
     }
 
     @Override
-    public int compareTo(WavenEntity wavenEntity) {
+    public int compareTo(WavenInterface wavenEntity) {
         return 0;
     }
 

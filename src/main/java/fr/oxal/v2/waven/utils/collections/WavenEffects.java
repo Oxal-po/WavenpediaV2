@@ -1,6 +1,5 @@
 package fr.oxal.v2.waven.utils.collections;
 
-import com.google.gson.JsonObject;
 import fr.oxal.v2.utils.text.TextUtils;
 import fr.oxal.v2.waven.effect.WavenEffect;
 
@@ -42,7 +41,9 @@ public class WavenEffects {
     public static List<WavenEffect> getAllEffectByName(String name, Predicate<WavenEffect> predicate){
         return getAllEffect(predicate)
                 .stream()
-                .filter(a -> TextUtils.normalize(a.getName()).toLowerCase().contains(TextUtils.normalize(name).toLowerCase()))
+                .filter(a ->
+                        a.getNameId() != 0 && TextUtils.normalize(a.getName()).toLowerCase().contains(TextUtils.normalize(name).toLowerCase())
+                )
                 .collect(Collectors.toList());
     }
 
@@ -52,8 +53,15 @@ public class WavenEffects {
 
     public static Optional<WavenEffect> getOneEffectByName(String name, Predicate<WavenEffect> predicate){
         List<WavenEffect> l = getAllEffectByName(name, predicate);
-        if (l.size() == 1){
+        if (l.size() == 1) {
             return Optional.of(l.get(0));
+        } else if (l.stream().anyMatch(a -> TextUtils.normalize(a.getName().toLowerCase()).equals(TextUtils.normalize(name.toLowerCase())))) {
+            return Optional.of(
+                    l.stream()
+                            .filter(a -> TextUtils.normalize(a.getName().toLowerCase()).equals(TextUtils.normalize(name.toLowerCase())))
+                            .collect(Collectors.toList())
+                            .get(0)
+            );
         }
         return Optional.empty();
     }

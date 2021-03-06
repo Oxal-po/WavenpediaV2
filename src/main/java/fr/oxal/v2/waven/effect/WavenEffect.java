@@ -3,10 +3,12 @@ package fr.oxal.v2.waven.effect;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
+import fr.oxal.v2.waven.entity.WavenInterface;
 import fr.oxal.v2.waven.utils.collections.WavenEffects;
 import fr.oxal.v2.waven.utils.dictionary.DictionaryFabric;
 import fr.oxal.v2.waven.utils.dictionary.NamedEntity;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class WavenEffect implements NamedEntity {
@@ -91,5 +93,23 @@ public class WavenEffect implements NamedEntity {
     @Override
     public String getName() {
         return getDictionary().get(getNameId() + "").getAsString();
+    }
+
+    @Override
+    public int compareTo(WavenInterface wavenInterface) {
+        return 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WavenEffect that = (WavenEffect) o;
+        return Objects.equals(keyWord, that.keyWord);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(keyWord);
     }
 }

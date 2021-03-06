@@ -3,8 +3,8 @@ package fr.oxal.v2.waven.effect;
 import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
+import fr.oxal.v2.waven.entity.WavenInterface;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
-import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.PrecomputedEntity;
 
 public class FloatingCounterEffect extends WavenEntity implements WithEffect, DynamicedEntity {
 
@@ -20,7 +20,7 @@ public class FloatingCounterEffect extends WavenEntity implements WithEffect, Dy
     }
 
     @Override
-    public int compareTo(WavenEntity wavenEntity) {
+    public int compareTo(WavenInterface wavenEntity) {
         return 0;
     }
 

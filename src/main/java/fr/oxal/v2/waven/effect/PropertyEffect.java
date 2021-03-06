@@ -3,6 +3,7 @@ package fr.oxal.v2.waven.effect;
 import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
+import fr.oxal.v2.waven.entity.WavenInterface;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.WithRefEntity;
 
@@ -20,7 +21,7 @@ public class PropertyEffect extends WavenEntity implements DynamicedEntity, With
     }
 
     @Override
-    public int compareTo(WavenEntity wavenEntity) {
+    public int compareTo(WavenInterface wavenEntity) {
         return 0;
     }
 

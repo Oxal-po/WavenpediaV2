@@ -2,6 +2,7 @@ package fr.oxal.v2.waven.entity.pvm.skill;
 
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.WavenEntity;
+import fr.oxal.v2.waven.entity.WavenInterface;
 import fr.oxal.v2.waven.entity.base.Companion;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.parent.WithParent;
 
@@ -22,7 +23,7 @@ public class UnlockableSkill extends WavenEntity implements WithParent<Companion
     }
 
     @Override
-    public int compareTo(WavenEntity wavenEntity) {
+    public int compareTo(WavenInterface wavenEntity) {
         return 0;
     }
 

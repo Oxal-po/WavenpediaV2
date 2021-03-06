@@ -11,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
-public abstract class WavenEntity implements Comparable<WavenEntity>, WavenInterface {
+public abstract class WavenEntity implements WavenInterface {
 
     public static final int NOT_ENTITY = -1;
     public static final JsonParser parser = new JsonParser();
