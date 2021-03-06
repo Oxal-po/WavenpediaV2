@@ -26,6 +26,7 @@ hs_err_pid*
 /.idea
 *.iml
 /out
+/target
 
 # my test
 /src/main/java/Main.java
