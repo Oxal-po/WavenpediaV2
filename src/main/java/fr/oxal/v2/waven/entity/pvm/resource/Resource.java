@@ -2,7 +2,7 @@ package fr.oxal.v2.waven.entity.pvm.resource;
 
 import com.google.gson.JsonArray;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
-import fr.oxal.v2.waven.entity.pvm.drop.SingleObtainableItemListDefinition;
+import fr.oxal.v2.waven.entity.pvm.drop.SingleObtainableItemList;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.pvm.Dropeable;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.pvm.MerchantCost;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.rarity.WithRarity;
@@ -26,7 +26,7 @@ public abstract class Resource extends NamedWavenEntity implements WithRarity, D
     }
 
     @Override
-    public List<SingleObtainableItemListDefinition> getDropZone() {
+    public List<SingleObtainableItemList> getDropZone() {
         return getDropZone(this);
     }
 

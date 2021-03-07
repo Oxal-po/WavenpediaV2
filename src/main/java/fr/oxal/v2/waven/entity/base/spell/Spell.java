@@ -8,7 +8,7 @@ import fr.oxal.v2.waven.effect.WithEffect;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.StatEntity.WithStatEntities;
 import fr.oxal.v2.waven.entity.base.god.WithGods;
-import fr.oxal.v2.waven.entity.pvm.drop.SingleObtainableItemListDefinition;
+import fr.oxal.v2.waven.entity.pvm.drop.SingleObtainableItemList;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.castTarget.WithFilters;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.EquipeableEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.WithElement;
@@ -104,7 +104,7 @@ public class Spell extends NamedWavenEntity implements WithGods, EquipeableEntit
     }
 
     @Override
-    public List<SingleObtainableItemListDefinition> getDropZone() {
+    public List<SingleObtainableItemList> getDropZone() {
         return getDropZone(this);
     }
 }

@@ -6,7 +6,7 @@ import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.entity.NamedWavenEntity;
 import fr.oxal.v2.waven.entity.base.spell.Spell;
 import fr.oxal.v2.waven.entity.base.spell.WithSpells;
-import fr.oxal.v2.waven.entity.pvm.drop.SingleObtainableItemListDefinition;
+import fr.oxal.v2.waven.entity.pvm.drop.SingleObtainableItemList;
 import fr.oxal.v2.waven.entity.pvm.skill.WithUnlockableSkill;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.detail.EquipeableEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.image.skin.WithSkin;
@@ -112,7 +112,7 @@ public class Companion extends NamedWavenEntity implements WithUnlockableSkill, 
     }
 
     @Override
-    public List<SingleObtainableItemListDefinition> getDropZone() {
+    public List<SingleObtainableItemList> getDropZone() {
         return getDropZone(this);
     }
 

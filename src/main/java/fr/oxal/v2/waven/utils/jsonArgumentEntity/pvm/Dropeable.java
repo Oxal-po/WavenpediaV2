@@ -1,7 +1,7 @@
 package fr.oxal.v2.waven.utils.jsonArgumentEntity.pvm;
 
 import fr.oxal.v2.waven.WavenEntity;
-import fr.oxal.v2.waven.entity.pvm.drop.SingleObtainableItemListDefinition;
+import fr.oxal.v2.waven.entity.pvm.drop.SingleObtainableItemList;
 import fr.oxal.v2.waven.entity.pvm.fight.chapter.Chapter;
 import fr.oxal.v2.waven.entity.pvm.fight.dungeon.DungeonZone;
 import fr.oxal.v2.waven.entity.pvm.fight.quest.Quest;
@@ -14,11 +14,11 @@ import java.util.stream.Collectors;
 
 public interface Dropeable extends Rewardeable {
 
-    List<SingleObtainableItemListDefinition> getDropZone();
+    List<SingleObtainableItemList> getDropZone();
 
-    default List<SingleObtainableItemListDefinition> getDropZone(WavenEntity wavenEntity) {
-        ArrayList<SingleObtainableItemListDefinition> list = new ArrayList<>();
-        for (SingleObtainableItemListDefinition s : WavenEntities.getAll(SingleObtainableItemListDefinition.class, WavenEntity::isAvailable)) {
+    default List<SingleObtainableItemList> getDropZone(WavenEntity wavenEntity) {
+        ArrayList<SingleObtainableItemList> list = new ArrayList<>();
+        for (SingleObtainableItemList s : WavenEntities.getAll(SingleObtainableItemList.class, WavenEntity::isAvailable)) {
             if (s.contain(wavenEntity)) {
                 list.add(s);
             }
@@ -31,7 +31,7 @@ public interface Dropeable extends Rewardeable {
     }
 
     default String getDropText() {
-        List<SingleObtainableItemListDefinition> listItem = getDropZone();
+        List<SingleObtainableItemList> listItem = getDropZone();
         Map<DungeonZone, List<Chapter>> listDungeon = getDungeonMap();
         Map<Quest, List<Chapter>> listQuest = getQuestMap();
 

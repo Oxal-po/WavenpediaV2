@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import fr.oxal.v2.Wavenpedia;
 import fr.oxal.v2.waven.effect.WithEffect;
-import fr.oxal.v2.waven.entity.pvm.drop.SingleObtainableItemListDefinition;
+import fr.oxal.v2.waven.entity.pvm.drop.SingleObtainableItemList;
 import fr.oxal.v2.waven.entity.pvm.equipment.Equipment;
 import fr.oxal.v2.waven.entity.pvm.skill.WithUnlockableSkill;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.passif.WithPassiveModifiers;
@@ -45,24 +45,8 @@ public class RingEquipment extends Equipment implements WithEffect, DynamicedEnt
         return getRarity(getJsonRepresentation());
     }
 
-    public boolean isCommon() {
-        return getRarity().map(a -> a == 0).orElse(false);
-    }
-
-    public boolean isUncommon() {
-        return getRarity().map(a -> a == 1).orElse(false);
-    }
-
-    public boolean isRare() {
-        return getRarity().map(a -> a == 2).orElse(false);
-    }
-
-    public boolean isLegendary() {
-        return getRarity().map(a -> a == 4).orElse(false);
-    }
-
     @Override
-    public List<SingleObtainableItemListDefinition> getDropZone() {
+    public List<SingleObtainableItemList> getDropZone() {
         return getDropZone(this);
     }
 

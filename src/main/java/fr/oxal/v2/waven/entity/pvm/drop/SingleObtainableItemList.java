@@ -8,11 +8,11 @@ import fr.oxal.v2.waven.utils.jsonArgumentEntity.pvm.WithItems;
 
 import java.util.Optional;
 
-public class SingleObtainableItemListDefinition extends WavenEntity implements WithItems {
+public class SingleObtainableItemList extends WavenEntity implements WithItems {
 
     public static final String PATH = Wavenpedia.jsonPath + "SingleObtainableItemListDefinition/";
 
-    public SingleObtainableItemListDefinition(int id) {
+    public SingleObtainableItemList(int id) {
         super(id);
     }
 
