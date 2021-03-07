@@ -54,10 +54,10 @@ public class Wavenpedia {
     public static String dictionaryPath;
     public static String keyWordPath;
     public static String constPath;
-    public static HashMap<Class<? extends WavenEntity>, HashMap<String, Integer>> classedMappedEntity;
+    public static HashMap<Class<? extends WavenEntity>, HashMap<Long, Integer>> classedMappedEntity;
 
     public static Optional<Integer> getIdEntity(Class c, String name) {
-        HashMap<String, Integer> h = classedMappedEntity.get(c);
+        HashMap<Long, Integer> h = classedMappedEntity.get(c);
         if (h == null) {
             return Optional.empty();
         }
@@ -101,9 +101,9 @@ public class Wavenpedia {
     public static void start() {
         classedMappedEntity = new HashMap<>();
         for (Class<? extends NamedWavenEntity> c : ALL_NAMED_CLASS) {
-            HashMap<String, Integer> mappedEntity = new HashMap<>();
+            HashMap<Long, Integer> mappedEntity = new HashMap<>();
             for (NamedWavenEntity a : WavenEntities.getAll(c)) {
-                mappedEntity.put(a.getName(), a.getId());
+                mappedEntity.put(a.getNameId(), a.getId());
             }
             classedMappedEntity.put(c, mappedEntity);
         }
