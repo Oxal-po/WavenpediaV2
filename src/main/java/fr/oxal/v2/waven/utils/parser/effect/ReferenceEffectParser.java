@@ -74,7 +74,8 @@ public class ReferenceEffectParser extends WavenEntityParser implements Referenc
                     }
                 }
             } else if (getNamedEntity().isDynamicedEntity()) {
-                return "" + getNamedEntity().asDynamicedEntity().getDynamicValue(getKeyRef(text), getLevel());
+                System.err.println("WARNING - NO EFFECT : " + getNamedEntity().getDescription());
+                return "" + getNamedEntity().asDynamicedEntity().getDynamicValue(getKeyRef(text), getLevel()).get();
             } else {
                 System.err.println("erreur ReferenceEffectParser : L'effet n'est pas trouver avec la ref : " + getKeyRef(text));
             }

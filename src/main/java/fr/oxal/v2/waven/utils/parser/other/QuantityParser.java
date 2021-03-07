@@ -23,10 +23,16 @@ public class QuantityParser extends Parser {
 
     @Override
     public String parse(String text) {
-        if (quantity > 1){
+        if (quantity > 1) {
             return quantity + ParserUtils.getText(text, REGEX_GLOBAL_QUANTITY, 2);
         }
-        return quantity + ParserUtils.getText(text, REGEX_GLOBAL_QUANTITY, 1);
+        String parsed = ParserUtils.getText(text, REGEX_GLOBAL_QUANTITY, 1);
+
+        if (parsed.contains("1")) {
+            return parsed;
+        } else {
+            return quantity + parsed;
+        }
     }
 
     @Override
