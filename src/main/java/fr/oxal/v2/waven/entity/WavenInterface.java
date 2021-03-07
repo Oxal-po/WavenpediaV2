@@ -28,6 +28,8 @@ import fr.oxal.v2.waven.utils.jsonArgumentEntity.image.logo.WithLogo;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.image.skin.WithSkin;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.DynamicedEntity;
 import fr.oxal.v2.waven.utils.jsonArgumentEntity.precompueted.PrecomputedEntity;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.pvm.Dropeable;
+import fr.oxal.v2.waven.utils.jsonArgumentEntity.rarity.WithRarity;
 import fr.oxal.v2.waven.utils.jsonCreator.Jsoneable;
 import fr.oxal.v2.waven.utils.stat.*;
 import fr.oxal.v2.waven.utils.updateGauge.WithCost;
@@ -52,59 +54,59 @@ public interface WavenInterface extends Jsoneable, Comparable<WavenInterface> {
         return this instanceof NamedEntity;
     }
 
-    default NamedEntity asNamedEntity(){
+    default NamedEntity asNamedEntity() {
         return (NamedEntity) this;
     }
 
-    default boolean isWavenEntity(){
+    default boolean isWavenEntity() {
         return this instanceof WavenEntity;
     }
 
-    default WavenEntity asWavenEntity(){
+    default WavenEntity asWavenEntity() {
         return (WavenEntity) this;
     }
 
-    default boolean isWavenEffect(){
+    default boolean isWavenEffect() {
         return this instanceof WavenEffect;
     }
 
-    default WavenEffect asWavenEffect(){
+    default WavenEffect asWavenEffect() {
         return (WavenEffect) this;
     }
 
-    default boolean isDynamicedEntity(){
+    default boolean isDynamicedEntity() {
         return this instanceof DynamicedEntity;
     }
 
-    default DynamicedEntity asDynamicedEntity(){
+    default DynamicedEntity asDynamicedEntity() {
         return (DynamicedEntity) this;
     }
 
-    default boolean isPrecomputedEntity(){
+    default boolean isPrecomputedEntity() {
         return this instanceof PrecomputedEntity;
     }
 
-    default PrecomputedEntity asPrecomputedEntity(){
+    default PrecomputedEntity asPrecomputedEntity() {
         return (PrecomputedEntity) this;
     }
 
-    default boolean isWithCastTarget(){
+    default boolean isWithCastTarget() {
         return this instanceof WithCastTarget;
     }
 
-    default WithCastTarget asWithCastTarget(){
+    default WithCastTarget asWithCastTarget() {
         return (WithCastTarget) this;
     }
 
-    default boolean isWithFilters(){
+    default boolean isWithFilters() {
         return this instanceof WithFilters;
     }
 
-    default WithFilters asWithFilters(){
+    default WithFilters asWithFilters() {
         return (WithFilters) this;
     }
 
-    default boolean isWithSelector(){
+    default boolean isWithSelector() {
         return this instanceof WithSelector;
     }
 
@@ -128,91 +130,91 @@ public interface WavenInterface extends Jsoneable, Comparable<WavenInterface> {
         return (Spell) this;
     }
 
-    default boolean isWithSkills(){
+    default boolean isWithSkills() {
         return this instanceof WithSkills;
     }
 
-    default WithSkills asWithSkills(){
+    default WithSkills asWithSkills() {
         return (WithSkills) this;
     }
 
-    default boolean isWithElements(){
+    default boolean isWithElements() {
         return this instanceof WithElement;
     }
 
-    default WithElement asWithElements(){
+    default WithElement asWithElements() {
         return (WithElement) this;
     }
 
-    default boolean isWithImage(){
+    default boolean isWithImage() {
         return this instanceof WithImage;
     }
 
-    default WithImage asWithImage(){
+    default WithImage asWithImage() {
         return (WithImage) this;
     }
 
-    default boolean isWithLogo(){
+    default boolean isWithLogo() {
         return this instanceof WithLogo;
     }
 
-    default WithLogo asWithLogo(){
+    default WithLogo asWithLogo() {
         return (WithLogo) this;
     }
 
-    default boolean isWithSkins(){
+    default boolean isWithSkins() {
         return this instanceof WithSkin;
     }
 
-    default WithSkin asWithSkins(){
+    default WithSkin asWithSkins() {
         return (WithSkin) this;
     }
 
-    default boolean isWithEffect(){
+    default boolean isWithEffect() {
         return this instanceof WithEffect;
     }
 
-    default WithEffect asWithEffects(){
+    default WithEffect asWithEffects() {
         return (WithEffect) this;
     }
 
-    default boolean isCompanion(){
+    default boolean isCompanion() {
         return this instanceof Companion;
     }
 
-    default Companion asCompanion(){
+    default Companion asCompanion() {
         return (Companion) this;
     }
 
-    default boolean isWeapon(){
+    default boolean isWeapon() {
         return this instanceof Weapon;
     }
 
-    default Weapon asWeapon(){
+    default Weapon asWeapon() {
         return (Weapon) this;
     }
 
-    default boolean isSummoning(){
+    default boolean isSummoning() {
         return this instanceof Summoning;
     }
 
-    default Summoning asSummoning(){
+    default Summoning asSummoning() {
         return (Summoning) this;
     }
 
-    default boolean isObjectMechanism(){
+    default boolean isObjectMechanism() {
         return this instanceof ObjectMechanism;
     }
 
-    default ObjectMechanism asObjectMechanism(){
+    default ObjectMechanism asObjectMechanism() {
         return (ObjectMechanism) this;
     }
 
-    default boolean isFloorMechanism(){
+    default boolean isFloorMechanism() {
         return this instanceof FloorMechanism;
     }
 
-    default FloorMechanism asFloorMechanism(){
+    default FloorMechanism asFloorMechanism() {
         return (FloorMechanism) this;
     }
 
@@ -378,5 +380,21 @@ public interface WavenInterface extends Jsoneable, Comparable<WavenInterface> {
 
     default boolean isWithMagResistance() {
         return isWithStat() && asWithStat().getResMag(0).orElse(0) > 0;
+    }
+
+    default boolean isDropeable() {
+        return this instanceof Dropeable;
+    }
+
+    default Dropeable asDropeable() {
+        return (Dropeable) this;
+    }
+
+    default boolean isWithRarity() {
+        return this instanceof WithRarity;
+    }
+
+    default WithRarity asWithRarity() {
+        return (WithRarity) this;
     }
 }
